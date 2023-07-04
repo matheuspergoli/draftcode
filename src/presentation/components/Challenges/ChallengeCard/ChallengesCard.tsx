@@ -20,7 +20,7 @@ export const ChallengesCard: React.FC<ChallengeCardProps> = ({
 }) => {
 	return (
 		<Link passHref href={`/desafios/${id}`} className='w-full max-w-sm'>
-			<article className='rounded-md border border-border bg-secondary'>
+			<article className='h-full rounded-md border border-border bg-secondary'>
 				<figure className='h-[180px]'>
 					<img src={image} alt={title} className='h-full w-full rounded-t-md' />
 				</figure>

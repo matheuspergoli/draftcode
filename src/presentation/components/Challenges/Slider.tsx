@@ -9,6 +9,7 @@ interface SliderProps {
 export const Slider: React.FC<SliderProps> = ({ children }) => {
 	return (
 		<Swiper
+			className='grid'
 			slidesPerView={'auto'}
 			spaceBetween={30}
 			grabCursor={true}
@@ -26,7 +27,7 @@ export const Slider: React.FC<SliderProps> = ({ children }) => {
 				1440: { slidesPerView: 4 }
 			}}>
 			{React.Children.map(children, (child) => (
-				<SwiperSlide>{child}</SwiperSlide>
+				<SwiperSlide className='h-full'>{child}</SwiperSlide>
 			))}
 		</Swiper>
 	)

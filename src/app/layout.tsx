@@ -5,6 +5,7 @@ import { Footer } from '@components/Footer'
 import { Provider } from '@provider/Provider'
 import { Toaster } from '@components/ui/toaster'
 import { getServerSession } from 'next-auth/next'
+import { ScrollToTop } from '@components/ScrollToTop'
 
 import 'swiper/css'
 import '../styles/globals.css'
@@ -24,6 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					<Header user={session?.user} />
 					<div className='flex-1'>{children}</div>
 					<Footer />
+					<ScrollToTop />
 					<Toaster />
 				</Provider>
 			</body>

@@ -13,10 +13,12 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 	return (
 		<header className='border-b border-border bg-secondary py-4'>
 			<nav className='container flex items-center justify-between'>
-				<div className='flex items-center gap-2'>
-					<Image alt='DraftCode Logo' src='/images/target.svg' width={31} height={31} />
-					<h1 className='text-[20px] font-semibold'>DraftCode</h1>
-				</div>
+				<Link href='/'>
+					<div className='flex items-center gap-2'>
+						<Image alt='DraftCode Logo' src='/images/target.svg' width={31} height={31} />
+						<h1 className='text-[20px] font-semibold'>DraftCode</h1>
+					</div>
+				</Link>
 
 				<section className='hidden items-center gap-5 md:flex'>
 					<Button asChild variant='ghost'>

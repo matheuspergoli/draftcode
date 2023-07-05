@@ -1,8 +1,8 @@
-import { db } from '@/configs/db'
+import { getChallenges } from '@actions/getChallenges'
 import { ChallengeList } from '@components/Dashboard/ChallengeList'
 
 export default async function Dashboard() {
-	const challenges = (await db.project.findMany()) as Project[]
+	const challenges = await getChallenges()
 
 	return (
 		<main>

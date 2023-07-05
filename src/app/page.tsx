@@ -1,16 +1,11 @@
-import { db } from '@/configs/db'
 import { Hero } from '@/presentation/components/Hero'
+import { getChallenges } from '@actions/getChallenges'
 import { About } from '@/presentation/components/About'
 import { Discord } from '@/presentation/components/Discord'
 import { Challenges } from '@/presentation/components/Challenges'
 
 export default async function Home() {
-	const challenges = (await db.project.findMany({
-		include: {
-			difficulty: true,
-			technologies: true
-		}
-	})) as Project[]
+	const challenges = await getChallenges()
 
 	return (
 		<main>

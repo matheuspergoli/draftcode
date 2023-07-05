@@ -1,13 +1,8 @@
-import { db } from '@/configs/db'
+import { getChallenges } from '@actions/getChallenges'
 import { ChallengeForm } from '@components/Challenges/ChallengeForm'
 
 export default async function Desafios() {
-	const challenges = (await db.project.findMany({
-		include: {
-			difficulty: true,
-			technologies: true
-		}
-	})) as Project[]
+	const challenges = await getChallenges()
 
 	return (
 		<main className='my-20'>

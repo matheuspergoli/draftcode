@@ -1,11 +1,10 @@
-import { db } from '@/configs/db'
 import { redirect } from 'next/navigation'
-import { authOptions } from '@configs/auth'
-import { getServerSession } from 'next-auth/next'
+import { getUsers } from '@actions/getUsers'
+import { getUserSession } from '@actions/getUserSession'
 import { UsersList } from '@components/Dashboard/UsersList'
 
 export default async function Users() {
-	const session = await getServerSession(authOptions)
+	const session = await getUserSession()
 
 	if (!session) {
 		redirect('/')
@@ -15,7 +14,7 @@ export default async function Users() {
 		redirect('/')
 	}
 
-	const users = (await db.user.findMany()) as unknown as User[]
+	const users = await getUsers()
 
 	return (
 		<div className='my-20'>

@@ -60,7 +60,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
-  image         String?
+  image         String?   @db.Text
 
   accounts Account[]
   sessions Session[]
@@ -119,7 +119,7 @@ enum SocialMedia {
 
 model Social_Media {
   id   String      @id @default(uuid())
-  url  String
+  url  String      @db.Text
   type SocialMedia
 
   social_media User[]

@@ -25,7 +25,8 @@
 			"@configs/*": ["./src/configs/*"],
 			"@provider/*": ["./src/provider/*"],
 			"@components/*": ["./src/presentation/components/*"],
-			"@externals/*": ["./src/externals/*"]
+			"@externals/*": ["./src/externals/*"],
+			"@actions/*": ["./src/actions/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

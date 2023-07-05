@@ -1,7 +1,9 @@
+import dynamic from 'next/dynamic'
 import { redirect } from 'next/navigation'
 import { getUsers } from '@actions/getUsers'
 import { getUserSession } from '@actions/getUserSession'
-import { UsersList } from '@components/Dashboard/UsersList'
+
+const UsersList = dynamic(() => import('@components/Dashboard/UsersList/UsersList'))
 
 export default async function Users() {
 	const session = await getUserSession()

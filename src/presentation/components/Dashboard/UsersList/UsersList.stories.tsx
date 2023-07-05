@@ -1,5 +1,5 @@
+import UsersList from './UsersList'
 import { faker } from '@faker-js/faker'
-import { UsersList } from './UsersList'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof UsersList> = {

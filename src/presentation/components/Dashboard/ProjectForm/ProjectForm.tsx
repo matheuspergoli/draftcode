@@ -45,7 +45,7 @@ const ProjectSchema = z.object({
 
 type ProjectData = z.infer<typeof ProjectSchema>
 
-export const ProjectForm: React.FC = () => {
+export default function ProjectForm() {
 	const { toast } = useToast()
 	const UPLOADCARE_API_KEY = process.env.NEXT_PUBLIC_UPLOADCARE_PUB_KEY as string
 

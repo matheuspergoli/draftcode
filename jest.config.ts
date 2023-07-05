@@ -1,6 +1,8 @@
-import type { Config } from 'jest'
+import nextJest from 'next/jest'
 
-const config: Config = {
+const createJestConfig = nextJest({ dir: './' })
+
+const customJestConfig = {
 	// Indicates whether the coverage information should be collected while executing the test
 	collectCoverage: true,
 
@@ -59,4 +61,4 @@ const config: Config = {
 	// testRegex: [],
 }
 
-export default config
+export default createJestConfig(customJestConfig)

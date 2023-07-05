@@ -1,4 +1,4 @@
-import { ProjectForm } from './ProjectForm'
+import ProjectForm from './ProjectForm'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof ProjectForm> = {

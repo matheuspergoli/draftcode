@@ -10,7 +10,7 @@ interface ChallengesProps {
 	challenges: Project[]
 }
 
-export const ChallengeList: React.FC<ChallengesProps> = ({ challenges }) => {
+export default function ChallengeList({ challenges }: ChallengesProps) {
 	const [challengeTitle, setChallengeTitle] = React.useState('')
 
 	return (

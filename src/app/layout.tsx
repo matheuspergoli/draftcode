@@ -5,6 +5,7 @@ import { Footer } from '@components/Footer'
 import { Provider } from '@provider/Provider'
 import { Toaster } from '@components/ui/toaster'
 import { getServerSession } from 'next-auth/next'
+import { Analytics } from '@vercel/analytics/react'
 import { ScrollToTop } from '@components/ScrollToTop'
 
 import 'swiper/css'
@@ -27,6 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					<Footer />
 					<ScrollToTop />
 					<Toaster />
+					<Analytics />
 				</Provider>
 			</body>
 		</html>

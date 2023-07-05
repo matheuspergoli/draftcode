@@ -9,7 +9,7 @@ interface SliderProps {
 export const Slider: React.FC<SliderProps> = ({ children }) => {
 	return (
 		<Swiper
-			className='grid'
+			className='grid auto-rows-fr'
 			slidesPerView={'auto'}
 			spaceBetween={30}
 			grabCursor={true}

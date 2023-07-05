@@ -22,7 +22,7 @@ export const UsersList: React.FC<UsersListsProps> = ({ users }) => {
 			<div className='mb-10 gap-5'>
 				<Input
 					type='search'
-					placeholder='Pesquisar desafio'
+					placeholder='Pesquisar usuário'
 					onChange={(e) => setUserName(e.target.value)}
 				/>
 			</div>

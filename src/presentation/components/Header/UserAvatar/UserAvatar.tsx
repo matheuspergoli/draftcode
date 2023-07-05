@@ -27,7 +27,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({ image, user }) => {
 		<DropdownMenu>
 			<DropdownMenuTrigger>
 				<Avatar>
-					<AvatarImage src={image} />
+					<AvatarImage loading='lazy' src={image} />
 					<AvatarFallback>CN</AvatarFallback>
 				</Avatar>
 			</DropdownMenuTrigger>
@@ -35,6 +35,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({ image, user }) => {
 				<DropdownMenuLabel className='flex justify-center'>Minha Conta</DropdownMenuLabel>
 				{user && isUserCreator && (
 					<>
+						<DropdownMenuSeparator />
 						<DropdownMenuItem asChild className='cursor-pointer justify-center uppercase'>
 							<Link href='/dashboard'>Dashboard</Link>
 						</DropdownMenuItem>

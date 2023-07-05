@@ -20,6 +20,7 @@ export const CreatorCard: React.FC<CreatorCardProps> = ({
 			<div className='flex items-center gap-[10px]'>
 				<figure className='h-16 w-16'>
 					<img
+						loading='lazy'
 						className='h-full w-full rounded-full object-cover'
 						src={image}
 						alt={`Foto do Criador do Desafio ${name}`}

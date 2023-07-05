@@ -17,7 +17,13 @@ export const AboutCard: React.FC<AboutCardProps> = ({
 	return (
 		<article className='flex flex-col gap-6 rounded-md bg-secondary px-5 py-6'>
 			<div className='mx-auto flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#1F1F1F]'>
-				<Image src='/images/mini-beaker.svg' alt='Card Icon' width={20} height={20} />
+				<Image
+					loading='lazy'
+					src='/images/mini-beaker.svg'
+					alt='Card Icon'
+					width={20}
+					height={20}
+				/>
 			</div>
 			<h3 className='text-center font-bold leading-6'>{title}</h3>
 			<p className='text-center text-base text-[#8C8C8C]'>{description}</p>

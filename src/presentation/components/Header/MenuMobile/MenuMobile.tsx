@@ -21,6 +21,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ user }) => {
 			<SheetTrigger asChild className='md:hidden'>
 				<Button variant='ghost'>
 					<Image
+						loading='lazy'
 						alt='DraftCode Menu Icon'
 						src='/images/menu.svg'
 						width={23}
@@ -32,7 +33,13 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ user }) => {
 			<SheetContent className='bg-secondary'>
 				<SheetHeader>
 					<SheetTitle className='mb-10 flex items-center gap-2'>
-						<Image alt='DraftCode Logo' src='/images/target.svg' width={31} height={31} />
+						<Image
+							loading='lazy'
+							alt='DraftCode Logo'
+							src='/images/target.svg'
+							width={31}
+							height={31}
+						/>
 						<p className='text-[20px] font-semibold'>DraftCode</p>
 					</SheetTitle>
 				</SheetHeader>
@@ -56,7 +63,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ user }) => {
 						</Link>
 					</Button>
 
-					{!user && <LoginButton />}
+					{!user && <LoginButton className='mt-10' />}
 				</section>
 			</SheetContent>
 		</Sheet>

@@ -13,7 +13,39 @@ import '../styles/globals.css'
 
 export const metadata: Metadata = {
 	title: 'DraftCode',
-	description: 'DraftCode é uma plataforma de desafios de programação.'
+	creator: 'Matheus Pergoli',
+	description: 'DraftCode é uma plataforma de desafios de programação.',
+	keywords: [
+		'DraftCode',
+		'Desafios',
+		'Programação',
+		'Next.js',
+		'React',
+		'Tailwind CSS',
+		'Server Components',
+		'Vercel'
+	],
+	authors: [
+		{
+			name: 'Matheus Pergoli',
+			url: 'https://matheuspergoli-portfolio.vercel.app/'
+		},
+		{
+			name: 'Natan Castro',
+			url: 'https://github.com/NatanCastro'
+		}
+	],
+	icons: {
+		icon: '/favicon.ico'
+	},
+	openGraph: {
+		type: 'website',
+		locale: 'pt_BR',
+		title: 'DraftCode',
+		siteName: 'DraftCode',
+		url: 'https://draftcode.vercel.app/',
+		description: 'DraftCode é uma plataforma de desafios de programação.'
+	}
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

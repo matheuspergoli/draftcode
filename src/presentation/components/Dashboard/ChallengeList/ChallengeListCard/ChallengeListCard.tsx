@@ -19,6 +19,7 @@ export const ChallengeListCard: React.FC<ChallengeListCardProps> = ({
 				<Link href={`/desafios/${id}`}>
 					<figure className='hidden h-14 w-20 sm:block'>
 						<img
+							loading='lazy'
 							src={image}
 							alt={`Imagem do Projeto ${title}`}
 							className='h-full w-full rounded-md'

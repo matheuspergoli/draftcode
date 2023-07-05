@@ -15,7 +15,13 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 			<nav className='container flex items-center justify-between'>
 				<Link href='/'>
 					<div className='flex items-center gap-2'>
-						<Image alt='DraftCode Logo' src='/images/target.svg' width={31} height={31} />
+						<Image
+							loading='lazy'
+							alt='DraftCode Logo'
+							src='/images/target.svg'
+							width={31}
+							height={31}
+						/>
 						<h1 className='text-[20px] font-semibold'>DraftCode</h1>
 					</div>
 				</Link>
@@ -43,9 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 				{user ? (
 					<UserAvatar user={user} image={user?.image} />
 				) : (
-					<div className='hidden md:block'>
-						<LoginButton />
-					</div>
+					<LoginButton className='hidden md:block' />
 				)}
 
 				<MenuMobile user={user} />

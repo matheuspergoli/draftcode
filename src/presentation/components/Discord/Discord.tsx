@@ -16,7 +16,13 @@ export const Discord: React.FC = () => {
 					<Button
 						size='lg'
 						className='mx-auto flex items-center gap-4 bg-[#5662F6] uppercase'>
-						<Image src='/images/discord.svg' alt='Discord Icon' width={20} height={20} />
+						<Image
+							loading='lazy'
+							src='/images/discord.svg'
+							alt='Discord Icon'
+							width={20}
+							height={20}
+						/>
 						Discord
 					</Button>
 				</a>

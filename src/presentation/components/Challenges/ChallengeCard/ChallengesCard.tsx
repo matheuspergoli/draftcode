@@ -22,7 +22,12 @@ export const ChallengesCard: React.FC<ChallengeCardProps> = ({
 		<Link passHref href={`/desafios/${id}`} className='w-full max-w-sm'>
 			<article className='h-full rounded-md border border-border bg-secondary'>
 				<figure className='h-[180px]'>
-					<img src={image} alt={title} className='h-full w-full rounded-t-md' />
+					<img
+						loading='lazy'
+						src={image}
+						alt={title}
+						className='h-full w-full rounded-t-md'
+					/>
 				</figure>
 				<section className='flex flex-col gap-5 px-6 py-[40px]'>
 					<h2 className='w-fit border-b border-primary text-sm font-medium uppercase leading-normal'>

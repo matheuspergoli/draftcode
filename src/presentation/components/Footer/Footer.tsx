@@ -7,7 +7,13 @@ export const Footer: React.FC = () => {
 		<footer className='border-t border-border bg-secondary py-[30px]'>
 			<section className='container flex flex-wrap items-center justify-between gap-5 border-t border-primary pt-5 md:border-b md:border-t-0 md:pb-5 md:pt-0'>
 				<div className='flex items-center gap-2'>
-					<Image alt='DraftCode Logo' src='/images/target.svg' width={31} height={31} />
+					<Image
+						loading='lazy'
+						alt='DraftCode Logo'
+						src='/images/target.svg'
+						width={31}
+						height={31}
+					/>
 					<h1 className='text-[20px] font-semibold'>DraftCode</h1>
 				</div>
 
@@ -23,6 +29,7 @@ export const Footer: React.FC = () => {
 					<Button asChild variant='link'>
 						<a href='https://discord.gg/svsgUgAvcx' rel='noreferrer' target='_blank'>
 							<Image
+								loading='lazy'
 								alt='Discord Icon'
 								src='/images/discord.svg'
 								width={21}

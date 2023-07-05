@@ -4,6 +4,8 @@ import { getChallenge } from '@actions/getChallenge'
 import { CreatorCard } from '@components/CreatorCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
+export const revalidate = 60 * 60 * 2 // 2 hours
+
 export default async function Desafio({ params }: { params: { id: string } }) {
 	const challenge = await getChallenge(params.id)
 

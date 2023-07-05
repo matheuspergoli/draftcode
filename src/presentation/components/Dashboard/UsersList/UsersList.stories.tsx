@@ -1,10 +1,20 @@
+import { rest } from 'msw'
 import UsersList from './UsersList'
 import { faker } from '@faker-js/faker'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof UsersList> = {
 	title: 'Dashboard/UsersList',
-	component: UsersList
+	component: UsersList,
+	parameters: {
+		msw: {
+			handlers: [
+				rest.put(`/api/users/:id`, (_, res, ctx) => {
+					return res(ctx.status(200), ctx.json({}))
+				})
+			]
+		}
+	}
 }
 
 export default meta

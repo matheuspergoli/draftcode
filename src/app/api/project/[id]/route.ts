@@ -1,9 +1,10 @@
 import { z } from 'zod'
 import { db } from '@/configs/db'
 import { Prisma } from '@prisma/client'
-import { NextResponse } from 'next/server'
+import { revalidateTag } from 'next/cache'
 import { authOptions } from '@/configs/auth'
 import { getServerSession } from 'next-auth/next'
+import { NextResponse, NextRequest } from 'next/server'
 
 const Project = z.object({
 	title: z.string().optional(),
@@ -102,9 +103,14 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 	}
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(
+	request: NextRequest,
+	{ params }: { params: { id: string } }
+) {
 	try {
 		const session = await getServerSession(authOptions)
+
+		const tag = request.nextUrl.searchParams.get('tag')
 
 		if (!session) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -123,6 +129,8 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
 		const project = await db.project.delete({
 			where: { id: String(id) }
 		})
+
+		revalidateTag(tag as string)
 
 		return NextResponse.json(project)
 	} catch (error) {

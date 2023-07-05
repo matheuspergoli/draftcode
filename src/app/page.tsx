@@ -4,6 +4,8 @@ import { About } from '@/presentation/components/About'
 import { Discord } from '@/presentation/components/Discord'
 import { Challenges } from '@/presentation/components/Challenges'
 
+export const revalidate = 60 * 60 * 2 // 2 hours
+
 export default async function Home() {
 	const challenges = await getChallenges()
 

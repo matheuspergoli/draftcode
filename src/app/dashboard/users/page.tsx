@@ -5,6 +5,8 @@ import { getUserSession } from '@actions/getUserSession'
 
 const UsersList = dynamic(() => import('@components/Dashboard/UsersList/UsersList'))
 
+export const revalidate = 60 * 60 * 2 // 2 hours
+
 export default async function Users() {
 	const session = await getUserSession()
 

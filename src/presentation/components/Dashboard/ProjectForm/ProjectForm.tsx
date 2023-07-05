@@ -66,6 +66,9 @@ export default function ProjectForm() {
 				body: JSON.stringify(data),
 				headers: {
 					'Content-Type': 'application/json'
+				},
+				next: {
+					tags: ['projects-create']
 				}
 			})
 
@@ -161,7 +164,6 @@ export default function ProjectForm() {
 					<p>Insira uma Imagem que mostre a tela final do desafio</p>
 				</div>
 				<div className='flex-1'>
-					{/* <Label htmlFor='imagem-desafio'>Adicionar imagem</Label> */}
 					<Controller
 						control={control}
 						name='image'

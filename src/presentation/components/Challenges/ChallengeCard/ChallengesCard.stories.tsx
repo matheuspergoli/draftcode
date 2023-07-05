@@ -6,7 +6,7 @@ const meta: Meta<typeof ChallengesCard> = {
 	component: ChallengesCard,
 	parameters: {
 		viewport: {
-			defaultViewport: 'md'
+			defaultViewport: 'sm'
 		}
 	}
 }

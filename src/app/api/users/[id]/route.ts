@@ -1,17 +1,20 @@
 import { z } from 'zod'
 import { db } from '@/configs/db'
-import { NextResponse } from 'next/server'
+import { revalidateTag } from 'next/cache'
 import { authOptions } from '@/configs/auth'
 import { getServerSession } from 'next-auth/next'
+import { NextResponse, NextRequest } from 'next/server'
 
 const UserUpdate = z.object({
 	role: z.enum(['USER', 'ADMIN', 'SUPERADMIN'])
 })
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
 	console.log()
 	try {
 		const session = await getServerSession(authOptions)
+
+		const tag = request.nextUrl.searchParams.get('tag')
 
 		if (!session) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -35,6 +38,8 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 			where: { id: String(id) },
 			data: { role }
 		})
+
+		revalidateTag(tag as string)
 
 		return NextResponse.json(userUpdated)
 	} catch (error) {

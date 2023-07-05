@@ -1,8 +1,9 @@
 import { z } from 'zod'
 import { db } from '@/configs/db'
-import { NextResponse } from 'next/server'
+import { revalidateTag } from 'next/cache'
 import { authOptions } from '@/configs/auth'
 import { getServerSession } from 'next-auth/next'
+import { NextRequest, NextResponse } from 'next/server'
 
 const Project = z.object({
 	title: z.string().nonempty(),
@@ -31,9 +32,11 @@ export async function GET() {
 	}
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
 	try {
 		const session = await getServerSession(authOptions)
+
+		const tag = request.nextUrl.searchParams.get('tag')
 
 		if (!session) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -75,6 +78,8 @@ export async function POST(request: Request) {
 				}
 			}
 		})
+
+		revalidateTag(tag as string)
 
 		return NextResponse.json(newProject)
 	} catch (error) {

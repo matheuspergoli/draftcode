@@ -2,8 +2,12 @@ import type { Preview } from '@storybook/react'
 
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 
+import { initialize, mswDecorator } from 'msw-storybook-addon'
+
 import 'swiper/css'
 import '../src/styles/globals.css'
+
+initialize()
 
 const customViewports = {
 	xs: {
@@ -49,7 +53,8 @@ const preview: Preview = {
 		nextjs: {
 			appDirectory: true
 		}
-	}
+	},
+	decorators: [mswDecorator]
 }
 
 export default preview

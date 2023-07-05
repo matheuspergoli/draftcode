@@ -37,14 +37,6 @@ export const metadata: Metadata = {
 	],
 	icons: {
 		icon: '/favicon.ico'
-	},
-	openGraph: {
-		type: 'website',
-		locale: 'pt_BR',
-		title: 'DraftCode',
-		siteName: 'DraftCode',
-		url: 'https://draftcode.vercel.app/',
-		description: 'DraftCode é uma plataforma de desafios de programação.'
 	}
 }
 

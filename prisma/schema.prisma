@@ -74,11 +74,11 @@ model User {
 
 model Project {
   id          String @id @default(uuid())
-  figma_url   String
-  title       String
-  image       String
-  brief       String
-  description String
+  figma_url   String @db.TinyText
+  title       String @db.TinyText
+  image       String @db.TinyText
+  brief       String @db.Text
+  description String @db.Text
 
   difficulty    Difficulty @relation(fields: [difficulty_id], references: [id])
   difficulty_id String     @map("difficultyId")

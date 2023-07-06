@@ -90,7 +90,7 @@ export const ChallengeForm: React.FC<ChallengeFormProps> = ({ challenges }) => {
 				</Select>
 			</div>
 
-			<article className='grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3'>
+			<article className='grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:place-items-stretch'>
 				{renderChallenges()}
 			</article>
 		</section>

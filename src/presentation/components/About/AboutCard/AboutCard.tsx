@@ -15,7 +15,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({
 	buttonText
 }) => {
 	return (
-		<article className='grid h-full grid-rows-1 gap-6 rounded-md bg-secondary px-5 py-6'>
+		<article className='grid h-full grid-rows-1 gap-6 rounded-md border border-border bg-secondary px-5 py-6'>
 			<div className='mx-auto flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#1F1F1F]'>
 				<Image
 					loading='lazy'

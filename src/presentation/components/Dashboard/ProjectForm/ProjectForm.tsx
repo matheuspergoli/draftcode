@@ -66,9 +66,6 @@ export default function ProjectForm() {
 				body: JSON.stringify(data),
 				headers: {
 					'Content-Type': 'application/json'
-				},
-				next: {
-					tags: ['projects-create']
 				}
 			})
 

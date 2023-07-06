@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
 					desafios que simulam cenários reais de desenvolvimento web
 				</p>
 				<div className='flex flex-col justify-center gap-6 sm:flex-row sm:justify-start'>
-					<Button asChild>
+					<Button asChild className='font-bold'>
 						<Link href='/desafios' className='self-stretch sm:self-center'>
 							Comece os desafios
 						</Link>
@@ -23,10 +23,10 @@ export const Hero: React.FC = () => {
 					<Button
 						asChild
 						variant='ghost'
-						className='group/btn-icon gap-[10px] border border-primary'>
+						className='group/btn-icon gap-[10px] border border-primary font-bold'>
 						<Link href='/faq' className='self-stretch sm:self-center'>
 							Saiba mais
-							<ArrowRightIcon className='h-4 w-4 transition group-hover/btn-icon:rotate-90' />
+							<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-icon:rotate-90' />
 						</Link>
 					</Button>
 				</div>

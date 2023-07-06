@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { db } from '@/configs/db'
 import { Prisma } from '@prisma/client'
-import { revalidateTag } from 'next/cache'
 import { authOptions } from '@/configs/auth'
 import { getServerSession } from 'next-auth/next'
 import { NextResponse, NextRequest } from 'next/server'
@@ -110,8 +109,6 @@ export async function DELETE(
 	try {
 		const session = await getServerSession(authOptions)
 
-		const tag = request.nextUrl.searchParams.get('tag')
-
 		if (!session) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 		}
@@ -129,8 +126,6 @@ export async function DELETE(
 		const project = await db.project.delete({
 			where: { id: String(id) }
 		})
-
-		revalidateTag(tag as string)
 
 		return NextResponse.json(project)
 	} catch (error) {

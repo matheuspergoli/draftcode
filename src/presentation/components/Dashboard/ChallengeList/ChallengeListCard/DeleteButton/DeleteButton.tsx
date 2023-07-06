@@ -25,10 +25,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({ id }) => {
 
 	const handleDelete = async () => {
 		const response = await fetch(`/api/project/${id}`, {
-			method: 'DELETE',
-			next: {
-				tags: ['projects-delete']
-			}
+			method: 'DELETE'
 		})
 
 		if (response.ok) {

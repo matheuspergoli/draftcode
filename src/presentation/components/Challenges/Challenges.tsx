@@ -18,10 +18,10 @@ export const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {
 					Desafios recentes
 				</h2>
 
-				<Button asChild variant='ghost'>
+				<Button asChild variant='ghost' className='font-bold'>
 					<Link
 						href='/desafios'
-						className='group/btn-icon flex items-center gap-2 font-medium leading-6 text-primary'>
+						className='group/btn-icon flex items-center gap-1 leading-6 text-primary sm:gap-2'>
 						Ver todos
 						<ArrowRightIcon className='h-5 w-5 text-primary transition group-hover/btn-icon:rotate-90 group-hover/btn-icon:text-foreground' />
 					</Link>

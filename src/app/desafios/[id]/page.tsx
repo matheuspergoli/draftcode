@@ -4,8 +4,6 @@ import { getChallenge } from '@actions/getChallenge'
 import { CreatorCard } from '@components/CreatorCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
-export const revalidate = 60 * 60 * 2 // 2 hours
-
 export default async function Desafio({ params }: { params: { id: string } }) {
 	const challenge = await getChallenge(params.id)
 
@@ -29,7 +27,7 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 					<a href={challenge.figma_url} rel='noreferrer' target='_blank'>
 						<Button className='group/btn-icon w-fit gap-2'>
 							Começar desafio
-							<ArrowRightIcon className='h-4 w-4 transition group-hover/btn-icon:rotate-90' />
+							<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-icon:rotate-90' />
 						</Button>
 					</a>
 					<p className='w-fit border-b-2 border-primary text-xl font-medium uppercase md:self-end'>

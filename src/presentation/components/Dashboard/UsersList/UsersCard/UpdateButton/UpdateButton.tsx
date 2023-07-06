@@ -39,9 +39,6 @@ export const UpdateButton: React.FC<UpdateButtonProps> = ({ id }) => {
 			body: JSON.stringify({ role }),
 			headers: {
 				'Content-Type': 'application/json'
-			},
-			next: {
-				tags: ['users-update']
 			}
 		})
 

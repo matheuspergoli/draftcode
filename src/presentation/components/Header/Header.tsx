@@ -22,25 +22,25 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 							width={31}
 							height={31}
 						/>
-						<h1 className='text-[20px] font-semibold'>DraftCode</h1>
+						<h1 className='text-xl font-semibold'>DraftCode</h1>
 					</div>
 				</Link>
 
 				<section className='hidden items-center gap-5 md:flex'>
 					<Button asChild variant='ghost'>
-						<Link href='/' className='text-base font-semibold'>
+						<Link href='/' className='font-semibold'>
 							Home
 						</Link>
 					</Button>
 
 					<Button asChild variant='ghost'>
-						<Link href='/desafios' className='text-base font-semibold'>
+						<Link href='/desafios' className='font-semibold'>
 							Desafios
 						</Link>
 					</Button>
 
 					<Button asChild variant='ghost'>
-						<Link href='/faq' className='text-base font-semibold'>
+						<Link href='/faq' className='font-semibold'>
 							FAQ&apos;s
 						</Link>
 					</Button>

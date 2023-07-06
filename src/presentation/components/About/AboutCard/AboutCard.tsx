@@ -15,7 +15,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({
 	buttonText
 }) => {
 	return (
-		<article className='flex flex-col gap-6 rounded-md bg-secondary px-5 py-6'>
+		<article className='grid h-full grid-rows-1 gap-6 rounded-md bg-secondary px-5 py-6'>
 			<div className='mx-auto flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#1F1F1F]'>
 				<Image
 					loading='lazy'
@@ -30,10 +30,10 @@ export const AboutCard: React.FC<AboutCardProps> = ({
 			<Button
 				asChild
 				variant='ghost'
-				className='group/btn-icon gap-2 text-sm font-semibold uppercase leading-normal text-primary'>
+				className='group/btn-icon gap-2 text-sm font-bold uppercase leading-normal text-primary'>
 				<Link href='/faq'>
 					{buttonText}{' '}
-					<ArrowRightIcon className='h-4 w-4 transition group-hover/btn-icon:rotate-90' />
+					<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-icon:rotate-90' />
 				</Link>
 			</Button>
 		</article>

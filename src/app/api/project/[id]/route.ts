@@ -2,18 +2,9 @@ import { z } from 'zod'
 import { db } from '@/configs/db'
 import { Prisma } from '@prisma/client'
 import { authOptions } from '@/configs/auth'
+import { ProjectSchemaAPI } from '@/validations'
 import { getServerSession } from 'next-auth/next'
 import { NextResponse, NextRequest } from 'next/server'
-
-const Project = z.object({
-	title: z.string().optional(),
-	image: z.string().optional(),
-	brief: z.string().optional(),
-	figma_url: z.string().optional(),
-	difficulty: z.string().optional(),
-	description: z.string().optional(),
-	technologies: z.array(z.string()).optional()
-})
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
 	try {
@@ -55,7 +46,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
 		const body = await request.json()
 
-		const project = Project.parse(body)
+		const project = ProjectSchemaAPI.parse(body)
 
 		const updateData = {} as Prisma.ProjectUpdateInput
 

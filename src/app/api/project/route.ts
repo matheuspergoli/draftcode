@@ -1,18 +1,9 @@
 import { z } from 'zod'
 import { db } from '@/configs/db'
 import { authOptions } from '@/configs/auth'
+import { ProjectSchemaAPI } from '@/validations'
 import { getServerSession } from 'next-auth/next'
 import { NextRequest, NextResponse } from 'next/server'
-
-const Project = z.object({
-	title: z.string().nonempty(),
-	image: z.string().nonempty(),
-	brief: z.string().nonempty(),
-	figma_url: z.string().nonempty(),
-	difficulty: z.string().nonempty(),
-	description: z.string().nonempty(),
-	technologies: z.array(z.string()).min(1).nonempty()
-})
 
 export async function GET() {
 	try {
@@ -49,7 +40,7 @@ export async function POST(request: NextRequest) {
 
 		const body = await request.json()
 
-		const project = Project.parse(body)
+		const project = ProjectSchemaAPI.parse(body)
 
 		const newProject = await db.project.create({
 			data: {

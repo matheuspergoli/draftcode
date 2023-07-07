@@ -3,43 +3,14 @@
 import React from 'react'
 
 import { z } from 'zod'
+import { ProjectSchema } from '@/validations'
 import { Button } from '@components/ui/button'
+import { Widget } from '@uploadcare/react-widget'
 import { useToast } from '@components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, Controller } from 'react-hook-form'
-
-import { Widget } from '@uploadcare/react-widget'
-
 import { ProjectFormInput } from './ProjectFormInput'
 import { ProjectFormTextarea } from './ProjectFormTextarea'
-
-const FIGMA_REGEX =
-	/https:\/\/([\w.-]+\.)?figma.com\/(file|proto)\/([0-9a-zA-Z]{22,128})(?:\/.*)?$/
-
-const ProjectSchema = z.object({
-	title: z
-		.string()
-		.min(6, {
-			message: 'O nome do projeto deve ter no mínimo 6 caracteres'
-		})
-		.nonempty(),
-	image: z.string(),
-	brief: z.string().min(10, { message: 'A descrição deve ter no mínimo 10 caracteres' }),
-	figma_url: z.string().regex(FIGMA_REGEX, {
-		message: 'O link do figma deve ser válido'
-	}),
-	difficulty: z.string().nonempty({
-		message: 'O nível do projeto deve ser informado'
-	}),
-	description: z.string().min(10, {
-		message: 'A descrição deve ter no mínimo 10 caracteres'
-	}),
-	technologies: z.string().transform((value) => {
-		if (typeof value === 'string') {
-			return value.split(' ')
-		}
-	})
-})
 
 type ProjectData = z.infer<typeof ProjectSchema>
 
@@ -102,7 +73,7 @@ export default function ProjectForm() {
 						type='text'
 						label='Nome do Desafio'
 						placeholder='Nome do Desafio'
-						helperText='Escolha um nome para o desafio'
+						helperText='Escolha um nome para o desafio entre 6 e 45 caracteres'
 						{...register('title')}
 					/>
 
@@ -182,7 +153,7 @@ export default function ProjectForm() {
 					htmlFor='descricao-desafio'
 					label='Descrição'
 					placeholder='Neste desafio, você será desafiado a criar um formulário de login responsivo usando HTML, CSS e JavaScript. O formulário deve ter uma aparência agradável em dispositivos de desktop e móveis e deve ser fácil de usar para os usuários.'
-					helperText='Insira uma descrição sobre o desafio, informe o objetivo do mesmo'
+					helperText='Insira uma descrição entre 10 e 120 caracteres sobre o desafio, informe o objetivo do mesmo'
 					{...register('brief')}
 				/>
 			</div>

@@ -9,7 +9,7 @@ interface SliderProps {
 export const Slider: React.FC<SliderProps> = ({ children }) => {
 	return (
 		<Swiper
-			className='h-[520px]'
+			className='h-[450px]'
 			slidesPerView={'auto'}
 			spaceBetween={30}
 			grabCursor={true}

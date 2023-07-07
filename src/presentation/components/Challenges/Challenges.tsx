@@ -35,7 +35,6 @@ export const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {
 							key={challenge.id}
 							id={challenge.id}
 							title={challenge.title}
-							brief={challenge.brief}
 							difficulty={challenge.difficulty.name}
 							image={challenge.image}
 							technologies={challenge.technologies.map((tech) => tech.name)}

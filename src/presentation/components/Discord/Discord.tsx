@@ -9,7 +9,7 @@ export const Discord: React.FC = () => {
 					Junte-se a comunidade do Discord!
 				</h3>
 				<p className='mb-3 text-center font-normal leading-6 text-[#8C8C8C]'>
-					Esperamos vê-lo em breve em nossa comunidade de desenvolvedores no Discord
+					Esperamos vê-lo em breve em nossa comunidade de desenvolvedores no Discord!
 				</p>
 				<hr className='mx-auto mb-[30px] w-full max-w-[280px] rounded-md border-b-2 border-primary' />
 				<a

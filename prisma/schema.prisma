@@ -83,6 +83,9 @@ model Project {
   difficulty    Difficulty @relation(fields: [difficulty_id], references: [id])
   difficulty_id String     @map("difficultyId")
 
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   technologies Technology[]
 
   User    User   @relation(fields: [user_id], references: [id])

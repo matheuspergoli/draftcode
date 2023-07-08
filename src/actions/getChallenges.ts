@@ -6,8 +6,11 @@ export const getChallenges = cache(async () => {
 		include: {
 			difficulty: true,
 			technologies: true
+		},
+		orderBy: {
+			created_at: 'desc'
 		}
-	})) as Project[]
+	})) as unknown as Project[]
 
 	return challenges
 })

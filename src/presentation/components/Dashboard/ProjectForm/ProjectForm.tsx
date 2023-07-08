@@ -67,6 +67,7 @@ export default function ProjectForm() {
 		} catch (error) {
 			setLoading(false)
 			toast({
+				variant: 'destructive',
 				title: 'Erro ao criar projeto',
 				description: 'Verifique os campos e tente novamente'
 			})
@@ -76,8 +77,9 @@ export default function ProjectForm() {
 	React.useEffect(() => {
 		if (Object.entries(errors).length > 0) {
 			toast({
+				variant: 'destructive',
 				title: 'Erro ao criar projeto',
-				description: 'Verifique os campos e tente novamente'
+				description: errors[Object.keys(errors)[0] as keyof typeof errors]?.message
 			})
 		}
 	}, [errors, toast])
@@ -145,7 +147,7 @@ export default function ProjectForm() {
 						<ProjectFormInput
 							htmlFor='imagem-desafio'
 							type='file'
-							label='Image'
+							label='Imagem do desafio'
 							placeholder='Imagem do desafio'
 							helperText='Insira uma imagem que demonstre o desafio'
 							{...register('image')}

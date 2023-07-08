@@ -13,7 +13,12 @@ export const ProjectSchema = z.object({
 			message: 'O nome do projeto deve ter no máximo 45 caracteres'
 		})
 		.nonempty(),
-	image: z.custom<FileList>(),
+	image: z.custom<FileList>().refine((value) => {
+		if (value.length > 0) {
+			return true
+		}
+		return false
+	}, 'A imagem do projeto deve ser informada'),
 	brief: z
 		.string()
 		.min(10, { message: 'A descrição deve ter no mínimo 10 caracteres' })
@@ -33,11 +38,14 @@ export const ProjectSchema = z.object({
 	description: z
 		.string()
 		.min(10, {
-			message: 'A descrição deve ter no mínimo 10 caracteres'
+			message: 'Requisitos deve ter no mínimo 10 caracteres'
 		})
 		.nonempty(),
 	technologies: z
 		.string()
+		.nonempty({
+			message: 'As tecnologias devem ser informadas separadas por espaço'
+		})
 		.transform((value) => {
 			if (typeof value === 'string') {
 				return value.split(' ').filter((item) => item !== '')

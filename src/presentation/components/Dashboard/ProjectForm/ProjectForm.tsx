@@ -3,30 +3,30 @@
 import React from 'react'
 
 import { z } from 'zod'
+import { useForm } from 'react-hook-form'
 import { ProjectSchema } from '@/validations'
 import { Button } from '@components/ui/button'
-import { Widget } from '@uploadcare/react-widget'
 import { useToast } from '@components/ui/use-toast'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, Controller } from 'react-hook-form'
 import { ProjectFormInput } from './ProjectFormInput'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { ProjectFormTextarea } from './ProjectFormTextarea'
 
 type ProjectData = z.infer<typeof ProjectSchema>
 
 export default function ProjectForm() {
 	const { toast } = useToast()
-	const UPLOADCARE_API_KEY = process.env.NEXT_PUBLIC_UPLOADCARE_PUB_KEY as string
 
 	const {
-		control,
 		register,
 		handleSubmit,
 		reset,
+		watch,
 		formState: { errors }
 	} = useForm<ProjectData>({
 		resolver: zodResolver(ProjectSchema)
 	})
+
+	const image = watch('image')
 
 	const onSubmit = async (data: ProjectData) => {
 		const formData = new FormData()
@@ -53,7 +53,7 @@ export default function ProjectForm() {
 				body: JSON.stringify(project)
 			})
 
-			const projectJson = (await responseProject.json()) as ProjectData
+			await responseProject.json()
 
 			toast({
 				title: 'Projeto criado com sucesso',
@@ -132,25 +132,13 @@ export default function ProjectForm() {
 						{...register('image')}
 					/>
 
-					{/* <Controller
-						control={control}
-						name='image'
-						rules={{ required: 'Imagem é obrigatório' }}
-						render={({ field: { onChange, ...field } }) => {
-							return (
-								<Widget
-									{...field}
-									imagesOnly
-									locale='pt'
-									clearable
-									publicKey={UPLOADCARE_API_KEY}
-									onChange={(file) => {
-										onChange(file.cdnUrl as string)
-									}}
-								/>
-							)
-						}}
-					/> */}
+					{image && (
+						<img
+							src={URL.createObjectURL(image[0])}
+							alt='Imagem do desafio'
+							className='mt-5 w-full'
+						/>
+					)}
 				</div>
 			</div>
 

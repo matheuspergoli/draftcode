@@ -29,13 +29,31 @@ export default function ProjectForm() {
 	})
 
 	const onSubmit = async (data: ProjectData) => {
+		const formData = new FormData()
+
+		formData.append('image', data.image[0])
+
 		try {
-			const response = await fetch('/api/project', {
+			const responseImage = await fetch(
+				'https://alive-calf-overcoat.cyclic.app/image-upload',
+				{
+					method: 'POST',
+					body: formData
+				}
+			)
+			const imageJson = (await responseImage.json()) as { url: string }
+
+			const project = {
+				...data,
+				image: imageJson.url
+			}
+
+			const responseProject = await fetch('/api/project', {
 				method: 'POST',
-				body: JSON.stringify(data)
+				body: JSON.stringify(project)
 			})
 
-			await response.json()
+			const projectJson = (await responseProject.json()) as ProjectData
 
 			toast({
 				title: 'Projeto criado com sucesso',
@@ -105,7 +123,16 @@ export default function ProjectForm() {
 					<p>Insira uma Imagem que mostre a tela final do desafio</p>
 				</div>
 				<div className='flex-1'>
-					<Controller
+					<ProjectFormInput
+						htmlFor='imagem-desafio'
+						type='file'
+						label='Image'
+						placeholder='Imagem do desafio'
+						helperText='Insira uma imagem que demonstre o desafio'
+						{...register('image')}
+					/>
+
+					{/* <Controller
 						control={control}
 						name='image'
 						rules={{ required: 'Imagem é obrigatório' }}
@@ -123,7 +150,7 @@ export default function ProjectForm() {
 								/>
 							)
 						}}
-					/>
+					/> */}
 				</div>
 			</div>
 

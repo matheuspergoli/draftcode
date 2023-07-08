@@ -13,7 +13,7 @@ export const ProjectSchema = z.object({
 			message: 'O nome do projeto deve ter no máximo 45 caracteres'
 		})
 		.nonempty(),
-	image: z.string().nonempty(),
+	image: z.custom<FileList>(),
 	brief: z
 		.string()
 		.min(10, { message: 'A descrição deve ter no mínimo 10 caracteres' })

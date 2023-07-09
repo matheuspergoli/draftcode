@@ -3,7 +3,7 @@ import { Button } from '@components/ui/button'
 
 export const Discord: React.FC = () => {
 	return (
-		<section className='bg-background bg-[url("/images/bg-discord.jpg")] bg-contain py-[100px] bg-blend-overlay md:bg-secondary'>
+		<section className='bg-background bg-[url("/images/bg-discord.webp")] bg-contain py-[100px] bg-blend-overlay md:bg-secondary'>
 			<article className='container'>
 				<h3 className='mb-3 text-center text-2xl font-bold leading-normal'>
 					Junte-se a comunidade do Discord!

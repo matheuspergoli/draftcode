@@ -45,7 +45,8 @@ export const metadata: Metadata = {
 		siteName: 'DraftCode',
 		url: 'https://draftcode.vercel.app',
 		description: 'DraftCode é uma plataforma de desafios de programação.'
-	}
+	},
+	themeColor: '#050505'
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

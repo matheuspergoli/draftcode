@@ -4,19 +4,21 @@ import React from 'react'
 
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
-import { ProjectSchema } from '@/validations'
+import { useRouter } from 'next/navigation'
+import { ProjectSchemaUpdate } from '@/validations'
 import { Button } from '@components/ui/button'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { useToast } from '@components/ui/use-toast'
-import { ProjectFormInput } from './ProjectFormInput'
+import { ProjectFormInput } from '../ProjectFormInput'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ProjectFormTextarea } from './ProjectFormTextarea'
+import { ProjectFormTextarea } from '../ProjectFormTextarea'
 
-type ProjectData = z.infer<typeof ProjectSchema>
+type ProjectData = z.infer<typeof ProjectSchemaUpdate>
 
 const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
 
-export default function ProjectForm() {
+export default function ProjectFormUpdate(challenge: Project) {
+	const router = useRouter()
 	const { toast } = useToast()
 	const [loading, setLoading] = React.useState(false)
 
@@ -27,48 +29,53 @@ export default function ProjectForm() {
 		watch,
 		formState: { errors }
 	} = useForm<ProjectData>({
-		resolver: zodResolver(ProjectSchema)
+		resolver: zodResolver(ProjectSchemaUpdate)
 	})
 
 	const image = watch('image')
 
 	const onSubmit = async (data: ProjectData) => {
 		const formData = new FormData()
-
-		formData.append('image', data.image[0])
+		if (!data.image) {
+			formData.append('image', data.image[0])
+		}
 
 		try {
 			setLoading(true)
-			const responseImage = await fetch(`${BACKEND_UPLOAD_URL}/image-upload`, {
-				method: 'POST',
-				body: formData
-			})
-			const imageJson = (await responseImage.json()) as { url: string }
+			const responseImage = formData.get('image')
+				? await fetch(`${BACKEND_UPLOAD_URL}/image-upload`, {
+						method: 'POST',
+						body: formData
+				  })
+				: null
+
+			const imageJson = responseImage
 
 			const project = {
 				...data,
-				image: imageJson.url
+				image: imageJson?.url || challenge.image
 			}
 
-			const responseProject = await fetch('/api/project', {
-				method: 'POST',
+			const responseProject = await fetch(`/api/project/${challenge.id}`, {
+				method: 'PUT',
 				body: JSON.stringify(project)
 			})
 
 			await responseProject.json()
 
 			toast({
-				title: 'Projeto criado com sucesso',
-				description: 'Seu projeto foi criado com sucesso'
+				title: 'Projeto atualizado com sucesso',
+				description: 'Seu projeto foi atualizado com sucesso'
 			})
 
 			setLoading(false)
 			reset()
+			router.refresh()
 		} catch (error) {
 			setLoading(false)
 			toast({
 				variant: 'destructive',
-				title: 'Erro ao criar projeto',
+				title: 'Erro ao atualizar projeto',
 				description: 'Verifique os campos e tente novamente'
 			})
 		}
@@ -79,7 +86,8 @@ export default function ProjectForm() {
 			toast({
 				variant: 'destructive',
 				title: 'Erro ao criar projeto',
-				description: errors[Object.keys(errors)[0] as keyof typeof errors]?.message
+				description: errors[Object.keys(errors)[0] as keyof typeof errors]
+					?.message as string
 			})
 		}
 	}, [errors, toast])
@@ -110,6 +118,7 @@ export default function ProjectForm() {
 						<ProjectFormInput
 							htmlFor='nome-desafio'
 							type='text'
+							defaultValue={challenge?.title}
 							label='Nome do Desafio'
 							placeholder='Nome do Desafio'
 							helperText='Escolha um nome para o desafio entre 6 e 45 caracteres'
@@ -120,6 +129,7 @@ export default function ProjectForm() {
 							<ProjectFormInput
 								htmlFor='linguagem-desafio'
 								type='text'
+								defaultValue={challenge.technologies?.map((tech) => tech.name).join(' ')}
 								label='Linguagem'
 								placeholder='Linguagens'
 								helperText='Escolha uma ou mais linguagens para o desafio separadas por espaço'
@@ -129,6 +139,7 @@ export default function ProjectForm() {
 							<ProjectFormInput
 								htmlFor='nivel-desafio'
 								type='text'
+								defaultValue={challenge.difficulty?.name}
 								label='Nível'
 								placeholder='Nível'
 								helperText='Escolha um nível para o desafio (Iniciante, Intermediário, Avançado)'
@@ -153,9 +164,9 @@ export default function ProjectForm() {
 							{...register('image')}
 						/>
 
-						{image && image[0] && (
+						{challenge?.image && (
 							<img
-								src={URL.createObjectURL(image[0])}
+								src={image?.[0] ? URL.createObjectURL(image[0]) : challenge.image}
 								alt='Imagem do desafio'
 								className='mt-5 w-full'
 							/>
@@ -172,6 +183,7 @@ export default function ProjectForm() {
 					<ProjectFormInput
 						htmlFor='figma-desafio'
 						type='text'
+						defaultValue={challenge?.figma_url}
 						label='Figma'
 						placeholder='Link para o Figma'
 						helperText='Insira um link para o figma do desafio, deve ser um link válido'
@@ -188,6 +200,7 @@ export default function ProjectForm() {
 					<ProjectFormTextarea
 						htmlFor='descricao-desafio'
 						label='Descrição'
+						defaultValue={challenge?.brief}
 						placeholder='Neste desafio, você será desafiado a criar um formulário de login responsivo usando HTML, CSS e JavaScript. O formulário deve ter uma aparência agradável em dispositivos de desktop e móveis e deve ser fácil de usar para os usuários.'
 						helperText='Insira uma descrição entre 10 e 120 caracteres sobre o desafio, informe o objetivo do mesmo'
 						{...register('brief')}
@@ -206,6 +219,7 @@ export default function ProjectForm() {
 					<ProjectFormTextarea
 						htmlFor='requisitos-desafio'
 						label='Requisitos'
+						defaultValue={challenge?.description}
 						placeholder='Você deve criar uma interface de usuário para um aplicativo de lista de tarefas simples. Ele deve consistir em um campo de entrada de texto, um botão "Adicionar" e uma lista de tarefas. Cada item da lista deve ter um botão "Excluir" que remova o item da lista. Você deve usar HTML, CSS e JavaScript para este projeto. Você não deve usar bibliotecas ou frameworks.'
 						helperText='Informe para os usuarios as tasks que devem ser completadas para finalizar o
 					desafio'
@@ -214,7 +228,7 @@ export default function ProjectForm() {
 				</div>
 
 				<Button className='mx-auto block w-fit uppercase md:ml-auto md:mr-0'>
-					Criar
+					Atualizar
 				</Button>
 			</form>
 		</>

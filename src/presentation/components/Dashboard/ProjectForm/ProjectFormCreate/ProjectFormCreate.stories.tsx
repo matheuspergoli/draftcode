@@ -1,10 +1,10 @@
 import { rest } from 'msw'
-import ProjectForm from './ProjectForm'
 import { Meta, StoryObj } from '@storybook/react'
+import ProjectFormCreate from './ProjectFormCreate'
 
-const meta: Meta<typeof ProjectForm> = {
-	title: 'Dashboard/ProjectForm',
-	component: ProjectForm,
+const meta: Meta<typeof ProjectFormCreate> = {
+	title: 'Dashboard/ProjectFormCreate',
+	component: ProjectFormCreate,
 	parameters: {
 		msw: {
 			handlers: [
@@ -17,8 +17,8 @@ const meta: Meta<typeof ProjectForm> = {
 }
 
 export default meta
-type Story = StoryObj<typeof ProjectForm>
+type Story = StoryObj<typeof ProjectFormCreate>
 
 export const Primary: Story = {
-	render: () => <ProjectForm />
+	render: () => <ProjectFormCreate />
 }

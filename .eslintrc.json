@@ -19,6 +19,7 @@
 	"rules": {
 		"react/prop-types": "off",
 		"react/display-name": "off",
+		"no-mixed-spaces-and-tabs": "off",
 		"@next/next/no-img-element": "off",
 		"@typescript-eslint/no-empty-interface": "off"
 	}

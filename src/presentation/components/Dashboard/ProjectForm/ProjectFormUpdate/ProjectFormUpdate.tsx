@@ -5,12 +5,12 @@ import React from 'react'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
-import { ProjectSchemaUpdate } from '@/validations'
 import { Button } from '@components/ui/button'
 import { ReloadIcon } from '@radix-ui/react-icons'
+import { ProjectSchemaUpdate } from '@/validations'
 import { useToast } from '@components/ui/use-toast'
-import { ProjectFormInput } from '../ProjectFormInput'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ProjectFormInput } from '../ProjectFormInput'
 import { ProjectFormTextarea } from '../ProjectFormTextarea'
 
 type ProjectData = z.infer<typeof ProjectSchemaUpdate>
@@ -36,7 +36,8 @@ export default function ProjectFormUpdate(challenge: Project) {
 
 	const onSubmit = async (data: ProjectData) => {
 		const formData = new FormData()
-		if (!data.image) {
+
+		if (data.image[0]) {
 			formData.append('image', data.image[0])
 		}
 
@@ -49,11 +50,11 @@ export default function ProjectFormUpdate(challenge: Project) {
 				  })
 				: null
 
-			const imageJson = responseImage
+			const imageJson = (await responseImage?.json()) as { url: string }
 
 			const project = {
 				...data,
-				image: imageJson?.url || challenge.image
+				image: imageJson?.url ?? challenge.image
 			}
 
 			const responseProject = await fetch(`/api/project/${challenge.id}`, {
@@ -85,7 +86,7 @@ export default function ProjectFormUpdate(challenge: Project) {
 		if (Object.entries(errors).length > 0) {
 			toast({
 				variant: 'destructive',
-				title: 'Erro ao criar projeto',
+				title: 'Erro ao atualizar projeto',
 				description: errors[Object.keys(errors)[0] as keyof typeof errors]
 					?.message as string
 			})
@@ -100,10 +101,10 @@ export default function ProjectFormUpdate(challenge: Project) {
 					<div className='relative'>
 						<div className='rounded-lg border border-border bg-[#1F1F1F] p-10 text-foreground'>
 							<h1 className='text-2xl font-bold'>
-								Criando Projeto
+								Atualizando Projeto
 								<ReloadIcon className='ml-2 inline-block h-6 w-6 animate-spin' />
 							</h1>
-							<p className='mt-5'>Aguarde enquanto seu projeto é criado.</p>
+							<p className='mt-5'>Aguarde enquanto seu projeto é atualizado.</p>
 						</div>
 					</div>
 				</div>

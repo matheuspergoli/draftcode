@@ -4,12 +4,12 @@ import { Meta, StoryObj } from '@storybook/react'
 import ProjectFormUpdate from './ProjectFormUpdate'
 
 const meta: Meta<typeof ProjectFormUpdate> = {
-	title: 'Dashboard/ProjectFormUpdate',
+	title: 'Dashboard/ProjectForm/ProjectFormUpdate',
 	component: ProjectFormUpdate,
 	parameters: {
 		msw: {
 			handlers: [
-				rest.post('/api/project', (_, res, ctx) => {
+				rest.post('/api/project/:id', (_, res, ctx) => {
 					return res(ctx.status(200), ctx.json({}))
 				})
 			]

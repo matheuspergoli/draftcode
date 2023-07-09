@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import ProjectFormCreate from './ProjectFormCreate'
 
 const meta: Meta<typeof ProjectFormCreate> = {
-	title: 'Dashboard/ProjectFormCreate',
+	title: 'Dashboard/ProjectForm/ProjectFormCreate',
 	component: ProjectFormCreate,
 	parameters: {
 		msw: {

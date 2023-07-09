@@ -4,15 +4,15 @@ import React from 'react'
 
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
-import { ProjectSchema } from '@/validations'
 import { Button } from '@components/ui/button'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { useToast } from '@components/ui/use-toast'
-import { ProjectFormInput } from '../ProjectFormInput'
+import { ProjectSchemaCreate } from '@/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ProjectFormInput } from '../ProjectFormInput'
 import { ProjectFormTextarea } from '../ProjectFormTextarea'
 
-type ProjectData = z.infer<typeof ProjectSchema>
+type ProjectData = z.infer<typeof ProjectSchemaCreate>
 
 const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
 
@@ -27,7 +27,7 @@ export default function ProjectFormCreate() {
 		watch,
 		formState: { errors }
 	} = useForm<ProjectData>({
-		resolver: zodResolver(ProjectSchema)
+		resolver: zodResolver(ProjectSchemaCreate)
 	})
 
 	const image = watch('image')

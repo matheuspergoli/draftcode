@@ -75,9 +75,9 @@ model User {
 model Project {
   id          String @id @default(uuid())
   figma_url   String @db.TinyText
-  title       String @db.VarChar(45)
+  title       String @db.VarChar(40)
   image       String @db.TinyText
-  brief       String @db.VarChar(120)
+  brief       String @db.VarChar(255)
   description String @db.Text
 
   difficulty    Difficulty @relation(fields: [difficulty_id], references: [id])

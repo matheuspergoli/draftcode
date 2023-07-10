@@ -1,8 +1,10 @@
 'use client'
 
+import React from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@components/ui/button'
 import { useToast } from '@components/ui/use-toast'
+import { ReloadIcon } from '@radix-ui/react-icons'
 
 import {
 	Dialog,
@@ -22,8 +24,10 @@ interface DeleteButtonProps {
 export const DeleteButton: React.FC<DeleteButtonProps> = ({ id }) => {
 	const router = useRouter()
 	const { toast } = useToast()
+	const [loading, setLoading] = React.useState(false)
 
 	const handleDelete = async () => {
+		setLoading(true)
 		const response = await fetch(`/api/project/${id}`, {
 			method: 'DELETE'
 		})
@@ -40,28 +44,45 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({ id }) => {
 			})
 		}
 
+		setLoading(false)
 		router.refresh()
 	}
 
 	return (
-		<Dialog>
-			<DialogTrigger asChild>
-				<Button>Apagar</Button>
-			</DialogTrigger>
-			<DialogContent>
-				<DialogHeader>
-					<DialogTitle>Deseja excluir esse projeto?</DialogTitle>
-					<DialogDescription>
-						Essa ação não pode ser desfeita. Tem certeza que deseja excluir esse projeto
-						de nossos servidores?
-					</DialogDescription>
-				</DialogHeader>
-				<DialogFooter>
-					<DialogClose asChild>
-						<Button onClick={() => handleDelete()}>Confirmar</Button>
-					</DialogClose>
-				</DialogFooter>
-			</DialogContent>
-		</Dialog>
+		<>
+			{loading && (
+				<div className='fixed inset-0 z-50 flex items-center justify-center'>
+					<div className='absolute inset-0 bg-background opacity-80' />
+					<div className='relative'>
+						<div className='rounded-lg border border-border bg-[#1F1F1F] p-10 text-foreground'>
+							<h1 className='text-2xl font-bold'>
+								Excluindo Projeto
+								<ReloadIcon className='ml-2 inline-block h-6 w-6 animate-spin' />
+							</h1>
+							<p className='mt-5'>Aguarde enquanto seu projeto é excluido.</p>
+						</div>
+					</div>
+				</div>
+			)}
+			<Dialog>
+				<DialogTrigger asChild>
+					<Button>Apagar</Button>
+				</DialogTrigger>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Deseja excluir esse projeto?</DialogTitle>
+						<DialogDescription>
+							Essa ação não pode ser desfeita. Tem certeza que deseja excluir esse projeto
+							de nossos servidores?
+						</DialogDescription>
+					</DialogHeader>
+					<DialogFooter>
+						<DialogClose asChild>
+							<Button onClick={() => handleDelete()}>Confirmar</Button>
+						</DialogClose>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
+		</>
 	)
 }

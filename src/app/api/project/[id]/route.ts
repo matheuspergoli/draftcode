@@ -2,6 +2,7 @@ import { z } from 'zod'
 import { db } from '@/configs/db'
 import { Prisma } from '@prisma/client'
 import { authOptions } from '@/configs/auth'
+import { redis } from '@externals/libs/redis'
 import { ProjectSchemaAPI } from '@/validations'
 import { getServerSession } from 'next-auth/next'
 import { NextResponse, NextRequest } from 'next/server'
@@ -81,6 +82,8 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 			data: updateData
 		})
 
+		await redis.del('challenges')
+
 		return NextResponse.json(updatedProject)
 	} catch (error) {
 		if (error instanceof z.ZodError) {
@@ -117,6 +120,8 @@ export async function DELETE(
 		const project = await db.project.delete({
 			where: { id: String(id) }
 		})
+
+		await redis.del('challenges')
 
 		return NextResponse.json(project)
 	} catch (error) {

@@ -23,7 +23,6 @@ export const ChallengesCard: React.FC<ChallengeCardProps> = ({
 			<article className='h-full rounded-md border border-border bg-secondary'>
 				<figure className='h-[180px] overflow-hidden rounded-t-md'>
 					<img
-						loading='lazy'
 						src={image}
 						alt={title}
 						className='h-full w-full rounded-t-md object-cover transition hover:scale-110'

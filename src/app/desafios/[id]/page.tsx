@@ -38,7 +38,8 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 
 			<figure className='my-10 h-[450px] '>
 				<iframe
-					loading='lazy'
+					name='figma-embed'
+					aria-label='Figma embed'
 					className='h-full w-full rounded-md object-cover'
 					src={`https://www.figma.com/embed?embed_host=astra&url=${challenge.figma_url}`}
 				/>

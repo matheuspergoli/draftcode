@@ -83,6 +83,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 		})
 
 		await redis.del('challenges')
+		await redis.del(`challenge:${id}`)
 
 		return NextResponse.json(updatedProject)
 	} catch (error) {
@@ -122,6 +123,7 @@ export async function DELETE(
 		})
 
 		await redis.del('challenges')
+		await redis.del(`challenge:${id}`)
 
 		return NextResponse.json(project)
 	} catch (error) {

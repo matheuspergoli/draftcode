@@ -25,6 +25,12 @@ interface Project {
 		id: string
 		name: string
 	}[]
+	User: {
+		id: string
+		name: string
+		image: string
+		email: string
+	}
 }
 
 interface Social_Media {

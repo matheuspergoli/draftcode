@@ -11,9 +11,9 @@ interface CreatorCardProps {
 export const CreatorCard: React.FC<CreatorCardProps> = ({
 	image,
 	name,
-	github = '#',
-	website = '#',
-	linkedin = '#'
+	github,
+	website,
+	linkedin
 }) => {
 	return (
 		<article className='flex w-full max-w-sm flex-col gap-[25px] rounded-md border border-border bg-secondary p-[25px]'>
@@ -32,40 +32,42 @@ export const CreatorCard: React.FC<CreatorCardProps> = ({
 				</div>
 			</div>
 
-			<div className='flex flex-wrap items-center gap-[15px]'>
-				{linkedin && (
-					<a
-						className='flex items-center gap-2 text-sm'
-						href={linkedin}
-						target='_blank'
-						rel='noreferrer'>
-						<LinkedInLogoIcon className='h-5 w-5' />
-						LinkedIn
-					</a>
-				)}
+			{linkedin || github || website ? (
+				<div className='flex flex-wrap items-center gap-[15px]'>
+					{linkedin && (
+						<a
+							className='flex items-center gap-2 text-sm'
+							href={linkedin}
+							target='_blank'
+							rel='noreferrer'>
+							<LinkedInLogoIcon className='h-5 w-5' />
+							LinkedIn
+						</a>
+					)}
 
-				{github && (
-					<a
-						className='flex items-center gap-2 text-sm'
-						href={github}
-						target='_blank'
-						rel='noreferrer'>
-						<GitHubLogoIcon className='h-5 w-5' />
-						GitHub
-					</a>
-				)}
+					{github && (
+						<a
+							className='flex items-center gap-2 text-sm'
+							href={github}
+							target='_blank'
+							rel='noreferrer'>
+							<GitHubLogoIcon className='h-5 w-5' />
+							GitHub
+						</a>
+					)}
 
-				{website && (
-					<a
-						className='flex items-center gap-2 text-sm'
-						href={website}
-						target='_blank'
-						rel='noreferrer'>
-						<DesktopIcon className='h-5 w-5' />
-						Website
-					</a>
-				)}
-			</div>
+					{website && (
+						<a
+							className='flex items-center gap-2 text-sm'
+							href={website}
+							target='_blank'
+							rel='noreferrer'>
+							<DesktopIcon className='h-5 w-5' />
+							Website
+						</a>
+					)}
+				</div>
+			) : null}
 		</article>
 	)
 }

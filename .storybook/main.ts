@@ -22,6 +22,7 @@ const config: StorybookConfig = {
 			config.resolve.alias = {
 				...config.resolve.alias,
 				'@': path.resolve(__dirname, '../src'),
+				'@mocks': path.resolve(__dirname, '../src/mocks'),
 				'@context': path.resolve(__dirname, '../src/context'),
 				'@configs': path.resolve(__dirname, '../src/configs'),
 				'@provider': path.resolve(__dirname, '../src/provider'),

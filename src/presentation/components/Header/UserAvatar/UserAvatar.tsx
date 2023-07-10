@@ -27,7 +27,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({ image, user }) => {
 		<DropdownMenu>
 			<DropdownMenuTrigger>
 				<Avatar>
-					<AvatarImage loading='lazy' src={image} />
+					<AvatarImage loading='lazy' src={image} alt='Foto de Perfil' />
 					<AvatarFallback>CN</AvatarFallback>
 				</Avatar>
 			</DropdownMenuTrigger>

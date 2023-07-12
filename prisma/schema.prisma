@@ -123,7 +123,7 @@ enum SocialMedia {
 model Social_Media {
   id   String      @id @default(uuid())
   url  String      @db.Text
-  type SocialMedia
+  type SocialMedia @unique
 
   social_media User[]
 

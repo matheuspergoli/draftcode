@@ -35,5 +35,6 @@ yarn-error.log*
 next-env.d.ts
 
 .swc
+.env
 
 public/mockServiceWorker.js

@@ -4,6 +4,8 @@ import React from 'react'
 
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { Label } from '@components/ui/label'
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
 import { ProfileSchemaLinks } from '@/validations'
@@ -18,6 +20,7 @@ interface ProfileData {
 }
 
 export const Profile: React.FC<ProfileData> = ({ user }) => {
+	const router = useRouter()
 	const { toast } = useToast()
 	const [loading, setLoading] = React.useState(false)
 
@@ -45,6 +48,7 @@ export const Profile: React.FC<ProfileData> = ({ user }) => {
 			})
 
 			setLoading(false)
+			router.refresh()
 		} catch (error) {
 			setLoading(false)
 			toast({
@@ -100,24 +104,38 @@ export const Profile: React.FC<ProfileData> = ({ user }) => {
 						<p className='text-xs'>Adicione suas redes sociais</p>
 					</div>
 					<form className='flex flex-col gap-5 md:flex-1'>
-						<Input
-							type='text'
-							defaultValue={links.github?.url}
-							placeholder='https://github.com/username'
-							{...register('github')}
-						/>
-						<Input
-							type='text'
-							defaultValue={links.linkedin?.url}
-							placeholder='https://linkedin.com/in/username'
-							{...register('linkedin')}
-						/>
-						<Input
-							type='text'
-							defaultValue={links.website?.url}
-							placeholder='https://personal-website.com'
-							{...register('website')}
-						/>
+						<div>
+							<Label htmlFor='github'>Github</Label>
+							<Input
+								type='text'
+								id='github'
+								defaultValue={links.github?.url}
+								placeholder='https://github.com/username'
+								{...register('github')}
+							/>
+						</div>
+
+						<div>
+							<Label htmlFor='linkedin'>Linkedin</Label>
+							<Input
+								type='text'
+								id='linkedin'
+								defaultValue={links.linkedin?.url}
+								placeholder='https://linkedin.com/in/username'
+								{...register('linkedin')}
+							/>
+						</div>
+
+						<div>
+							<Label htmlFor='website'>Website / Portfólio</Label>
+							<Input
+								type='text'
+								id='website'
+								defaultValue={links.website?.url}
+								placeholder='https://personal-website.com'
+								{...register('website')}
+							/>
+						</div>
 					</form>
 				</div>
 			</section>

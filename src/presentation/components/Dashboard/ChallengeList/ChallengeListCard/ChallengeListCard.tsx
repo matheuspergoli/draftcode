@@ -9,9 +9,9 @@ interface ChallengeListCardProps {
 }
 
 export const ChallengeListCard: React.FC<ChallengeListCardProps> = ({
+	id,
 	image,
-	title,
-	id
+	title
 }) => {
 	return (
 		<section className='flex items-center justify-between rounded-md bg-secondary px-3 py-2'>

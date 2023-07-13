@@ -25,8 +25,10 @@ export const ProjectSchemaUpdate = z.object({
 			message: 'O link do figma deve ser válido'
 		})
 		.nonempty(),
-	difficulty: z.string().nonempty({
-		message: 'O nível do projeto deve ser informado'
+	difficulty: z.enum(['Iniciante', 'Intermediário', 'Avançado'], {
+		errorMap: () => ({
+			message: 'Dificuldade deve ser (Iniciante) - (Intermediário) - (Avançado)'
+		})
 	}),
 	description: z
 		.string()

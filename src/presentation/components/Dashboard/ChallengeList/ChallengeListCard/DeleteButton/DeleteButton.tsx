@@ -27,25 +27,27 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({ id }) => {
 	const [loading, setLoading] = React.useState(false)
 
 	const handleDelete = async () => {
-		setLoading(true)
-		const response = await fetch(`/api/project/${id}`, {
-			method: 'DELETE'
-		})
+		try {
+			setLoading(true)
+			await fetch(`/api/project/${id}`, {
+				method: 'DELETE'
+			})
 
-		if (response.ok) {
 			toast({
 				title: 'Projeto apagado com sucesso',
 				description: 'Seu projeto foi apagado com sucesso'
 			})
-		} else {
+
+			setLoading(false)
+			router.refresh()
+		} catch (error) {
 			toast({
 				title: 'Erro ao apagar projeto',
 				description: 'Tente novamente'
 			})
-		}
 
-		setLoading(false)
-		router.refresh()
+			setLoading(false)
+		}
 	}
 
 	return (

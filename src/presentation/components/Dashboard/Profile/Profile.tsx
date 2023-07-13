@@ -56,9 +56,9 @@ export const Profile: React.FC<ProfileData> = ({ user }) => {
 	}
 
 	const links = {
-		linkedin: user?.social_media?.filter((social) => social.type === 'LINKEDIN')[0].url,
-		github: user?.social_media?.filter((social) => social.type === 'GITHUB')[0].url,
-		website: user?.social_media?.filter((social) => social.type === 'WEBSITE')[0].url
+		github: user?.social_media?.filter((social) => social.type === 'GITHUB')[0],
+		website: user?.social_media?.filter((social) => social.type === 'WEBSITE')[0],
+		linkedin: user?.social_media?.filter((social) => social.type === 'LINKEDIN')[0]
 	}
 
 	React.useEffect(() => {
@@ -102,19 +102,19 @@ export const Profile: React.FC<ProfileData> = ({ user }) => {
 					<form className='flex flex-col gap-5 md:flex-1'>
 						<Input
 							type='text'
-							defaultValue={links.github}
+							defaultValue={links.github?.url}
 							placeholder='https://github.com/username'
 							{...register('github')}
 						/>
 						<Input
 							type='text'
-							defaultValue={links.linkedin}
+							defaultValue={links.linkedin?.url}
 							placeholder='https://linkedin.com/in/username'
 							{...register('linkedin')}
 						/>
 						<Input
 							type='text'
-							defaultValue={links.website}
+							defaultValue={links.website?.url}
 							placeholder='https://personal-website.com'
 							{...register('website')}
 						/>

@@ -22,9 +22,9 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 	}
 
 	const links = {
-		linkedin: user?.social_media?.filter((social) => social.type === 'LINKEDIN')[0].url,
-		github: user?.social_media?.filter((social) => social.type === 'GITHUB')[0].url,
-		website: user?.social_media?.filter((social) => social.type === 'WEBSITE')[0].url
+		github: user?.social_media?.filter((social) => social.type === 'GITHUB')[0],
+		website: user?.social_media?.filter((social) => social.type === 'WEBSITE')[0],
+		linkedin: user?.social_media?.filter((social) => social.type === 'LINKEDIN')[0]
 	}
 
 	return (
@@ -72,9 +72,9 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 				<CreatorCard
 					image={challenge.User.image}
 					name={challenge.User.name}
-					github={links.github}
-					linkedin={links.linkedin}
-					website={links.website}
+					github={links.github?.url ?? undefined}
+					linkedin={links.linkedin?.url ?? undefined}
+					website={links.website?.url ?? undefined}
 				/>
 			</section>
 		</main>

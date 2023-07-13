@@ -10,5 +10,5 @@ export default meta
 type Story = StoryObj<typeof Profile>
 
 export const Primary: Story = {
-	render: () => <Profile />
+	render: () => <Profile user={null} />
 }

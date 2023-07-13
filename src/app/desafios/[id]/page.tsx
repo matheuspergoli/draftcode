@@ -22,17 +22,9 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 	}
 
 	const links = {
-		linkedin: user?.social_media
-			?.filter((social) => social.type === 'LINKEDIN')
-			.map((social) => social.url)[0],
-
-		github: user?.social_media
-			?.filter((social) => social.type === 'GITHUB')
-			.map((social) => social.url)[0],
-
-		website: user?.social_media
-			?.filter((social) => social.type === 'WEBSITE')
-			.map((social) => social.url)[0]
+		linkedin: user?.social_media?.filter((social) => social.type === 'LINKEDIN')[0].url,
+		github: user?.social_media?.filter((social) => social.type === 'GITHUB')[0].url,
+		website: user?.social_media?.filter((social) => social.type === 'WEBSITE')[0].url
 	}
 
 	return (

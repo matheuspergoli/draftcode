@@ -1,9 +1,12 @@
 import { Profile } from '@components/Dashboard/Profile'
+import { getUserSession } from '@actions/getUserSession'
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+	const session = await getUserSession()
+
 	return (
 		<div className='my-20'>
-			<Profile />
+			<Profile user={session?.user as User} />
 		</div>
 	)
 }

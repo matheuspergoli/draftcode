@@ -19,6 +19,7 @@ export const authOptions: NextAuthOptions = {
 				session.user.name = token.name as string
 				session.user.email = token.email as string
 				session.user.image = token.picture as string
+				session.user.social_media = token.social_media as Social_Media[]
 			}
 
 			return session
@@ -27,6 +28,9 @@ export const authOptions: NextAuthOptions = {
 			const dbUser = await db.user.findFirst({
 				where: {
 					email: token.email
+				},
+				include: {
+					social_media: true
 				}
 			})
 
@@ -42,7 +46,8 @@ export const authOptions: NextAuthOptions = {
 				role: dbUser.role,
 				name: dbUser.name,
 				email: dbUser.email,
-				picture: dbUser.image
+				picture: dbUser.image,
+				social_media: dbUser.social_media
 			}
 		}
 	},

@@ -45,19 +45,36 @@ export async function POST(request: NextRequest) {
 			}
 		]
 
-		const updatedProfile = await db.user.update({
-			where: { id: user.id },
-			data: {
-				social_media: {
-					connectOrCreate: links.map((link) => ({
-						create: { type: link.type, url: link.url },
-						where: { type: link.type }
-					}))
-				}
-			},
-			include: {
-				social_media: true
+		const existingSocialMedia = await db.social_Media.findMany({
+			where: {
+				user_id: user.id
 			}
+		})
+
+		const updatePromises = links.map(async (link) => {
+			const existingLink = existingSocialMedia.find((media) => media.type === link.type)
+
+			if (existingLink) {
+				await db.social_Media.update({
+					where: { id: existingLink.id },
+					data: { url: link.url }
+				})
+			} else {
+				await db.social_Media.create({
+					data: {
+						type: link.type,
+						url: link.url,
+						User: { connect: { id: user.id } }
+					}
+				})
+			}
+		})
+
+		await Promise.all(updatePromises)
+
+		const updatedProfile = await db.user.findUnique({
+			where: { id: user.id },
+			include: { social_media: true }
 		})
 
 		return NextResponse.json(updatedProfile)

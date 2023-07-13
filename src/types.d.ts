@@ -30,6 +30,7 @@ interface Project {
 		name: string
 		image: string
 		email: string
+		social_media: Social_Media[]
 	}
 }
 

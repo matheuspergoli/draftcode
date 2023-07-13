@@ -3,8 +3,8 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@components/ui/button'
-import { useToast } from '@components/ui/use-toast'
 import { ReloadIcon } from '@radix-ui/react-icons'
+import { useToast } from '@components/ui/use-toast'
 
 import {
 	Dialog,
@@ -29,8 +29,6 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({ id, image_id }) => {
 	const { toast } = useToast()
 	const [loading, setLoading] = React.useState(false)
 
-	console.log(image_id)
-
 	const handleDelete = async () => {
 		try {
 			setLoading(true)
@@ -40,6 +38,10 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({ id, image_id }) => {
 
 			await fetch(`${BACKEND_UPLOAD_URL}/image-upload/delete`, {
 				method: 'DELETE',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
 				body: JSON.stringify({ public_id: image_id })
 			})
 

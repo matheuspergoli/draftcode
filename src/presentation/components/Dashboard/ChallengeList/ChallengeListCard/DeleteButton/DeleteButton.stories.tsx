@@ -20,5 +20,5 @@ export default meta
 type Story = StoryObj<typeof DeleteButton>
 
 export const Primary: Story = {
-	render: () => <DeleteButton id='1' />
+	render: () => <DeleteButton id='1' image_id='1' />
 }

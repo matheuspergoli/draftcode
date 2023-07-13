@@ -23,6 +23,7 @@ export const Primary: Story = {
 	render: () => (
 		<ChallengeListCard
 			id='1'
+			image_id='1'
 			image='https://source.unsplash.com/random/?Animal'
 			title='Challenge Title'
 		/>

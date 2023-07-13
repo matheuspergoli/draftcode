@@ -8,6 +8,7 @@ export const createMockProject = (): Project => {
 		image: 'https://github.com/shadcn.png',
 		title: `Challenge ${faker.number.int(10)}`,
 		figma_url: 'Figma URL',
+		image_id: faker.string.uuid(),
 		description: 'Description',
 		difficulty: {
 			id: faker.string.uuid(),

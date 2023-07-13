@@ -19,18 +19,28 @@ import {
 
 interface DeleteButtonProps {
 	id: string
+	image_id: string
 }
 
-export const DeleteButton: React.FC<DeleteButtonProps> = ({ id }) => {
+const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
+
+export const DeleteButton: React.FC<DeleteButtonProps> = ({ id, image_id }) => {
 	const router = useRouter()
 	const { toast } = useToast()
 	const [loading, setLoading] = React.useState(false)
+
+	console.log(image_id)
 
 	const handleDelete = async () => {
 		try {
 			setLoading(true)
 			await fetch(`/api/project/${id}`, {
 				method: 'DELETE'
+			})
+
+			await fetch(`${BACKEND_UPLOAD_URL}/image-upload/delete`, {
+				method: 'DELETE',
+				body: JSON.stringify({ public_id: image_id })
 			})
 
 			toast({

@@ -51,6 +51,7 @@ export async function POST(request: NextRequest) {
 				title: project.title,
 				image: project.image,
 				brief: project.brief,
+				image_id: project.image_id,
 				figma_url: project.figma_url,
 				description: project.description,
 				difficulty: {

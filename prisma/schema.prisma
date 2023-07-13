@@ -77,6 +77,7 @@ model Project {
   figma_url   String @db.TinyText
   title       String @db.VarChar(40)
   image       String @db.TinyText
+  image_id    String @db.TinyText
   brief       String @db.VarChar(255)
   description String @db.Text
 

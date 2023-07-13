@@ -14,6 +14,7 @@ interface Project {
 	image: string
 	brief: string
 	user_id: string
+	image_id: string
 	figma_url: string
 	description: string
 	difficulty_id: string

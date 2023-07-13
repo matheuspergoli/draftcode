@@ -42,6 +42,7 @@ export default function ChallengeList({ challenges }: ChallengesProps) {
 								id={challenge.id}
 								title={challenge.title}
 								image={challenge.image}
+								image_id={challenge.image_id}
 							/>
 						))}
 			</div>

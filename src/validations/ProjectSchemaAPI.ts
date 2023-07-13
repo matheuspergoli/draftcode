@@ -12,6 +12,7 @@ export const ProjectSchemaAPI = z.object({
 		})
 		.nonempty(),
 	image: z.string().nonempty(),
+	image_id: z.string().nonempty(),
 	brief: z
 		.string()
 		.min(10, { message: 'A descrição deve ter no mínimo 10 caracteres' })

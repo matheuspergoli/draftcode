@@ -43,11 +43,12 @@ export default function ProjectFormCreate() {
 				method: 'POST',
 				body: formData
 			})
-			const imageJson = (await responseImage.json()) as { url: string }
+			const imageJson = (await responseImage.json()) as { url: string; public_id: string }
 
 			const project = {
 				...data,
-				image: imageJson.url
+				image: imageJson.url,
+				image_id: imageJson.public_id
 			}
 
 			const responseProject = await fetch('/api/project', {

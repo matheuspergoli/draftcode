@@ -1,3 +1,4 @@
+import { db } from '@/configs/db'
 import { redirect } from 'next/navigation'
 import { Button } from '@components/ui/button'
 import { getChallenge } from '@actions/getChallenge'
@@ -7,8 +8,31 @@ import { ArrowRightIcon } from '@radix-ui/react-icons'
 export default async function Desafio({ params }: { params: { id: string } }) {
 	const challenge = await getChallenge(params.id)
 
+	const user = await db.user.findUnique({
+		where: {
+			id: challenge.user_id
+		},
+		select: {
+			social_media: true
+		}
+	})
+
 	if (!challenge) {
 		redirect('/desafios')
+	}
+
+	const links = {
+		linkedin: user?.social_media
+			?.filter((social) => social.type === 'LINKEDIN')
+			.map((social) => social.url)[0],
+
+		github: user?.social_media
+			?.filter((social) => social.type === 'GITHUB')
+			.map((social) => social.url)[0],
+
+		website: user?.social_media
+			?.filter((social) => social.type === 'WEBSITE')
+			.map((social) => social.url)[0]
 	}
 
 	return (
@@ -53,7 +77,13 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 					</div>
 				</article>
 
-				<CreatorCard image={challenge.User.image} name={challenge.User.name} />
+				<CreatorCard
+					image={challenge.User.image}
+					name={challenge.User.name}
+					github={links.github}
+					linkedin={links.linkedin}
+					website={links.website}
+				/>
 			</section>
 		</main>
 	)

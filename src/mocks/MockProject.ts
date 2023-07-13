@@ -32,7 +32,8 @@ export const createMockProject = (): Project => {
 			id: faker.string.uuid(),
 			name: 'Shad',
 			email: faker.internet.email(),
-			image: faker.internet.avatar()
+			image: faker.internet.avatar(),
+			social_media: []
 		}
 	}
 }

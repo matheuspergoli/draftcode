@@ -51,7 +51,14 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
 		const updateData = {} as Prisma.ProjectUpdateInput
 
-		const fieldsToCheck = ['title', 'image', 'brief', 'figma_url', 'description'] as const
+		const fieldsToCheck = [
+			'title',
+			'image',
+			'brief',
+			'figma_url',
+			'description',
+			'image_id'
+		] as const
 
 		for (const field of fieldsToCheck) {
 			if (project[field] !== undefined) {

@@ -6,7 +6,6 @@ export const getChallenge = cache(async (id: string) => {
 	const existing = await redis.get(`challenge:${id}`)
 
 	if (existing) {
-		console.log('using cache')
 		return JSON.parse(existing) as Project
 	}
 

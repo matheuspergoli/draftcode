@@ -50,11 +50,26 @@ export default function ProjectFormUpdate(challenge: Project) {
 				  })
 				: null
 
-			const imageJson = (await responseImage?.json()) as { url: string }
+			const imageJson = (await responseImage?.json()) as {
+				url: string
+				public_id: string
+			}
 
 			const project = {
 				...data,
-				image: imageJson?.url ?? challenge.image
+				image: imageJson?.url ?? challenge.image,
+				image_id: imageJson?.public_id ?? challenge.image_id
+			}
+
+			if (project.image_id !== challenge.image_id) {
+				await fetch(`${BACKEND_UPLOAD_URL}/image-upload/delete`, {
+					method: 'DELETE',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ public_id: challenge.image_id })
+				})
 			}
 
 			const responseProject = await fetch(`/api/project/${challenge.id}`, {

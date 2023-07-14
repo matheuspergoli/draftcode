@@ -1,12 +1,16 @@
 import { db } from '@/configs/db'
-import { redirect } from 'next/navigation'
 import { Button } from '@components/ui/button'
+import { redirect, notFound } from 'next/navigation'
 import { getChallenge } from '@actions/getChallenge'
 import { CreatorCard } from '@components/CreatorCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 export default async function Desafio({ params }: { params: { id: string } }) {
 	const challenge = await getChallenge(params.id)
+
+	if (!challenge) {
+		notFound()
+	}
 
 	const user = await db.user.findUnique({
 		where: {

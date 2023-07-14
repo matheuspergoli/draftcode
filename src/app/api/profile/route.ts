@@ -33,15 +33,15 @@ export async function POST(request: NextRequest) {
 		const links: ProfileLinks[] = [
 			{
 				type: 'GITHUB',
-				url: profileLinks.github
+				url: profileLinks.github as string
 			},
 			{
 				type: 'WEBSITE',
-				url: profileLinks.website
+				url: profileLinks.website as string
 			},
 			{
 				type: 'LINKEDIN',
-				url: profileLinks.linkedin
+				url: profileLinks.linkedin as string
 			}
 		]
 

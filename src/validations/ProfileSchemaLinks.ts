@@ -6,6 +6,9 @@ export const ProfileSchemaLinks = z.object({
 		.url({
 			message: 'Github deve ser uma URL válida'
 		})
+		.refine((url) => url.includes('github'), {
+			message: 'Github deve ser uma URL válida'
+		})
 		.optional()
 		.or(z.literal('')),
 	website: z
@@ -18,6 +21,9 @@ export const ProfileSchemaLinks = z.object({
 	linkedin: z
 		.string()
 		.url({
+			message: 'Linkedin deve ser uma URL válida'
+		})
+		.refine((url) => url.includes('linkedin'), {
 			message: 'Linkedin deve ser uma URL válida'
 		})
 		.optional()

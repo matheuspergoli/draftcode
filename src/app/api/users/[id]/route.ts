@@ -9,7 +9,6 @@ const UserUpdate = z.object({
 })
 
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
-	console.log()
 	try {
 		const session = await getServerSession(authOptions)
 

@@ -20,7 +20,9 @@ const getChallengeWithRedis = cache(async (id: string) => {
 		}
 	})) as unknown as Project
 
-	await redis.set(`challenge:${id}`, JSON.stringify(challenge))
+	if (challenge) {
+		await redis.set(`challenge:${id}`, JSON.stringify(challenge))
+	}
 
 	return challenge
 })

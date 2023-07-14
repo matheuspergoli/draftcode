@@ -2,7 +2,9 @@ import { cache } from 'react'
 import { db } from '@configs/db'
 import { redis } from '@externals/libs/redis'
 
-export const getChallenge = cache(async (id: string) => {
+const isDEV = process.env.NODE_ENV === 'development'
+
+const getChallengeWithRedis = cache(async (id: string) => {
 	const existing = await redis.get(`challenge:${id}`)
 
 	if (existing) {
@@ -22,3 +24,18 @@ export const getChallenge = cache(async (id: string) => {
 
 	return challenge
 })
+
+const getChallengeWithoutRedis = cache(async (id: string) => {
+	const challenge = (await db.project.findUnique({
+		where: { id },
+		include: {
+			User: true,
+			difficulty: true,
+			technologies: true
+		}
+	})) as unknown as Project
+
+	return challenge
+})
+
+export const getChallenge = isDEV ? getChallengeWithoutRedis : getChallengeWithRedis

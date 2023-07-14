@@ -1,3 +1,6 @@
 import { Redis } from 'ioredis'
+import { MockRedis } from '@mocks/MockRedis'
 
-export const redis = new Redis(process.env.REDIS_URL as string)
+const isDEV = process.env.NODE_ENV === 'development'
+
+export const redis = isDEV ? MockRedis() : new Redis(process.env.REDIS_URL as string)

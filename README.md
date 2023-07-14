@@ -6,7 +6,9 @@
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [ ] Área para administradores adicionarem suas redes sociais para ficar em evidência no site.
+- [x] Área para administradores adicionarem suas redes sociais para ficar em evidência no site
+- [ ] Melhorar performance.
+- [ ] Corrigir bugs existentes.
 
 ## 💻 Pré-requisitos
 
@@ -36,8 +38,8 @@ npm install && docker-compose up -d && npx prisma db push && npm run dev
 
 Para contribuir com o DraftCode, siga estas etapas:
 
-1. Clone este repositório.
-2. Crie um branch: `git checkout -b <nome_branch>`.
+1. Faça um fork desse projeto e clone pra você.
+2. Crie uma branch: `git checkout -b <nome_branch>`.
 3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
 4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
 5. Crie a solicitação de pull.
@@ -55,6 +57,14 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         <img src="https://avatars.githubusercontent.com/u/94739199?v=4" width="100px;" alt="Foto do Matheus Pergoli no GitHub"/><br>
         <sub>
           <b>Matheus Pergoli</b>
+        </sub>
+      </a>
+    </td>
+		<td align="center">
+      <a href="https://github.com/NatanCastro" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/65430728?v=4" width="100px;" alt="Foto do Natan Castro no GitHub"/><br>
+        <sub>
+          <b>Natan Castro</b>
         </sub>
       </a>
     </td>

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 		}
 	],
 	icons: {
-		icon: '/favicon.ico'
+		icon: '/images/icon.png'
 	},
 	openGraph: {
 		type: 'website',
@@ -46,7 +46,15 @@ export const metadata: Metadata = {
 		url: 'https://draftcode.vercel.app',
 		description: 'DraftCode é uma plataforma de desafios de programação.'
 	},
-	themeColor: '#050505'
+	themeColor: '#050505',
+	robots: {
+		follow: true,
+		index: true
+	},
+	viewport: {
+		width: 'device-width',
+		initialScale: 1
+	}
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

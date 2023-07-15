@@ -25,9 +25,10 @@ const config: StorybookConfig = {
 				'@mocks': path.resolve(__dirname, '../src/mocks'),
 				'@context': path.resolve(__dirname, '../src/context'),
 				'@configs': path.resolve(__dirname, '../src/configs'),
+				'@actions': path.resolve(__dirname, '../src/actions'),
 				'@provider': path.resolve(__dirname, '../src/provider'),
-				'@components': path.resolve(__dirname, '../src/presentation/components'),
-				'@externals': path.resolve(__dirname, '../src/externals')
+				'@externals': path.resolve(__dirname, '../src/externals'),
+				'@components': path.resolve(__dirname, '../src/presentation/components')
 			}
 		}
 		return config

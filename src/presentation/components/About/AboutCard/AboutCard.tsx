@@ -29,8 +29,8 @@ export const AboutCard: React.FC<AboutCardProps> = ({
 			<p className='text-center text-base text-[#8C8C8C]'>{description}</p>
 			<Button
 				asChild
-				variant='ghost'
-				className='group/btn-icon gap-2 text-sm font-bold uppercase leading-normal text-primary'>
+				variant='default'
+				className='group/btn-icon gap-2 text-sm font-bold uppercase leading-normal text-foreground'>
 				<Link href='/faq'>
 					{buttonText}{' '}
 					<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-icon:rotate-90' />

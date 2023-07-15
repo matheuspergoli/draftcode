@@ -10,6 +10,9 @@ const meta: Meta<typeof DeleteButton> = {
 			handlers: [
 				rest.delete('/api/project/:id', (_, res, ctx) => {
 					return res(ctx.status(200), ctx.json({}))
+				}),
+				rest.delete('http://localhost:3333/image-upload/delete', (_, res, ctx) => {
+					return res(ctx.status(200), ctx.json({}))
 				})
 			]
 		}

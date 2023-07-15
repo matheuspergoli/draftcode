@@ -12,6 +12,9 @@ const meta: Meta<typeof ChallengeList> = {
 			handlers: [
 				rest.delete(`/api/project/:id`, (_, res, ctx) => {
 					return res(ctx.status(200), ctx.json({}))
+				}),
+				rest.delete(`http://localhost:3333/image-upload/delete`, (_, res, ctx) => {
+					return res(ctx.status(200), ctx.json({}))
 				})
 			]
 		}

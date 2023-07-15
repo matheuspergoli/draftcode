@@ -10,6 +10,9 @@ const meta: Meta<typeof ProjectFormCreate> = {
 			handlers: [
 				rest.post('/api/project', (_, res, ctx) => {
 					return res(ctx.status(200), ctx.json({}))
+				}),
+				rest.post('http://localhost:3333/image-upload', (_, res, ctx) => {
+					return res(ctx.status(200), ctx.json({}))
 				})
 			]
 		}

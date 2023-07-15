@@ -11,6 +11,12 @@ const meta: Meta<typeof ProjectFormUpdate> = {
 			handlers: [
 				rest.post('/api/project/:id', (_, res, ctx) => {
 					return res(ctx.status(200), ctx.json({}))
+				}),
+				rest.post('http://localhost:3333/image-upload', (_, res, ctx) => {
+					return res(ctx.status(200), ctx.json({}))
+				}),
+				rest.put('/api/project/:id', (_, res, ctx) => {
+					return res(ctx.status(200), ctx.json({}))
 				})
 			]
 		}

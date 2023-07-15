@@ -56,8 +56,9 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 				</section>
 			</div>
 
-			<figure className='my-10 h-[450px] '>
+			<figure className='my-10 h-[450px] rounded-sm border'>
 				<iframe
+					allowFullScreen
 					name='figma-embed'
 					aria-label='Figma embed'
 					className='h-full w-full rounded-md object-cover'
@@ -67,7 +68,7 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 
 			<section className='mb-[105px] flex flex-col-reverse items-start justify-between gap-5 md:flex-row'>
 				<article>
-					<h3 className='mb-10 text-xl font-bold'>Requisitos</h3>
+					<h2 className='mb-10 text-xl font-bold'>Requisitos</h2>
 					<div className='flex max-w-2xl flex-col gap-[30px] whitespace-pre-line'>
 						{challenge.description}
 					</div>

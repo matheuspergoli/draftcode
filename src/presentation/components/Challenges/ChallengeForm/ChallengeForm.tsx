@@ -77,10 +77,9 @@ export const ChallengeForm: React.FC<ChallengeFormProps> = ({ challenges }) => {
 				<h1 className='text-2xl font-bold md:text-4xl'>Desafios</h1>
 				<Select
 					name='difficulty'
-					aria-label='Dificuldade'
 					defaultValue='todos'
 					onValueChange={(difficulty) => setSelectedDifficulty(difficulty)}>
-					<SelectTrigger className='w-[180px]'>
+					<SelectTrigger aria-label='Dificuldade' className='w-[180px]'>
 						<SelectValue placeholder='Dificuldade' />
 					</SelectTrigger>
 					<SelectContent>

@@ -50,10 +50,10 @@ export const FAQ: React.FC = () => {
 			<h1 className='text-center text-[20px] font-bold md:text-[32px]'>
 				Perguntas frequentes
 			</h1>
-			<p className='text-center font-medium leading-6 text-[#8C8C8C]'>
+			<h2 className='text-center font-medium leading-6 text-[#8C8C8C]'>
 				Confira as respostas para as perguntas mais frequentes sobre o Draftcode. Se ainda
 				tiver dúvidas, entre em contato em nossa comunidade no discord.
-			</p>
+			</h2>
 			<hr className='mx-auto mb-[105px] mt-[25px] w-full max-w-[280px] rounded-md border-b-2 border-primary' />
 
 			<Accordion type='single' collapsible>

@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
 
 			<figure className='hidden lg:block'>
 				<img
-					className='min-h-min min-w-min'
+					className='w-max'
 					src='/images/hero-image.svg'
 					alt='DraftCode Hero Image React'
 				/>

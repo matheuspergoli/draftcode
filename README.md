@@ -8,6 +8,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] Área para administradores adicionarem suas redes sociais para ficar em evidência no site
 - [ ] Melhorar performance.
+- [ ] Melhorar responsividade.
 - [ ] Corrigir bugs existentes.
 
 ## 💻 Pré-requisitos

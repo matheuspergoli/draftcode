@@ -76,11 +76,28 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 		}
 
 		if (project.technologies && project.technologies.length > 0) {
+			const updateTechnologies = []
+
+			for (const technologyName of project.technologies) {
+				let technology = await db.technology.findUnique({
+					where: {
+						name: technologyName
+					}
+				})
+
+				if (!technology) {
+					technology = await db.technology.create({
+						data: {
+							name: technologyName
+						}
+					})
+				}
+
+				updateTechnologies.push({ id: technology.id })
+			}
+
 			updateData.technologies = {
-				connectOrCreate: project.technologies.map((technology) => ({
-					create: { name: technology },
-					where: { name: technology }
-				}))
+				set: updateTechnologies
 			}
 		}
 

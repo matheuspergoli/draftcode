@@ -70,6 +70,8 @@ model User {
   social_media Social_Media[]
 
   projects Project[]
+
+  favorites Favorite[]
 }
 
 model Project {
@@ -92,9 +94,23 @@ model Project {
   User    User   @relation(fields: [user_id], references: [id])
   user_id String @map("userId")
 
+  favorites Favorite[]
+
   @@index([user_id])
   @@index([difficulty_id])
   @@map("projects")
+}
+
+model Favorite {
+  id         String @id @default(cuid())
+  user_id    String
+  project_id String
+
+  user    User    @relation(fields: [user_id], references: [id])
+  project Project @relation(fields: [project_id], references: [id])
+
+  @@unique([user_id, project_id])
+  @@index([project_id])
 }
 
 model Technology {

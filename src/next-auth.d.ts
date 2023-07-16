@@ -9,6 +9,7 @@ declare module 'next-auth' {
 			email: string
 			image: string
 			projects: Project[]
+			favorites: Favorite[]
 			social_media: Social_Media[]
 		}
 	}

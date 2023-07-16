@@ -33,6 +33,13 @@ interface Project {
 		email: string
 		social_media: Social_Media[]
 	}
+	favorites: Favorite[]
+}
+
+interface Favorite {
+	id: string
+	user_id: string
+	project_id: string
 }
 
 interface Social_Media {

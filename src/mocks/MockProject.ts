@@ -35,6 +35,7 @@ export const createMockProject = (): Project => {
 			email: faker.internet.email(),
 			image: faker.internet.avatar(),
 			social_media: []
-		}
+		},
+		favorites: []
 	}
 }

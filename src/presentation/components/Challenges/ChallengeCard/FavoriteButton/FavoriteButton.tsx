@@ -102,7 +102,10 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 		: favoriteChallenge
 
 	return (
-		<button className={cn(props.className)} onClick={onSubmit}>
+		<button
+			aria-label='Favoritar projeto'
+			className={cn(props.className)}
+			onClick={onSubmit}>
 			{loading ? (
 				<ReloadIcon width={35} height={35} className='animate-spin' />
 			) : session?.user.favorites

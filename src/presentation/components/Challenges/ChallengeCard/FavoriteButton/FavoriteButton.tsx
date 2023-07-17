@@ -108,9 +108,9 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 			) : session?.user.favorites
 					.map((favorite) => favorite.project_id)
 					.includes(props.projectId) ? (
-				<StarFilledIcon width={35} height={35} />
+				<StarFilledIcon width={35} height={35} className='text-yellow-500' />
 			) : (
-				<StarIcon width={35} height={35} />
+				<StarIcon width={35} height={35} className='text-yellow-500' />
 			)}
 		</button>
 	)

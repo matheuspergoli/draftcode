@@ -33,9 +33,9 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({ image, user }) => {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				<DropdownMenuLabel className='flex justify-center'>Minha Conta</DropdownMenuLabel>
+				<DropdownMenuSeparator />
 				{user && isUserCreator && (
 					<>
-						<DropdownMenuSeparator />
 						<DropdownMenuItem asChild className='cursor-pointer justify-center uppercase'>
 							<Link href='/dashboard'>Dashboard</Link>
 						</DropdownMenuItem>
@@ -63,9 +63,9 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({ image, user }) => {
 						<DropdownMenuItem asChild className='cursor-pointer justify-center uppercase'>
 							<Link href='/dashboard/profile'>PERFIL</Link>
 						</DropdownMenuItem>
+						<DropdownMenuSeparator />
 					</>
 				)}
-				<DropdownMenuSeparator />
 				<DropdownMenuItem
 					className='cursor-pointer justify-center uppercase'
 					onClick={() => signOut()}>

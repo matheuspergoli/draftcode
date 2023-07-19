@@ -28,7 +28,8 @@ const createMockUsers = (): User => {
 		image: 'https://github.com/shadcn.png',
 		role: 'SUPERADMIN',
 		projects: [],
-		social_media: []
+		social_media: [],
+		favorites: []
 	}
 }
 

@@ -1,8 +1,6 @@
-'use client'
-
+import Link from 'next/link'
 import { cn } from '@/presentation/lib/utils'
-import { signIn } from '@externals/libs/auth'
-import { Button } from '@components/ui/button'
+import { buttonVariants } from '@components/ui/button'
 
 interface LoginButtonProps {
 	className?: string
@@ -10,11 +8,14 @@ interface LoginButtonProps {
 
 export const LoginButton: React.FC<LoginButtonProps> = ({ className }) => {
 	return (
-		<Button
-			variant='ghost'
-			className={cn('border border-primary uppercase leading-none transition', className)}
-			onClick={() => signIn()}>
+		<Link
+			href='/login'
+			className={cn(
+				buttonVariants({ variant: 'ghost' }),
+				'border border-primary uppercase transition',
+				className
+			)}>
 			Login
-		</Button>
+		</Link>
 	)
 }

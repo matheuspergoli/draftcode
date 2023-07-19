@@ -1,6 +1,6 @@
+import { Button } from '@components/ui/button'
 import Link from 'next/link'
 import { DeleteButton } from './DeleteButton'
-import { Button } from '@components/ui/button'
 
 interface ChallengeListCardProps {
 	id: string
@@ -19,12 +19,12 @@ export const ChallengeListCard: React.FC<ChallengeListCardProps> = ({
 		<section className='flex items-center justify-between rounded-md bg-secondary px-3 py-2'>
 			<div className='flex items-center gap-0 sm:gap-7'>
 				<Link href={`/desafios/${id}`}>
-					<figure className='hidden h-14 w-20 sm:block'>
+					<figure className='hidden h-14 w-20 overflow-hidden rounded-md sm:block'>
 						<img
 							loading='lazy'
 							src={image}
 							alt={`Imagem do Projeto ${title}`}
-							className='h-full w-full rounded-md'
+							className='h-full w-full rounded-md object-cover transition hover:scale-110'
 						/>
 					</figure>
 				</Link>

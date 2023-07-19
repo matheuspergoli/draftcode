@@ -8,6 +8,7 @@ export const createMockUser = (): User => {
 		image: faker.internet.avatar(),
 		social_media: [],
 		projects: [],
-		role: 'USER'
+		role: 'USER',
+		favorites: []
 	}
 }

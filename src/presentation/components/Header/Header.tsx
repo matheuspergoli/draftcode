@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 	return (
 		<header className='border-b border-border bg-secondary py-4'>
 			<nav className='container flex items-center justify-between'>
-				<Link href='/'>
+				<Link href='/' className='hidden sm:block'>
 					<div className='flex items-center gap-2'>
 						<Image
 							loading='lazy'
@@ -23,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 							width={31}
 							height={31}
 						/>
-						<h1 className='hidden text-xl font-semibold sm:block'>DraftCode</h1>
+						<h1 className='text-xl font-semibold'>DraftCode</h1>
 					</div>
 				</Link>
 
@@ -50,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 				{user ? (
 					<div className='flex items-center gap-5'>
 						<UserAvatar user={user} image={user?.image} />
-						<FavoritesButton user={user} />
+						<FavoritesButton />
 					</div>
 				) : (
 					<LoginButton className='hidden md:block' />

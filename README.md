@@ -16,8 +16,11 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 - Você tem `docker` instalado.
+- Você tem o `microsserviço` de upload de imagens rodando.
 - Você tem a versão mais recente do `node` e `npm` instalado.
 - Você configurou suas váriaveis de ambiente conforme está presente no `.env.example`.
+
+Caso não tenha o microsserviço de upload de imagens, você pode baixar ele [aqui](https://github.com/matheuspergoli/draftcode-upload-image)
 
 ## 🚀 Instalando o DraftCode
 

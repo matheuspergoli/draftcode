@@ -4,6 +4,7 @@ import { UserAvatar } from './UserAvatar'
 import { MenuMobile } from './MenuMobile'
 import { LoginButton } from './LoginButton'
 import { Button } from '@components/ui/button'
+import { FavoritesButton } from './FavoritesButton'
 
 interface HeaderProps {
 	user?: User
@@ -22,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 							width={31}
 							height={31}
 						/>
-						<h1 className='text-xl font-semibold'>DraftCode</h1>
+						<h1 className='hidden text-xl font-semibold sm:block'>DraftCode</h1>
 					</div>
 				</Link>
 
@@ -47,7 +48,10 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 				</section>
 
 				{user ? (
-					<UserAvatar user={user} image={user?.image} />
+					<div className='flex items-center gap-5'>
+						<UserAvatar user={user} image={user?.image} />
+						<FavoritesButton user={user} />
+					</div>
 				) : (
 					<LoginButton className='hidden md:block' />
 				)}

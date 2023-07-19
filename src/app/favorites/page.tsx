@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { db } from '@configs/db'
 import { redirect } from 'next/navigation'
+import { getFavorites } from '@actions/getFavorites'
 import { getUserSession } from '@actions/getUserSession'
 import { ChallengesCard } from '@components/Challenges/ChallengeCard'
 
@@ -11,19 +11,7 @@ export default async function Favorites() {
 		redirect('/')
 	}
 
-	const favorites = await db.favorite.findMany({
-		where: {
-			user: { id: session?.user.id }
-		},
-		include: {
-			project: {
-				include: {
-					difficulty: true,
-					technologies: true
-				}
-			}
-		}
-	})
+	const favorites = await getFavorites(session?.user.id)
 
 	return (
 		<main className='container my-20'>

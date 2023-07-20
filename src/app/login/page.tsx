@@ -1,13 +1,19 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
-import { signIn } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 import { cn } from '@/presentation/lib/utils'
-import { buttonVariants, Button } from '@components/ui/button'
-import { ChevronLeftIcon, GitHubLogoIcon } from '@radix-ui/react-icons'
+import { buttonVariants } from '@components/ui/button'
+import { ChevronLeftIcon } from '@radix-ui/react-icons'
+import { getUserSession } from '@actions/getUserSession'
+import { GithubLoginBtn } from '@components/GithubLoginBtn'
 
-export default function Login() {
+export default async function Login() {
+	const session = await getUserSession()
+
+	if (session) {
+		redirect('/')
+	}
+
 	return (
 		<main className='container my-20'>
 			<Link href='/' className={cn(buttonVariants({ variant: 'ghost' }))}>
@@ -25,14 +31,7 @@ export default function Login() {
 					/>
 					<h1 className='text-2xl font-semibold tracking-tight'>Bem vindo de volta</h1>
 					<p>Para continuar, faça login na sua conta do DraftCode.</p>
-					<Button
-						size='lg'
-						variant='ghost'
-						onClick={() => signIn('github', { callbackUrl: '/' })}
-						className='flex items-center gap-2 border border-primary uppercase leading-none transition'>
-						<GitHubLogoIcon className='h-4 w-4' />
-						Login com GitHub
-					</Button>
+					<GithubLoginBtn />
 				</div>
 			</section>
 		</main>

@@ -6,7 +6,7 @@ export const signIn = () => {
 	if (isMock) {
 		return {}
 	} else {
-		return NextAuthSignIn('github')
+		return NextAuthSignIn('github', { callbackUrl: '/' })
 	}
 }
 

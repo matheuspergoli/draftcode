@@ -1,5 +1,3 @@
-import { faker } from '@faker-js/faker'
-
 import {
 	signIn as NextAuthSignIn,
 	signOut as NextAuthSignOut,
@@ -29,11 +27,11 @@ export const useSession = () => {
 		return {
 			data: {
 				user: {
-					id: faker.string.uuid(),
-					role: faker.helpers.arrayElement(['USER', 'ADMIN']),
-					name: faker.internet.displayName(),
-					email: faker.internet.email(),
-					image: faker.image.avatar(),
+					id: '1',
+					role: 'USER',
+					name: 'John Doe',
+					email: 'john@doe.com',
+					image: 'https://github.com/shadcn.png',
 					projects: [],
 					favorites: [],
 					social_media: []

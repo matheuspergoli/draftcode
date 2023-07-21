@@ -39,6 +39,16 @@ export const Footer: React.FC = () => {
 					</Button>
 				</div>
 			</section>
+			<p className='mt-5 text-center font-semibold text-foreground'>
+				Criado por{' '}
+				<a
+					target='_blank'
+					rel='noreferrer'
+					href='https://matheuspergoli-portfolio.vercel.app/'
+					className='underline'>
+					Matheus Pergoli
+				</a>
+			</p>
 		</footer>
 	)
 }

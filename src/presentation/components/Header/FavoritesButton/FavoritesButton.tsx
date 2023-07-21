@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useSession } from 'next-auth/react'
+import { useSession } from '@externals/libs/auth'
 import { HeartFilledIcon } from '@radix-ui/react-icons'
 
 export const FavoritesButton: React.FC = () => {

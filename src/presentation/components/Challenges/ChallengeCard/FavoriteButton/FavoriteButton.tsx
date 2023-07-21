@@ -3,9 +3,9 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/presentation/lib/utils'
-import { useSession } from '@externals/libs/auth'
 import { useToast } from '@components/ui/use-toast'
 import { ProjectSchemaFavorite } from '@/validations'
+import { useSession } from '@externals/libs/auth/useSession'
 import { ReloadIcon, StarFilledIcon, StarIcon } from '@radix-ui/react-icons'
 
 interface FavoriteButtonProps {

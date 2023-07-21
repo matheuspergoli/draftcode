@@ -11,7 +11,7 @@ import {
 	DropdownMenuTrigger
 } from '@components/ui/dropdown-menu'
 
-import { signOut } from '@externals/libs/auth'
+import { signOut } from '@externals/libs/auth/signOut'
 import { Avatar, AvatarImage, AvatarFallback } from '@components/ui/avatar'
 
 interface UserAvatarProps {

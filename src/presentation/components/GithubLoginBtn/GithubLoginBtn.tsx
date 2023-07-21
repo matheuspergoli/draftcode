@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { signIn } from '@externals/libs/auth'
 import { Button } from '@components/ui/button'
+import { signIn } from '@externals/libs/auth/signIn'
 import { GitHubLogoIcon, ReloadIcon } from '@radix-ui/react-icons'
 
 export const GithubLoginBtn: React.FC = () => {

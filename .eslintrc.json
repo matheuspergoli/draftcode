@@ -3,8 +3,6 @@
 		"eslint:recommended",
 		"next/core-web-vitals",
 		"plugin:react/recommended",
-		"plugin:storybook/recommended",
-		"plugin:storybook/recommended",
 		"plugin:@typescript-eslint/recommended"
 	],
 	"globals": {

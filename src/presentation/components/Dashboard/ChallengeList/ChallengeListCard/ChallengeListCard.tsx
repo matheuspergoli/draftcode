@@ -1,6 +1,6 @@
-import { Button } from '@components/ui/button'
 import Link from 'next/link'
 import { DeleteButton } from './DeleteButton'
+import { Button } from '@components/ui/button'
 
 interface ChallengeListCardProps {
 	id: string

@@ -21,7 +21,6 @@
 		],
 		"paths": {
 			"@/*": ["./src/*"],
-			"@mocks/*": ["./src/mocks/*"],
 			"@context/*": ["./src/context/*"],
 			"@configs/*": ["./src/configs/*"],
 			"@actions/*": ["./src/actions/*"],

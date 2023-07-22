@@ -12,7 +12,7 @@
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	background: rgba(131, 15, 222, 0.8);
+	background: rgb(131, 15, 222);
 }
 
 @layer base {

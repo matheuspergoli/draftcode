@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { db } from '@/configs/db'
 import { Prisma } from '@prisma/client'
 import { authOptions } from '@/configs/auth'
-// import { redis } from '@externals/libs/redis'
+import { redis } from '@externals/libs/redis'
 import { ProjectSchemaAPI } from '@/validations'
 import { getServerSession } from 'next-auth/next'
 import { NextResponse, NextRequest } from 'next/server'
@@ -106,8 +106,8 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 			data: updateData
 		})
 
-		// await redis.del('challenges')
-		// await redis.del(`challenge:${id}`)
+		await redis.del('challenges')
+		await redis.del(`challenge:${id}`)
 
 		return NextResponse.json(updatedProject)
 	} catch (error) {
@@ -146,8 +146,8 @@ export async function DELETE(
 			where: { id: String(id) }
 		})
 
-		// await redis.del('challenges')
-		// await redis.del(`challenge:${id}`)
+		await redis.del('challenges')
+		await redis.del(`challenge:${id}`)
 
 		return NextResponse.json(project)
 	} catch (error) {

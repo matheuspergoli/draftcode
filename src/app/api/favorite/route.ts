@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { db } from '@/configs/db'
 import { NextResponse } from 'next/server'
 import { authOptions } from '@/configs/auth'
-import { redis } from '@externals/libs/redis'
+// import { redis } from '@externals/libs/redis'
 import { getServerSession } from 'next-auth/next'
 import { ProjectSchemaFavorite } from '@/validations'
 
@@ -40,8 +40,8 @@ export async function POST(request: Request) {
 			}
 		})
 
-		await redis.del('challenges')
-		await redis.del(`challenge:${projectId}`)
+		// await redis.del('challenges')
+		// await redis.del(`challenge:${projectId}`)
 
 		return NextResponse.json(newFavorite)
 	} catch (error) {
@@ -86,8 +86,8 @@ export async function DELETE(request: Request) {
 			where: { id: existingFavorite.id }
 		})
 
-		await redis.del('challenges')
-		await redis.del(`challenge:${projectId}`)
+		// await redis.del('challenges')
+		// await redis.del(`challenge:${projectId}`)
 
 		return NextResponse.json({ message: 'Favorito removido com sucesso' })
 	} catch (error) {

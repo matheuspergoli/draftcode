@@ -35,9 +35,9 @@ export const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {
 							key={challenge.id}
 							id={challenge.id}
 							title={challenge.title}
-							difficulty={challenge.difficulty.name}
+							difficulty={challenge.difficulty?.name}
 							image={challenge.image}
-							technologies={challenge.technologies.map((tech) => tech.name)}
+							technologies={challenge.technologies?.map((tech) => tech.name)}
 						/>
 					))}
 			</Slider>

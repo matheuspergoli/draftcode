@@ -30,7 +30,7 @@ export const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {
 
 			<Slider>
 				{challenges &&
-					challenges.map((challenge) => (
+					challenges?.map((challenge) => (
 						<ChallengesCard
 							key={challenge.id}
 							id={challenge.id}

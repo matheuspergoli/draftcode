@@ -11,7 +11,10 @@ export default async function Favorites() {
 		redirect('/')
 	}
 
-	const favorites = await getFavorites(session?.user.id)
+	const favorites = await getFavorites(session?.user.id, {
+		difficulty: 'include',
+		technologies: 'include'
+	})
 
 	return (
 		<main className='container my-20'>

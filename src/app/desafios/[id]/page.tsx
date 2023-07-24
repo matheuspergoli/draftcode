@@ -1,4 +1,5 @@
 import { db } from '@/configs/db'
+import { Badge } from '@components/ui/badge'
 import { Button } from '@components/ui/button'
 import { redirect, notFound } from 'next/navigation'
 import { getChallenge } from '@actions/getChallenge'
@@ -6,7 +7,10 @@ import { CreatorCard } from '@components/CreatorCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 export default async function Desafio({ params }: { params: { id: string } }) {
-	const challenge = await getChallenge(params.id)
+	const challenge = await getChallenge(params.id, {
+		user: 'include',
+		technologies: 'include'
+	})
 
 	if (!challenge) {
 		notFound()
@@ -41,6 +45,13 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 					<p className='max-w-lg font-medium leading-6 text-[#8C8C8C]'>
 						{challenge.brief}
 					</p>
+					<div className='flex flex-wrap items-center gap-[10px]'>
+						{challenge.technologies.map((technology) => (
+							<Badge key={technology.id} className='text-sm uppercase'>
+								{technology.name}
+							</Badge>
+						))}
+					</div>
 				</section>
 
 				<section className='flex flex-col-reverse gap-5 md:flex-col'>

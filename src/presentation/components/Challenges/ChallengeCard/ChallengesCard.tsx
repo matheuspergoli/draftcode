@@ -38,7 +38,7 @@ export const ChallengesCard: React.FC<ChallengeCardProps> = ({
 						<h3 className='text-[20px] font-bold leading-normal'>{title}</h3>
 						{brief && <p className='font-medium leading-6 text-[#8C8C8C]'>{brief}</p>}
 						<div className='flex flex-wrap items-center gap-[10px]'>
-							{technologies?.map((technology, index) => (
+							{technologies.map((technology, index) => (
 								<Badge key={index} className='text-sm uppercase'>
 									{technology}
 								</Badge>

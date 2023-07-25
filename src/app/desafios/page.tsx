@@ -2,7 +2,7 @@ import { getChallenges } from '@actions/getChallenges'
 import { ChallengeForm } from '@components/Challenges/ChallengeForm'
 
 export default async function Desafios() {
-	const challenges = await getChallenges(undefined, {
+	const challenges = await getChallenges({
 		difficulty: 'include',
 		technologies: 'include'
 	})

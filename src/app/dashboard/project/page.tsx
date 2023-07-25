@@ -1,8 +1,4 @@
-import dynamic from 'next/dynamic'
-
-const ProjectFormCreate = dynamic(
-	() => import('@components/Dashboard/ProjectForm/ProjectFormCreate')
-)
+import { ProjectFormCreate } from '@components/Dashboard/ProjectForm/ProjectFormCreate'
 
 export default function Project() {
 	return (

@@ -1,10 +1,5 @@
-import dynamic from 'next/dynamic'
-
 import { getChallenges } from '@actions/getChallenges'
-
-const ChallengeList = dynamic(
-	() => import('@components/Dashboard/ChallengeList/ChallengeList')
-)
+import { ChallengeList } from '@components/Dashboard/ChallengeList'
 
 export default async function Dashboard() {
 	const challenges = await getChallenges()

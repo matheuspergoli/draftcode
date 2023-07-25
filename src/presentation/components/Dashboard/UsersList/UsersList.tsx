@@ -8,7 +8,7 @@ interface UsersListsProps {
 	users: User[]
 }
 
-export default function UsersList({ users }: UsersListsProps) {
+export const UsersList: React.FC<UsersListsProps> = ({ users }) => {
 	const [userName, setUserName] = React.useState('')
 
 	return (

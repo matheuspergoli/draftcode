@@ -16,7 +16,7 @@ type ProjectData = z.infer<typeof ProjectSchemaCreate>
 
 const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
 
-export default function ProjectFormCreate() {
+export const ProjectFormCreate: React.FC = () => {
 	const { toast } = useToast()
 	const [loading, setLoading] = React.useState(false)
 

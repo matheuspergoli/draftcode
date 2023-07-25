@@ -17,7 +17,7 @@ type ProjectData = z.infer<typeof ProjectSchemaUpdate>
 
 const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
 
-export default function ProjectFormUpdate(challenge: Project) {
+export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 	const router = useRouter()
 	const { toast } = useToast()
 	const [loading, setLoading] = React.useState(false)

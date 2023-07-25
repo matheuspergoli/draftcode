@@ -6,10 +6,7 @@ const ProjectFormUpdate = dynamic(
 )
 
 export default async function Project({ params }: { params: { id: string } }) {
-	const challenge = await getChallenge(params.id, {
-		difficulty: 'include',
-		technologies: 'include'
-	})
+	const challenge = await getChallenge(params.id)
 
 	return (
 		<main>

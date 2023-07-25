@@ -4,7 +4,7 @@ import { redis } from '@externals/libs/redis'
 
 const isDEV = process.env.NODE_ENV === 'development'
 
-const getChallengeWithRedis = cache(async (id: string, includes?: Includes) => {
+const getChallengeWithRedis = cache(async (id: string) => {
 	const existing = await redis.get(`challenge:${id}`)
 
 	if (existing) {
@@ -14,9 +14,9 @@ const getChallengeWithRedis = cache(async (id: string, includes?: Includes) => {
 	const challenge = (await db.project.findUnique({
 		where: { id },
 		include: {
-			User: Boolean(includes?.user),
-			difficulty: Boolean(includes?.difficulty),
-			technologies: Boolean(includes?.technologies)
+			User: true,
+			difficulty: true,
+			technologies: true
 		}
 	})) as unknown as Project
 
@@ -27,13 +27,13 @@ const getChallengeWithRedis = cache(async (id: string, includes?: Includes) => {
 	return challenge
 })
 
-const getChallengeWithoutRedis = cache(async (id: string, includes?: Includes) => {
+const getChallengeWithoutRedis = cache(async (id: string) => {
 	const challenge = (await db.project.findUnique({
 		where: { id },
 		include: {
-			User: Boolean(includes?.user),
-			difficulty: Boolean(includes?.difficulty),
-			technologies: Boolean(includes?.technologies)
+			User: true,
+			difficulty: true,
+			technologies: true
 		}
 	})) as unknown as Project
 

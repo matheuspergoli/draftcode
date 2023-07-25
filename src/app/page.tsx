@@ -6,7 +6,10 @@ import { Challenges } from '@components/Challenges'
 import { getChallenges } from '@actions/getChallenges'
 
 export default async function Home() {
-	const challenges = await getChallenges()
+	const challenges = await getChallenges({
+		difficulty: 'include',
+		technologies: 'include'
+	})
 
 	return (
 		<main>

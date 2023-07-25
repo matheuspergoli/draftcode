@@ -1,16 +1,17 @@
 import { cache } from 'react'
 import { db } from '@configs/db'
 
-export const getFavorites = cache(async (id: string) => {
+export const getFavorites = cache(async (userId: string, includes?: Includes) => {
 	const favorites = await db.favorite.findMany({
 		where: {
-			user: { id: id }
+			user: { id: userId }
 		},
 		include: {
 			project: {
 				include: {
-					difficulty: true,
-					technologies: true
+					User: Boolean(includes?.user),
+					difficulty: Boolean(includes?.difficulty),
+					technologies: Boolean(includes?.technologies)
 				}
 			}
 		}

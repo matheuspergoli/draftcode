@@ -7,7 +7,11 @@ import { CreatorCard } from '@components/CreatorCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 export default async function Desafio({ params }: { params: { id: string } }) {
-	const challenge = await getChallenge(params.id)
+	const challenge = await getChallenge(params.id, {
+		user: 'include',
+		difficulty: 'include',
+		technologies: 'include'
+	})
 
 	if (!challenge) {
 		notFound()

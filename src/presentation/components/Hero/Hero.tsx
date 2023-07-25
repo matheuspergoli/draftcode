@@ -7,7 +7,8 @@ export const Hero: React.FC = () => {
 		<section className='container flex items-center justify-between'>
 			<article>
 				<h2 className='mb-4 max-w-3xl text-center text-3xl font-bold sm:text-left sm:text-5xl sm:leading-[56px]'>
-					Aprimore suas skills front-end através de projetos práticos
+					Aprimore suas skills front-end através de{' '}
+					<span className='magic-text'>projetos práticos</span>
 				</h2>
 				<p className='mx-auto mb-12 max-w-xl text-center text-base font-medium leading-6 text-[#8C8C8C] sm:mx-0 sm:text-left'>
 					Melhore a qualidade do seu código e domine HTML, CSS e JavaScript, enfrentando

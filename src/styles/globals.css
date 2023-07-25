@@ -15,6 +15,31 @@
 	background: rgb(131, 15, 222);
 }
 
+@keyframes background-pan {
+	from {
+		background-position: 0% center;
+	}
+
+	to {
+		background-position: -200% center;
+	}
+}
+
+.magic-text {
+	animation: background-pan 3s linear infinite;
+	background: linear-gradient(
+		to right,
+		rgb(146, 79, 243),
+		rgb(113, 65, 163),
+		rgb(158, 105, 236),
+		rgb(148, 97, 217)
+	);
+	background-size: 200%;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	white-space: nowrap;
+}
+
 @layer base {
 	:root {
 		--background: 0, 0%, 2%; /*#050505*/

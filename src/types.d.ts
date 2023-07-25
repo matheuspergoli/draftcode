@@ -48,9 +48,3 @@ interface Social_Media {
 	url: string
 	type: string
 }
-
-interface Includes {
-	user?: 'include' | undefined
-	difficulty?: 'include' | undefined
-	technologies?: 'include' | undefined
-}

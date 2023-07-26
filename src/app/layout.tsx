@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Script from 'next/script'
 import { Header } from '@components/Header'
 import { Footer } from '@components/Footer'
 import { Provider } from '@provider/Provider'
@@ -62,6 +63,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 	return (
 		<html lang='pt-br'>
+			<Script src='https://www.googletagmanager.com/gtag/js?id=G-60FHSDW5V2' />
+			<Script id='google-analytics'>
+				{`
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-60FHSDW5V2');
+				`}
+			</Script>
 			<body className='flex h-screen flex-col'>
 				<Provider>
 					<Header user={session?.user} />

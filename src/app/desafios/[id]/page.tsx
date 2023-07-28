@@ -13,8 +13,6 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 		technologies: 'include'
 	})
 
-	console.log(challenge)
-
 	if (!challenge) {
 		notFound()
 	}

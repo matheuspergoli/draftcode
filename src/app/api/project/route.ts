@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { db } from '@/configs/db'
 import { authOptions } from '@/configs/auth'
-import { redis } from '@externals/libs/redis'
 import { ProjectSchemaAPI } from '@/validations'
 import { getServerSession } from 'next-auth/next'
 import { NextRequest, NextResponse } from 'next/server'
@@ -68,8 +67,6 @@ export async function POST(request: NextRequest) {
 				}
 			}
 		})
-
-		await redis.del('challenges')
 
 		return NextResponse.json(newProject)
 	} catch (error) {

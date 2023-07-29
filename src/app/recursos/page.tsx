@@ -1,6 +1,6 @@
 import { ResourcesCard } from '@components/ResourcesCard'
 
-export const revalidate = 1
+export const revalidate = 0
 
 export default async function Recursos() {
 	const response = await fetch('https://graphql.datocms.com/', {

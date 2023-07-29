@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from '@components/ui/button'
+import { GitHubLogoIcon } from '@radix-ui/react-icons'
 
 export const Footer: React.FC = () => {
 	return (
@@ -17,38 +17,41 @@ export const Footer: React.FC = () => {
 					<h1 className='text-[20px] font-semibold'>DraftCode</h1>
 				</div>
 
-				<div className='flex items-center'>
-					<Button asChild variant='link' className='text-foreground'>
-						<Link href='/desafios'>Desafios</Link>
-					</Button>
+				<div className='flex items-center gap-3'>
+					<Link href='/desafios'>Desafios</Link>
 
-					<Button asChild variant='link' className='text-foreground'>
-						<Link href='/faq'>FAQ&apos;s</Link>
-					</Button>
+					<Link href='/faq'>FAQ&apos;s</Link>
 
-					<Button asChild variant='link'>
-						<a href='https://discord.gg/svsgUgAvcx' rel='noreferrer' target='_blank'>
-							<Image
-								loading='lazy'
-								alt='Discord Icon'
-								src='/images/discord.svg'
-								width={21}
-								height={24}
-							/>
-						</a>
-					</Button>
+					<a href='https://discord.gg/svsgUgAvcx' rel='noreferrer' target='_blank'>
+						<Image
+							loading='lazy'
+							alt='Discord Icon'
+							src='/images/discord.svg'
+							width={21}
+							height={24}
+						/>
+					</a>
 				</div>
 			</section>
-			<p className='mt-5 text-center font-semibold text-foreground'>
-				Criado por{' '}
+			<section className='container mt-5 flex flex-wrap-reverse items-center justify-between gap-5 text-foreground'>
+				<div className='flex items-center gap-2 font-semibold'>
+					<GitHubLogoIcon className='h-8 w-8' /> Criado por:{' '}
+					<a
+						target='_blank'
+						rel='noreferrer'
+						href='https://matheuspergoli-portfolio.vercel.app/'
+						className='underline'>
+						Matheus Pergoli
+					</a>
+				</div>
 				<a
 					target='_blank'
 					rel='noreferrer'
-					href='https://matheuspergoli-portfolio.vercel.app/'
-					className='underline'>
-					Matheus Pergoli
+					href='mailto:matheus.pergoli2015@yahoo.com'
+					className=''>
+					Contato
 				</a>
-			</p>
+			</section>
 		</footer>
 	)
 }

@@ -54,3 +54,16 @@ interface Includes {
 	difficulty?: 'include' | undefined
 	technologies?: 'include' | undefined
 }
+
+interface Resource {
+	id: string
+	link: string
+	title: string
+	description: string
+	technologies: {
+		title: string
+	}[]
+	image: {
+		url: string
+	}
+}

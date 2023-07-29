@@ -15,12 +15,18 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-- Você tem `docker` instalado.
+- Você tem o `docker` instalado.
+- Você tem o `cloudinary` configurado.
+- Você tem o `oauth app` do github configurado.
 - Você tem o `microsserviço` de upload de imagens rodando.
 - Você tem a versão mais recente do `node` e `npm` instalado.
 - Você configurou suas váriaveis de ambiente conforme está presente no `.env.example`.
 
-Caso não tenha o microsserviço de upload de imagens, você pode baixar ele [aqui](https://github.com/matheuspergoli/draftcode-upload-image)
+Caso não tenha o microsserviço de upload de imagens, você pode baixar ele [aqui](https://github.com/matheuspergoli/draftcode-upload-image), é obrigatório para criar novos desafios ter o microsserviço de upload de imagens rodando.
+
+Crie um oauth app no github seguindo [este tutorial](docs/oauth/OAUTH.MD), é obrigatório para o funcionamento do NextAuth que você crie e configure um oauth app no github, caso contrário, o login com o github não irá funcionar.
+
+Configure o cloudinary seguindo [esse passo a passo](https://github.com/matheuspergoli/draftcode-upload-image/blob/main/docs/cloudinary/CLOUDINARY.MD)
 
 ## 🚀 Instalando o DraftCode
 

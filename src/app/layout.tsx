@@ -4,7 +4,6 @@ import { Header } from '@components/Header'
 import { Footer } from '@components/Footer'
 import { Provider } from '@provider/Provider'
 import { Toaster } from '@components/ui/toaster'
-import { Analytics } from '@vercel/analytics/react'
 import { ScrollToTop } from '@components/ScrollToTop'
 import { getUserSession } from '@actions/getUserSession'
 
@@ -79,7 +78,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					<Footer />
 					<ScrollToTop />
 					<Toaster />
-					<Analytics />
 				</Provider>
 			</body>
 		</html>

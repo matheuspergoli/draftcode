@@ -36,9 +36,9 @@ export const ResourcesCard: React.FC<ChallengeCardProps> = ({
 								</Badge>
 							))}
 						</div>
-						<h3 className='w-fit border-b border-primary text-[20px] font-bold leading-normal'>
+						<h2 className='w-fit border-b border-primary text-[20px] font-bold leading-normal'>
 							{title}
-						</h3>
+						</h2>
 						<p className='font-medium leading-6 text-[#8C8C8C]'>{description}</p>
 					</section>
 				</article>

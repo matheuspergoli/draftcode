@@ -19,6 +19,7 @@ export const authOptions: NextAuthOptions = {
 				session.user.name = token.name as string
 				session.user.email = token.email as string
 				session.user.image = token.picture as string
+				session.user.solutions = token.solutions as Solution[]
 				session.user.favorites = token.favorites as Favorite[]
 				session.user.social_media = token.social_media as Social_Media[]
 			}
@@ -31,6 +32,8 @@ export const authOptions: NextAuthOptions = {
 					email: token.email
 				},
 				include: {
+					solutions: true,
+					favorites: true,
 					social_media: true
 				}
 			})
@@ -42,19 +45,14 @@ export const authOptions: NextAuthOptions = {
 				return token
 			}
 
-			const favoritesChallenges = await db.favorite.findMany({
-				where: {
-					user_id: dbUser.id
-				}
-			})
-
 			return {
 				id: dbUser.id,
 				role: dbUser.role,
 				name: dbUser.name,
 				email: dbUser.email,
 				picture: dbUser.image,
-				favorites: favoritesChallenges,
+				solutions: dbUser.solutions,
+				favorites: dbUser.favorites,
 				social_media: dbUser.social_media
 			}
 		}

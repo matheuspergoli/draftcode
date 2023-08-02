@@ -9,8 +9,7 @@ import { ReloadIcon } from '@radix-ui/react-icons'
 import { useToast } from '@components/ui/use-toast'
 import { ProjectSchemaCreate } from '@/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ProjectFormInput } from '../ProjectFormInput'
-import { ProjectFormTextarea } from '../ProjectFormTextarea'
+import { FormInput, FormTextarea } from '@components/Form'
 
 type ProjectData = z.infer<typeof ProjectSchemaCreate>
 
@@ -108,7 +107,7 @@ export const ProjectFormCreate: React.FC = () => {
 						<p>Insira o nome do desafio, sua linguagem e nível requerido</p>
 					</div>
 					<div className='flex-1'>
-						<ProjectFormInput
+						<FormInput
 							htmlFor='nome-desafio'
 							type='text'
 							label='Nome do Desafio'
@@ -118,7 +117,7 @@ export const ProjectFormCreate: React.FC = () => {
 						/>
 
 						<div className='flex gap-5'>
-							<ProjectFormInput
+							<FormInput
 								htmlFor='linguagem-desafio'
 								type='text'
 								label='Linguagem'
@@ -127,7 +126,7 @@ export const ProjectFormCreate: React.FC = () => {
 								{...register('technologies')}
 							/>
 
-							<ProjectFormInput
+							<FormInput
 								htmlFor='nivel-desafio'
 								type='text'
 								label='Nível'
@@ -145,7 +144,7 @@ export const ProjectFormCreate: React.FC = () => {
 						<p>Insira uma Imagem que mostre a tela final do desafio</p>
 					</div>
 					<div className='flex-1'>
-						<ProjectFormInput
+						<FormInput
 							htmlFor='imagem-desafio'
 							type='file'
 							label='Imagem do desafio'
@@ -170,7 +169,7 @@ export const ProjectFormCreate: React.FC = () => {
 						<p>Utilize um link que leve ao figma do desafio para ser utilizado</p>
 					</div>
 
-					<ProjectFormInput
+					<FormInput
 						htmlFor='figma-desafio'
 						type='text'
 						label='Figma'
@@ -186,7 +185,7 @@ export const ProjectFormCreate: React.FC = () => {
 						<p>Insira uma descrição sobre o desafio, informe o objetivo do mesmo</p>
 					</div>
 
-					<ProjectFormTextarea
+					<FormTextarea
 						htmlFor='descricao-desafio'
 						label='Descrição'
 						placeholder='Neste desafio, você será desafiado a criar um formulário de login responsivo usando HTML, CSS e JavaScript. O formulário deve ter uma aparência agradável em dispositivos de desktop e móveis e deve ser fácil de usar para os usuários.'
@@ -204,7 +203,7 @@ export const ProjectFormCreate: React.FC = () => {
 						</p>
 					</div>
 
-					<ProjectFormTextarea
+					<FormTextarea
 						htmlFor='requisitos-desafio'
 						label='Requisitos'
 						placeholder='Você deve criar uma interface de usuário para um aplicativo de lista de tarefas simples. Ele deve consistir em um campo de entrada de texto, um botão "Adicionar" e uma lista de tarefas. Cada item da lista deve ter um botão "Excluir" que remova o item da lista. Você deve usar HTML, CSS e JavaScript para este projeto. Você não deve usar bibliotecas ou frameworks.'

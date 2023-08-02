@@ -67,11 +67,10 @@ model User {
 
   role UserRole @default(USER)
 
+  projects     Project[]
+  favorites    Favorite[]
+  solutions    Solution[]
   social_media Social_Media[]
-
-  projects Project[]
-
-  favorites Favorite[]
 }
 
 model Project {
@@ -89,25 +88,25 @@ model Project {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  technologies Technology[]
-
-  User    User   @relation(fields: [user_id], references: [id])
+  user    User   @relation(fields: [user_id], references: [id])
   user_id String @map("userId")
 
-  favorites Favorite[]
+  favorites    Favorite[]
+  solutions    Solution[]
+  technologies Technology[]
 
   @@index([user_id])
   @@index([difficulty_id])
-  @@map("projects")
 }
 
 model Favorite {
-  id         String @id @default(cuid())
-  user_id    String
-  project_id String
+  id String @id @default(cuid())
 
-  user    User    @relation(fields: [user_id], references: [id])
-  project Project @relation(fields: [project_id], references: [id])
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  project    Project @relation(fields: [project_id], references: [id])
+  project_id String
 
   @@unique([user_id, project_id])
   @@index([project_id])
@@ -118,17 +117,13 @@ model Technology {
   name String @unique
 
   projects Project[]
-
-  @@map("technologies")
 }
 
 model Difficulty {
   id   String @id @default(uuid())
   name String @unique
 
-  Project Project[]
-
-  @@map("difficulties")
+  projects Project[]
 }
 
 enum SocialMedia {
@@ -142,9 +137,29 @@ model Social_Media {
   url  String      @db.Text
   type SocialMedia
 
-  User    User   @relation(fields: [user_id], references: [id])
+  user    User   @relation(fields: [user_id], references: [id])
   user_id String @map("userId")
 
   @@index([user_id])
-  @@map("social_media")
+}
+
+model Solution {
+  id         String  @id @default(uuid())
+  image      String  @db.Text
+  image_id   String  @db.Text
+  website    String  @db.Text
+  repository String  @db.Text
+  approved   Boolean @default(false)
+
+  project    Project @relation(fields: [project_id], references: [id])
+  project_id String
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([project_id])
+  @@index([user_id])
 }

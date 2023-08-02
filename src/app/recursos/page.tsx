@@ -35,7 +35,7 @@ export default async function Recursos() {
 		<main className='container my-20'>
 			<section className='mb-14'>
 				<h1 className='text-center text-4xl font-semibold'>
-					<span className='magic-text'>Recursos para você</span> se desenvolver ainda mais
+					<span className='magic-text'>Recursos</span> para você se desenvolver ainda mais
 					🚀
 				</h1>
 			</section>

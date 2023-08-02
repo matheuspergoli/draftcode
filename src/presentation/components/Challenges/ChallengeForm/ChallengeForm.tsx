@@ -25,7 +25,7 @@ import {
 } from '@components/ui/dialog'
 
 interface ChallengeFormProps {
-	challenges: Project[]
+	challenges: Challenge[]
 }
 
 export const ChallengeForm: React.FC<ChallengeFormProps> = ({ challenges }) => {

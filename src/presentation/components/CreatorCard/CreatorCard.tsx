@@ -1,11 +1,12 @@
 import { DesktopIcon, GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
 
 interface CreatorCardProps {
-	image: string
 	name: string
+	image: string
 	github?: string
 	website?: string
 	linkedin?: string
+	madeByText: string
 }
 
 export const CreatorCard: React.FC<CreatorCardProps> = ({
@@ -13,7 +14,8 @@ export const CreatorCard: React.FC<CreatorCardProps> = ({
 	name,
 	github,
 	website,
-	linkedin
+	linkedin,
+	madeByText
 }) => {
 	return (
 		<article className='flex w-full max-w-sm flex-col gap-[25px] rounded-md border border-border bg-secondary p-[25px]'>
@@ -27,7 +29,7 @@ export const CreatorCard: React.FC<CreatorCardProps> = ({
 					/>
 				</figure>
 				<div className='flex flex-col items-start justify-center'>
-					<span className='text-xs text-[#8C8C8C]'>Design feito por</span>
+					<span className='text-xs text-[#8C8C8C]'>{madeByText}</span>
 					<p className='border-b-2 border-primary text-xl font-bold'>{name}</p>
 				</div>
 			</div>

@@ -4,12 +4,12 @@ interface User {
 	name: string
 	email: string
 	image: string
-	projects: Project[]
 	favorites: Favorite[]
+	challenges: Challenge[]
 	social_media: Social_Media[]
 }
 
-interface Project {
+interface Challenge {
 	id: string
 	title: string
 	image: string
@@ -27,7 +27,7 @@ interface Project {
 		id: string
 		name: string
 	}[]
-	User: {
+	user: {
 		id: string
 		name: string
 		image: string
@@ -65,5 +65,21 @@ interface Resource {
 	}[]
 	image: {
 		url: string
+	}
+}
+
+interface Solution {
+	id: string
+	image: string
+	website: string
+	image_id: string
+	approved: boolean
+	repository: string
+	user: {
+		id: string
+		name: string
+		image: string
+		email: string
+		social_media: Social_Media[]
 	}
 }

@@ -41,14 +41,14 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 					</Button>
 
 					<Button asChild variant='ghost'>
-						<Link href='/recursos' className='font-semibold'>
-							Recursos
+						<Link href='/solutions' className='font-semibold'>
+							Soluções
 						</Link>
 					</Button>
 
 					<Button asChild variant='ghost'>
-						<Link href='/faq' className='font-semibold'>
-							FAQ&apos;s
+						<Link href='/recursos' className='font-semibold'>
+							Recursos
 						</Link>
 					</Button>
 				</section>

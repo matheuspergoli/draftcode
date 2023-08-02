@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
 		const newProject = await db.project.create({
 			data: {
-				User: {
+				user: {
 					connect: { id: user.id }
 				},
 				title: project.title,

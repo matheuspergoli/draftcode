@@ -61,7 +61,23 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({ image, user }) => {
 				{user && isUserCreator && (
 					<>
 						<DropdownMenuItem asChild className='cursor-pointer justify-center uppercase'>
-							<Link href='/dashboard/profile'>PERFIL</Link>
+							<Link href='/dashboard/profile'>Perfil</Link>
+						</DropdownMenuItem>
+						<DropdownMenuSeparator />
+					</>
+				)}
+				{user && isUserCreator && (
+					<>
+						<DropdownMenuItem asChild className='cursor-pointer justify-center uppercase'>
+							<Link href='/dashboard/solutions/pendent'>Soluções Pendentes</Link>
+						</DropdownMenuItem>
+						<DropdownMenuSeparator />
+					</>
+				)}
+				{user && (
+					<>
+						<DropdownMenuItem asChild className='cursor-pointer justify-center uppercase'>
+							<Link href='/solutions/user'>Minhas soluções</Link>
 						</DropdownMenuItem>
 						<DropdownMenuSeparator />
 					</>

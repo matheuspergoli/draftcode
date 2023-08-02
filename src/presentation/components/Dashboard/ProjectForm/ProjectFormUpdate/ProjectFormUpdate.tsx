@@ -10,14 +10,13 @@ import { ReloadIcon } from '@radix-ui/react-icons'
 import { ProjectSchemaUpdate } from '@/validations'
 import { useToast } from '@components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ProjectFormInput } from '../ProjectFormInput'
-import { ProjectFormTextarea } from '../ProjectFormTextarea'
+import { FormInput, FormTextarea } from '@components/Form'
 
 type ProjectData = z.infer<typeof ProjectSchemaUpdate>
 
 const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
 
-export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
+export const ProjectFormUpdate: React.FC<Challenge> = (challenge) => {
 	const router = useRouter()
 	const { toast } = useToast()
 	const [loading, setLoading] = React.useState(false)
@@ -131,7 +130,7 @@ export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 						<p>Insira o nome do desafio, sua linguagem e nível requerido</p>
 					</div>
 					<div className='flex-1'>
-						<ProjectFormInput
+						<FormInput
 							htmlFor='nome-desafio'
 							type='text'
 							defaultValue={challenge?.title}
@@ -142,7 +141,7 @@ export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 						/>
 
 						<div className='flex gap-5'>
-							<ProjectFormInput
+							<FormInput
 								htmlFor='linguagem-desafio'
 								type='text'
 								defaultValue={challenge.technologies?.map((tech) => tech.name).join(' ')}
@@ -152,7 +151,7 @@ export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 								{...register('technologies')}
 							/>
 
-							<ProjectFormInput
+							<FormInput
 								htmlFor='nivel-desafio'
 								type='text'
 								defaultValue={challenge.difficulty?.name}
@@ -171,7 +170,7 @@ export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 						<p>Insira uma Imagem que mostre a tela final do desafio</p>
 					</div>
 					<div className='flex-1'>
-						<ProjectFormInput
+						<FormInput
 							htmlFor='imagem-desafio'
 							type='file'
 							label='Imagem do desafio'
@@ -196,7 +195,7 @@ export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 						<p>Utilize um link que leve ao figma do desafio para ser utilizado</p>
 					</div>
 
-					<ProjectFormInput
+					<FormInput
 						htmlFor='figma-desafio'
 						type='text'
 						defaultValue={challenge?.figma_url}
@@ -213,7 +212,7 @@ export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 						<p>Insira uma descrição sobre o desafio, informe o objetivo do mesmo</p>
 					</div>
 
-					<ProjectFormTextarea
+					<FormTextarea
 						htmlFor='descricao-desafio'
 						label='Descrição'
 						defaultValue={challenge?.brief}
@@ -232,7 +231,7 @@ export const ProjectFormUpdate: React.FC<Project> = (challenge) => {
 						</p>
 					</div>
 
-					<ProjectFormTextarea
+					<FormTextarea
 						htmlFor='requisitos-desafio'
 						label='Requisitos'
 						defaultValue={challenge?.description}

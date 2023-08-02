@@ -5,11 +5,11 @@ export const getChallenge = cache(async (id: string, includes?: Includes) => {
 	const challenge = (await db.project.findUnique({
 		where: { id },
 		include: {
-			User: Boolean(includes?.user),
+			user: Boolean(includes?.user),
 			difficulty: Boolean(includes?.difficulty),
 			technologies: Boolean(includes?.technologies)
 		}
-	})) as unknown as Project
+	})) as unknown as Challenge
 
 	return challenge
 })

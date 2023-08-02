@@ -18,7 +18,7 @@ export const HowItWorks: React.FC = () => {
 			id: '3',
 			title: 'Compartilhe seu projeto',
 			description:
-				'Quando estiver pronto, envie a sua solução do desafio através do Discord, caso queira receber nosso feedback.'
+				'Quando estiver pronto, envie a sua solução do desafio para nosso site, e caso queira receber nosso feedback você pode enviar para nosso Discord.'
 		}
 	]
 

@@ -7,14 +7,14 @@ export const getAdminChallenges = cache(async (adminId: string, includes?: Inclu
 			user_id: adminId
 		},
 		include: {
-			User: Boolean(includes?.user),
+			user: Boolean(includes?.user),
 			difficulty: Boolean(includes?.difficulty),
 			technologies: Boolean(includes?.technologies)
 		},
 		orderBy: {
 			created_at: 'desc'
 		}
-	})) as unknown as Project[]
+	})) as unknown as Challenge[]
 
 	return challenges
 })

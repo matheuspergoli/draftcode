@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import { db } from '@/configs/db'
 import { Badge } from '@components/ui/badge'
 import { Button } from '@components/ui/button'
-import { redirect, notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { getChallenge } from '@actions/getChallenge'
 import { CreatorCard } from '@components/CreatorCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
@@ -43,9 +44,6 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 					<h1 className='w-fit border-b-2 border-primary text-2xl font-bold uppercase leading-[46px] md:text-4xl'>
 						{challenge.title}
 					</h1>
-					<p className='max-w-lg font-medium leading-6 text-[#8C8C8C]'>
-						{challenge.brief}
-					</p>
 					<div className='flex flex-wrap items-center gap-[10px]'>
 						{challenge.technologies.map((technology) => (
 							<Badge key={technology.id} className='text-sm uppercase'>
@@ -53,15 +51,30 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 							</Badge>
 						))}
 					</div>
+					<p className='mb-5 max-w-lg font-medium leading-6 text-[#8C8C8C]'>
+						{challenge.brief}
+					</p>
+					<div className='flex flex-wrap items-center gap-3'>
+						<Link href={`/solutions/new/${challenge.id}`} className='w-full sm:w-fit'>
+							<Button className='group/btn-enviar w-full justify-center gap-2 sm:w-fit sm:justify-start'>
+								Enviar desafio
+								<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-enviar:rotate-90' />
+							</Button>
+						</Link>
+						<a
+							href={challenge.figma_url}
+							rel='noreferrer'
+							target='_blank'
+							className='w-full sm:w-fit'>
+							<Button className='group/btn-icon w-full justify-center gap-2 sm:w-fit'>
+								Começar desafio
+								<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-icon:rotate-90' />
+							</Button>
+						</a>
+					</div>
 				</section>
 
 				<section className='flex flex-col-reverse gap-5 md:flex-col'>
-					<a href={challenge.figma_url} rel='noreferrer' target='_blank'>
-						<Button className='group/btn-icon w-fit gap-2'>
-							Começar desafio
-							<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-icon:rotate-90' />
-						</Button>
-					</a>
 					<p className='w-fit border-b-2 border-primary text-xl font-medium uppercase md:self-end'>
 						{challenge.difficulty?.name}
 					</p>
@@ -87,8 +100,9 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 				</article>
 
 				<CreatorCard
-					image={challenge.User.image}
-					name={challenge.User.name}
+					madeByText='Design feito por'
+					image={challenge.user.image}
+					name={challenge.user.name}
 					github={links.github?.url ?? undefined}
 					linkedin={links.linkedin?.url ?? undefined}
 					website={links.website?.url ?? undefined}

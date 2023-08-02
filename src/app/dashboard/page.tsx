@@ -4,7 +4,7 @@ import { getAdminChallenges } from '@actions/getAdminChallenges'
 import { ChallengeList } from '@components/Dashboard/ChallengeList'
 
 export default async function Dashboard() {
-	let challenges = null as unknown as Project[]
+	let challenges = null as unknown as Challenge[]
 	const session = await getUserSession()
 
 	if (session?.user.role === 'ADMIN') {

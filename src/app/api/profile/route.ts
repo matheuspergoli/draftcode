@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
 					data: {
 						type: link.type,
 						url: link.url,
-						User: { connect: { id: user.id } }
+						user: { connect: { id: user.id } }
 					}
 				})
 			}

@@ -9,7 +9,7 @@ export const getFavorites = cache(async (userId: string, includes?: Includes) =>
 		include: {
 			project: {
 				include: {
-					User: Boolean(includes?.user),
+					user: Boolean(includes?.user),
 					difficulty: Boolean(includes?.difficulty),
 					technologies: Boolean(includes?.technologies)
 				}

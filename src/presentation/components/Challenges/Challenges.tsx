@@ -7,7 +7,7 @@ import { ChallengesCard } from './ChallengeCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 interface ChallengesProps {
-	challenges: Project[]
+	challenges: Challenge[]
 }
 
 export const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {

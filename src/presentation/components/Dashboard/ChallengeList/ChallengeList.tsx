@@ -7,7 +7,7 @@ import { Button } from '@components/ui/button'
 import { ChallengeListCard } from './ChallengeListCard'
 
 interface ChallengesProps {
-	challenges: Project[]
+	challenges: Challenge[]
 }
 
 export const ChallengeList: React.FC<ChallengesProps> = ({ challenges }) => {

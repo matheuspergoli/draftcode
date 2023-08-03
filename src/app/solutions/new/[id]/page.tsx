@@ -10,6 +10,10 @@ export default async function NewSolution({ params }: { params: { id: string } }
 		redirect('/login')
 	}
 
+	if (session.user.isBanned) {
+		redirect('/userbanned')
+	}
+
 	const project = await db.project.findUnique({
 		where: {
 			id: params.id

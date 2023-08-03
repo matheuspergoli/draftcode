@@ -1,13 +1,13 @@
-import { UpdateButton } from './UpdateButton'
+import { BanButton } from './BanButton'
 
-interface UsersCardProps {
+interface BanCardProps {
 	id: string
-	role: string
 	name: string
 	image: string
+	isBanned: boolean
 }
 
-export const UsersCard: React.FC<UsersCardProps> = ({ image, name, id, role }) => {
+export const BanListCard: React.FC<BanCardProps> = ({ image, name, id, isBanned }) => {
 	return (
 		<section className='flex items-center justify-between rounded-md bg-secondary px-3 py-2'>
 			<div className='flex items-center gap-0 sm:gap-7'>
@@ -21,10 +21,10 @@ export const UsersCard: React.FC<UsersCardProps> = ({ image, name, id, role }) =
 				</figure>
 
 				<h3>
-					{name} - {role}
+					{name} {isBanned && '- Banido'}
 				</h3>
 			</div>
-			<UpdateButton id={id} />
+			<BanButton id={id} isBanned={isBanned} />
 		</section>
 	)
 }

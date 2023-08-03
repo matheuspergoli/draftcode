@@ -8,6 +8,7 @@ declare module 'next-auth' {
 			name: string
 			email: string
 			image: string
+			isBanned: boolean
 			solutions: Solution[]
 			favorites: Favorite[]
 			challenges: Challenge[]

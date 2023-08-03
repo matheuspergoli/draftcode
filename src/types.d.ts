@@ -4,6 +4,7 @@ interface User {
 	name: string
 	email: string
 	image: string
+	isBanned: boolean
 	favorites: Favorite[]
 	challenges: Challenge[]
 	social_media: Social_Media[]

@@ -2,15 +2,15 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { UsersCard } from './UsersCard'
+import { BanListCard } from './BanListCard'
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
 
-interface UsersListsProps {
+interface BanListsProps {
 	users: User[]
 }
 
-export const UsersList: React.FC<UsersListsProps> = ({ users }) => {
+export const BanList: React.FC<BanListsProps> = ({ users }) => {
 	const [userName, setUserName] = React.useState('')
 
 	return (
@@ -19,9 +19,9 @@ export const UsersList: React.FC<UsersListsProps> = ({ users }) => {
 				<h1 className='text-lg font-bold uppercase leading-[46px] sm:text-xl md:text-2xl lg:text-3xl'>
 					Lista de Usuários
 				</h1>
-				<p className='text-lg'>Você está na seção de cargos</p>
+				<p className='text-lg'>Você está na seção de banimentos</p>
 				<Button asChild className='mt-5'>
-					<Link href='/dashboard/users/ban'>Modificar banimento</Link>
+					<Link href='/dashboard/users'>Modificar cargos</Link>
 				</Button>
 			</div>
 
@@ -38,12 +38,12 @@ export const UsersList: React.FC<UsersListsProps> = ({ users }) => {
 					users
 						.filter((user) => user.name.includes(userName))
 						.map((user) => (
-							<UsersCard
+							<BanListCard
 								key={user.id}
 								id={user.id}
 								name={user.name}
 								image={user.image}
-								role={user.role}
+								isBanned={user.isBanned}
 							/>
 						))}
 			</div>

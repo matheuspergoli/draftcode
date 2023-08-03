@@ -16,6 +16,10 @@ export async function POST(request: Request, { params }: { params: { id: string 
 
 		const { user } = session
 
+		if (user.isBanned) {
+			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+		}
+
 		if (!params.id) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 		}
@@ -64,6 +68,10 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 		const session = await getServerSession(authOptions)
 
 		if (!session) {
+			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+		}
+
+		if (session.user.isBanned) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 		}
 
@@ -117,6 +125,10 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
 		const session = await getServerSession(authOptions)
 
 		if (!session) {
+			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+		}
+
+		if (session.user.isBanned) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 		}
 

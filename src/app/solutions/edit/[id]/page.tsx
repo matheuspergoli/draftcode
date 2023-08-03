@@ -5,6 +5,15 @@ import { SolutionFormUpdate } from '@components/Solution'
 
 export default async function EditSolution({ params }: { params: { id: string } }) {
 	const session = await getUserSession()
+
+	if (!session) {
+		redirect('/login')
+	}
+
+	if (session.user.isBanned) {
+		redirect('/userbanned')
+	}
+
 	const solution = await getSolution(params.id, {
 		user: 'include'
 	})

@@ -105,7 +105,7 @@ model Favorite {
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
 
-  project    Project @relation(fields: [project_id], references: [id])
+  project    Project @relation(fields: [project_id], references: [id], onDelete: Cascade)
   project_id String
 
   @@unique([user_id, project_id])
@@ -151,7 +151,7 @@ model Solution {
   repository String  @db.Text
   approved   Boolean @default(false)
 
-  project    Project @relation(fields: [project_id], references: [id])
+  project    Project @relation(fields: [project_id], references: [id], onDelete: Cascade)
   project_id String
 
   user    User   @relation(fields: [user_id], references: [id])

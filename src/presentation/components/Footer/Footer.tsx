@@ -44,13 +44,18 @@ export const Footer: React.FC = () => {
 						Matheus Pergoli
 					</a>
 				</div>
-				<a
-					target='_blank'
-					rel='noreferrer'
-					href='mailto:matheus.pergoli2015@yahoo.com'
-					className=''>
-					Contato
-				</a>
+				<div className='flex items-center gap-3'>
+					<a
+						target='_blank'
+						rel='noreferrer'
+						href='mailto:matheus.pergoli2015@yahoo.com'
+						className=''>
+						Contato
+					</a>
+					<a href='https://draftcode.substack.com/' target='_blank' rel='noreferrer'>
+						Newsletter
+					</a>
+				</div>
 			</section>
 		</footer>
 	)

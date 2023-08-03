@@ -4,7 +4,7 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons'
 
 export const Footer: React.FC = () => {
 	return (
-		<footer className='border-t border-border bg-secondary py-[30px]'>
+		<footer id='footer' className='border-t border-border bg-secondary py-[30px]'>
 			<section className='container flex flex-wrap items-center justify-between gap-5 border-t border-primary pt-5 md:border-b md:border-t-0 md:pb-5 md:pt-0'>
 				<div className='flex items-center gap-2'>
 					<Image

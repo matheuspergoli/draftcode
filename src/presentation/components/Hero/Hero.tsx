@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import Link from 'next/link'
 import { Button } from '@components/ui/button'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
@@ -35,6 +36,8 @@ export const Hero: React.FC = () => {
 
 			<figure className='hidden lg:block'>
 				<img
+					rel='preload'
+					fetchPriority='high'
 					className='w-max'
 					src='/images/hero-image.svg'
 					alt='DraftCode Hero Image React'

@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { Links } from './Links'
 import { UserAvatar } from './UserAvatar'
 import { MenuMobile } from './MenuMobile'
 import { LoginButton } from './LoginButton'
-import { Button } from '@components/ui/button'
 import { FavoritesButton } from './FavoritesButton'
 
 interface HeaderProps {
@@ -27,31 +27,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 					</div>
 				</Link>
 
-				<section className='hidden items-center gap-5 md:flex'>
-					<Button asChild variant='ghost'>
-						<Link href='/' className='font-semibold'>
-							Home
-						</Link>
-					</Button>
-
-					<Button asChild variant='ghost'>
-						<Link href='/desafios' className='font-semibold'>
-							Desafios
-						</Link>
-					</Button>
-
-					<Button asChild variant='ghost'>
-						<Link href='/solutions' className='font-semibold'>
-							Soluções
-						</Link>
-					</Button>
-
-					<Button asChild variant='ghost'>
-						<Link href='/recursos' className='font-semibold'>
-							Recursos
-						</Link>
-					</Button>
-				</section>
+				<Links />
 
 				{user ? (
 					<div className='flex items-center gap-5'>

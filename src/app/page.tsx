@@ -5,8 +5,6 @@ import { HowItWorks } from '@components/HowItWorks'
 import { Challenges } from '@components/Challenges'
 import { getChallenges } from '@actions/getChallenges'
 
-export const revalidate = 3600 // 1 hour
-
 export default async function Home() {
 	const challenges = await getChallenges({
 		difficulty: 'include',

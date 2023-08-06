@@ -1,6 +1,8 @@
 import { FAQ } from '@components/FAQ'
 import { Discord } from '@components/Discord'
 
+export const revalidate = 3600 // 1 hour
+
 export default function FaqPage() {
 	return (
 		<main>

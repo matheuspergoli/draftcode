@@ -6,7 +6,7 @@ import { cn } from '@/presentation/lib/utils'
 import { useToast } from '@components/ui/use-toast'
 import { ProjectSchemaFavorite } from '@/validations'
 import { useSession } from '@externals/libs/auth/useSession'
-import { ReloadIcon, StarFilledIcon, StarIcon } from '@radix-ui/react-icons'
+import { ReloadIcon, HeartIcon, HeartFilledIcon } from '@radix-ui/react-icons'
 
 interface FavoriteButtonProps {
 	projectId: string
@@ -111,12 +111,13 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 			) : session?.user.favorites
 					.map((favorite) => favorite.project_id)
 					.includes(props.projectId) ? (
-				<div className='rounded-full bg-zinc-800/40 p-1'>
-					<StarFilledIcon width={35} height={35} className='text-yellow-500' />
+				<div className='rounded-full'>
+					<HeartFilledIcon width={35} height={35} className='text-primary' />
 				</div>
 			) : (
-				<div className='rounded-full bg-zinc-800/40 p-1'>
-					<StarIcon width={35} height={35} className='text-yellow-500' />
+				<div className='relative'>
+					<HeartIcon width={35} height={35} className='absolute text-white' />
+					<HeartFilledIcon width={35} height={35} className='text-neutral-500/70' />
 				</div>
 			)}
 		</button>

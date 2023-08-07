@@ -18,9 +18,13 @@ export const Footer: React.FC = () => {
 				</div>
 
 				<div className='flex items-center gap-3'>
-					<Link href='/desafios'>Desafios</Link>
+					<Link href='/desafios' className='transition hover:text-white/70'>
+						Desafios
+					</Link>
 
-					<Link href='/faq'>FAQ&apos;s</Link>
+					<Link href='/faq' className='transition hover:text-white/70'>
+						FAQ&apos;s
+					</Link>
 
 					<a href='https://discord.gg/svsgUgAvcx' rel='noreferrer' target='_blank'>
 						<Image
@@ -49,10 +53,14 @@ export const Footer: React.FC = () => {
 						target='_blank'
 						rel='noreferrer'
 						href='mailto:matheus.pergoli2015@yahoo.com'
-						className=''>
+						className='transition hover:text-white/70'>
 						Contato
 					</a>
-					<a href='https://draftcode.substack.com/' target='_blank' rel='noreferrer'>
+					<a
+						href='https://draftcode.substack.com/'
+						target='_blank'
+						rel='noreferrer'
+						className='transition hover:text-white/70'>
 						Newsletter
 					</a>
 				</div>

@@ -21,7 +21,7 @@ export const ChallengesCard: React.FC<ChallengeCardProps> = ({
 }) => {
 	return (
 		<article className='relative z-40 h-full w-full max-w-md'>
-			<FavoriteButton className='absolute right-4 top-52 z-50' projectId={id} />
+			<FavoriteButton className='absolute right-4 top-3 z-50' projectId={id} />
 			<Link passHref href={`/desafios/${id}`}>
 				<article className='h-full rounded-md border border-border bg-secondary'>
 					<figure className='h-[180px] overflow-hidden rounded-t-md'>

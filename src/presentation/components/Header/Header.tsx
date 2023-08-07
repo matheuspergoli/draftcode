@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Links } from './Links'
 import { UserAvatar } from './UserAvatar'
 import { MenuMobile } from './MenuMobile'
 import { LoginButton } from './LoginButton'
+import { HeaderLinks } from './HeaderLinks'
 import { FavoritesButton } from './FavoritesButton'
 
 interface HeaderProps {
@@ -27,7 +27,9 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 					</div>
 				</Link>
 
-				<Links />
+				<section className='hidden items-center gap-2 md:flex lg:gap-5'>
+					<HeaderLinks />
+				</section>
 
 				{user ? (
 					<div className='flex items-center gap-5'>

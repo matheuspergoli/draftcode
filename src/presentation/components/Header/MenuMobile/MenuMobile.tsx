@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import { HeaderLinks } from '../HeaderLinks'
 import { LoginButton } from '../LoginButton'
 import { Button } from '@components/ui/button'
 
@@ -45,29 +45,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ user }) => {
 				</SheetHeader>
 
 				<section className='flex flex-col'>
-					<Button asChild variant='ghost'>
-						<Link href='/' className='font-semibold'>
-							Home
-						</Link>
-					</Button>
-
-					<Button asChild variant='ghost'>
-						<Link href='/desafios' className='font-semibold'>
-							Desafios
-						</Link>
-					</Button>
-
-					<Button asChild variant='ghost'>
-						<Link href='/solutions' className='font-semibold'>
-							Soluções
-						</Link>
-					</Button>
-
-					<Button asChild variant='ghost'>
-						<Link href='/recursos' className='font-semibold'>
-							Recursos
-						</Link>
-					</Button>
+					<HeaderLinks />
 					{!user && <LoginButton className='mt-10' />}
 				</section>
 			</SheetContent>

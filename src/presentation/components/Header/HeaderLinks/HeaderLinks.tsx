@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@components/ui/button'
 
-export const Links: React.FC = () => {
+export const HeaderLinks: React.FC = () => {
 	const pathname = usePathname()
 
 	return (
-		<section className='hidden items-center gap-5 md:flex'>
+		<>
 			<Button asChild variant={pathname === '/' ? 'default' : 'ghost'}>
 				<Link href='/' className='font-semibold'>
 					Home
@@ -33,6 +33,12 @@ export const Links: React.FC = () => {
 					Recursos
 				</Link>
 			</Button>
-		</section>
+
+			<Button asChild variant={pathname === '/blog' ? 'default' : 'ghost'}>
+				<Link href='/blog' className='font-semibold'>
+					Blog
+				</Link>
+			</Button>
+		</>
 	)
 }

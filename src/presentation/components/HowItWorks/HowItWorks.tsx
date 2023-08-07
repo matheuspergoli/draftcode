@@ -1,22 +1,26 @@
 import { HowItWorksCard } from './HowItWorksCard'
+import { TargetIcon, CodeIcon, Share1Icon } from '@radix-ui/react-icons'
 
 export const HowItWorks: React.FC = () => {
 	const cards = [
 		{
 			id: '1',
 			title: 'Escolha um desafio',
+			icon: TargetIcon,
 			description:
 				'Dê uma olhada em nossa coleção de desafios frontend. Escolha um que você sinta que será um bom desafio para você nesta etapa.'
 		},
 		{
 			id: '2',
 			title: 'Codifique o design',
+			icon: CodeIcon,
 			description:
 				'Crie um projeto com a sua solução para o desafio escolhido, sinta-se avontade para utilizar as tecnologias que desejar.'
 		},
 		{
 			id: '3',
 			title: 'Compartilhe seu projeto',
+			icon: Share1Icon,
 			description:
 				'Quando estiver pronto, envie a sua solução do desafio para nosso site, e caso queira receber nosso feedback você pode enviar para nosso Discord.'
 		}
@@ -34,6 +38,7 @@ export const HowItWorks: React.FC = () => {
 				{cards.map((card) => (
 					<HowItWorksCard
 						key={card.id}
+						icon={card.icon}
 						title={card.title}
 						description={card.description}
 					/>

@@ -78,6 +78,14 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         </sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/vitorFRE" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/68834970?v=4" width="100px;" alt="Foto do VitorFRE no GitHub"/><br>
+        <sub>
+          <b>Vitor Santos</b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
 

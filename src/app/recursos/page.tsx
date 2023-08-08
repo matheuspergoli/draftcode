@@ -1,36 +1,8 @@
+import { getResources } from '@actions/getResources'
 import { ResourcesCard } from '@components/ResourcesCard'
 
 export default async function Recursos() {
-	const response = await fetch('https://graphql.datocms.com/', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${process.env.NEXT_PUBLIC_DATO_API_KEY}`
-		},
-		body: JSON.stringify({
-			query: `
-			query {
-				allResources(first: "35") {
-					id
-					link
-					title
-					description
-					image {
-						url
-					}
-					technologies {
-						title
-					}
-				}
-			}
-		`
-		}),
-		next: {
-			revalidate: 3600 // 1 hour
-		}
-	})
-
-	const resources = (await response.json()) as { data: { allResources: Resource[] } }
+	const resources = await getResources()
 
 	return (
 		<main className='container my-20'>
@@ -42,7 +14,7 @@ export default async function Recursos() {
 			</section>
 
 			<section className='grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:place-items-stretch'>
-				{resources.data.allResources?.map((resource) => (
+				{resources?.map((resource) => (
 					<ResourcesCard
 						key={resource.id}
 						image={resource.image.url}

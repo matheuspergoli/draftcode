@@ -9,15 +9,14 @@ import { ReloadIcon } from '@radix-ui/react-icons'
 import { useToast } from '@components/ui/use-toast'
 import { ProjectSchemaCreate } from '@/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useCreateChallenge } from '@hooks/challenges'
 import { FormInput, FormTextarea } from '@components/Form'
 
 type ProjectData = z.infer<typeof ProjectSchemaCreate>
 
-const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
-
 export const ProjectFormCreate: React.FC = () => {
 	const { toast } = useToast()
-	const [loading, setLoading] = React.useState(false)
+	const { createChallenge, loading } = useCreateChallenge<ProjectData>()
 
 	const {
 		register,
@@ -32,40 +31,16 @@ export const ProjectFormCreate: React.FC = () => {
 	const image = watch('image')
 
 	const onSubmit = async (data: ProjectData) => {
-		const formData = new FormData()
-
-		formData.append('image', data.image[0])
-
 		try {
-			setLoading(true)
-			const responseImage = await fetch(`${BACKEND_UPLOAD_URL}/image-upload`, {
-				method: 'POST',
-				body: formData
-			})
-			const imageJson = (await responseImage.json()) as { url: string; public_id: string }
-
-			const project = {
-				...data,
-				image: imageJson.url,
-				image_id: imageJson.public_id
-			}
-
-			const responseProject = await fetch('/api/project', {
-				method: 'POST',
-				body: JSON.stringify(project)
-			})
-
-			await responseProject.json()
+			await createChallenge(data)
 
 			toast({
 				title: 'Projeto criado com sucesso',
 				description: 'Seu projeto foi criado com sucesso'
 			})
 
-			setLoading(false)
 			reset()
 		} catch (error) {
-			setLoading(false)
 			toast({
 				variant: 'destructive',
 				title: 'Erro ao criar projeto',

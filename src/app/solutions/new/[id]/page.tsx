@@ -34,7 +34,7 @@ export default async function NewSolution({ params }: { params: { id: string } }
 					administrador, caso não veja ela imediatamente no site não se preocupe.
 				</p>
 			</article>
-			<SolutionFormCreate projectId={params.id} />
+			<SolutionFormCreate challengeId={params.id} />
 		</main>
 	)
 }

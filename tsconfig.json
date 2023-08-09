@@ -21,6 +21,7 @@
 		],
 		"paths": {
 			"@/*": ["./src/*"],
+			"@hooks/*": ["./src/hooks/*"],
 			"@context/*": ["./src/context/*"],
 			"@configs/*": ["./src/configs/*"],
 			"@actions/*": ["./src/actions/*"],

@@ -10,20 +10,21 @@ import { Button } from '@components/ui/button'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { useToast } from '@components/ui/use-toast'
 import { SolutionSchemaCreate } from '@/validations'
+import { useCreateSolution } from '@hooks/solutions'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 type SolutionData = z.infer<typeof SolutionSchemaCreate>
 
-const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
-
 interface SolutionFormCreateProps {
-	projectId: string
+	challengeId: string
 }
 
-export const SolutionFormCreate: React.FC<SolutionFormCreateProps> = ({ projectId }) => {
+export const SolutionFormCreate: React.FC<SolutionFormCreateProps> = ({
+	challengeId
+}) => {
 	const router = useRouter()
 	const { toast } = useToast()
-	const [loading, setLoading] = React.useState(false)
+	const { createSolution, loading } = useCreateSolution<SolutionData>(challengeId)
 
 	const {
 		register,
@@ -36,42 +37,18 @@ export const SolutionFormCreate: React.FC<SolutionFormCreateProps> = ({ projectI
 	})
 
 	const onSubmit = async (data: SolutionData) => {
-		const formData = new FormData()
-
-		formData.append('image', data.image[0])
-
 		try {
-			setLoading(true)
-			const responseImage = await fetch(`${BACKEND_UPLOAD_URL}/image-upload`, {
-				method: 'POST',
-				body: formData
-			})
-			const imageJson = (await responseImage.json()) as { url: string; public_id: string }
-
-			const solution = {
-				...data,
-				image: imageJson.url,
-				image_id: imageJson.public_id
-			}
-
-			const response = await fetch(`/api/solutions/${projectId}`, {
-				method: 'POST',
-				body: JSON.stringify(solution)
-			})
-
-			await response.json()
+			await createSolution(data)
 
 			toast({
 				title: 'Projeto enviado com sucesso',
 				description: 'Seu projeto foi enviado com sucesso'
 			})
 
-			setLoading(false)
 			reset()
 			router.refresh()
 			router.push('/solutions')
 		} catch (error) {
-			setLoading(false)
 			toast({
 				variant: 'destructive',
 				title: 'Erro ao enviar projeto',

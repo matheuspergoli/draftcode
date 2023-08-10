@@ -30,6 +30,7 @@ export const ChallengeList: React.FC<ChallengesProps> = ({ challenges }) => {
 					placeholder='Pesquisar desafio'
 					onChange={(e) => setChallengeTitle(e.target.value)}
 				/>
+				<p className='mt-5 font-semibold'>Total de desafios: {challenges?.length}</p>
 			</div>
 
 			<div className='flex flex-col gap-3'>

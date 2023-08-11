@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import { Button } from '@components/ui/button'
 import { useToast } from '@components/ui/use-toast'
 
@@ -32,6 +33,7 @@ interface BanButtonProps {
 export const BanButton: React.FC<BanButtonProps> = ({ id, isBanned }) => {
 	const router = useRouter()
 	const { toast } = useToast()
+	const { update } = useSession()
 	const isUserBanned = isBanned ? 'Banir' : 'Desbanir'
 	const [banned, setBanned] = React.useState(isUserBanned)
 
@@ -49,6 +51,8 @@ export const BanButton: React.FC<BanButtonProps> = ({ id, isBanned }) => {
 				title: 'Usuário atualizado com sucesso',
 				description: 'Seu usuário foi atualizado com sucesso'
 			})
+
+			update()
 		} else {
 			toast({
 				title: 'Erro ao atualizar usuário',

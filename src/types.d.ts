@@ -106,3 +106,5 @@ interface BlogPost {
 		url: string
 	}
 }
+
+type MiddlewareFactory = (middleware: NextMiddleware) => NextMiddleware

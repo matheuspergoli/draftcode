@@ -1,19 +1,8 @@
 import { db } from '@configs/db'
 import { redirect } from 'next/navigation'
-import { getUserSession } from '@actions/getUserSession'
 import { SolutionFormCreate } from '@components/Solution'
 
 export default async function NewSolution({ params }: { params: { id: string } }) {
-	const session = await getUserSession()
-
-	if (!session) {
-		redirect('/login')
-	}
-
-	if (session.user.isBanned) {
-		redirect('/userbanned')
-	}
-
 	const project = await db.project.findUnique({
 		where: {
 			id: params.id

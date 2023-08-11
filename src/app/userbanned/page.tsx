@@ -16,9 +16,9 @@ export default async function UserBannedPage() {
 
 	return (
 		<div className='container my-20 flex flex-col items-center justify-center'>
-			<h1 className='text-4xl font-bold'>Ops... encontramos algo errado</h1>
+			<h1 className='mb-1 text-4xl font-bold'>Ops... encontramos algo errado</h1>
 			<p className='mb-5 text-xl font-medium'>
-				Desculpe, você foi banido e não pode acessar esta página
+				Desculpe, você não pode acessar esta página.
 			</p>
 			<p>Caso isso tenha sido um erro, entre com contato com nossa equipe.</p>
 			<Link

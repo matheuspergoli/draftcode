@@ -31,6 +31,7 @@ export const BanList: React.FC<BanListsProps> = ({ users }) => {
 					placeholder='Pesquisar usuário'
 					onChange={(e) => setUserName(e.target.value)}
 				/>
+				<p className='mt-5 font-semibold'>Total de usuários: {users?.length}</p>
 			</div>
 
 			<div className='flex flex-col gap-3'>

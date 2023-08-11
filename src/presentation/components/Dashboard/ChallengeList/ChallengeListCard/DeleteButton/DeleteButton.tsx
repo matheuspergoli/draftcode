@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import { Loading } from '@components/Loading'
 import { Button } from '@components/ui/button'
-import { ReloadIcon } from '@radix-ui/react-icons'
 import { useToast } from '@components/ui/use-toast'
 
 import {
@@ -65,18 +65,10 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({ id, image_id }) => {
 	return (
 		<>
 			{loading && (
-				<div className='fixed inset-0 z-50 flex items-center justify-center'>
-					<div className='absolute inset-0 bg-background opacity-80' />
-					<div className='relative'>
-						<div className='rounded-lg border border-border bg-[#1F1F1F] p-10 text-foreground'>
-							<h1 className='text-2xl font-bold'>
-								Excluindo Projeto
-								<ReloadIcon className='ml-2 inline-block h-6 w-6 animate-spin' />
-							</h1>
-							<p className='mt-5'>Aguarde enquanto seu projeto é excluido.</p>
-						</div>
-					</div>
-				</div>
+				<Loading
+					title='Excluindo Projeto'
+					subtitle='Aguarde enquanto seu projeto é excluido.'
+				/>
 			)}
 			<Dialog>
 				<DialogTrigger asChild>

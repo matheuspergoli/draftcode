@@ -7,9 +7,9 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { Label } from '@components/ui/label'
 import { Input } from '@components/ui/input'
+import { Loading } from '@components/Loading'
 import { Button } from '@components/ui/button'
 import { ProfileSchemaLinks } from '@/validations'
-import { ReloadIcon } from '@radix-ui/react-icons'
 import { useToast } from '@components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -78,18 +78,10 @@ export const Profile: React.FC<ProfileData> = ({ user }) => {
 	return (
 		<>
 			{loading && (
-				<div className='fixed inset-0 z-50 flex items-center justify-center'>
-					<div className='absolute inset-0 bg-background opacity-80' />
-					<div className='relative'>
-						<div className='rounded-lg border border-border bg-[#1F1F1F] p-10 text-foreground'>
-							<h1 className='text-2xl font-bold'>
-								Atualizando Perfil
-								<ReloadIcon className='ml-2 inline-block h-6 w-6 animate-spin' />
-							</h1>
-							<p className='mt-5'>Aguarde enquanto seu perfil é atualizado.</p>
-						</div>
-					</div>
-				</div>
+				<Loading
+					title='Atualizando Perfil'
+					subtitle='Aguarde enquanto seu perfil é atualizado.'
+				/>
 			)}
 			<section className='container'>
 				<div className='mb-5 flex flex-col items-center gap-5 border-b-2 pb-5 md:flex-row md:justify-between'>

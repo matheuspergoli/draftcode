@@ -6,3 +6,19 @@ export const REGEX_GITHUB_URL =
 
 export const REGEX_LINKEDIN_URL =
 	/^https?:\/\/(?:www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?$/
+
+export const ALLOWED_WEBSITE_HOSTS = [
+	/(?:www\.)?vercel\.app\/?$/,
+	/(?:www\.)?netlify\.app\/?$/,
+	/(?:www\.)?github\.io\/[\w-]+\/?$/,
+	/(?:www\.)?cloudflare\.pages\/?$/,
+	/(?:www\.)?gitlab\.io\/[\w-]+\/?$/,
+	/(?:www\.)?firebaseapp\.com\/?$/,
+	/(?:www\.)?herokuapp\.com\/?$/,
+	/(?:www\.)?surge\.sh\/?$/,
+	/(?:www\.)?repl\.it\/?$/,
+	/(?:www\.)?render\.com\/?$/,
+	/(?:www\.)?fly\.io\/?$/,
+	/(?:www\.)?deno\.dev\/?$/,
+	/(?:www\.)?editorx\.com\/?$/
+]

@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { ALLOWED_WEBSITE_HOSTS } from './utils'
 
 export const SolutionSchemaCreate = z.object({
 	image: z.custom<FileList>().refine((value) => {
@@ -8,23 +9,7 @@ export const SolutionSchemaCreate = z.object({
 		return false
 	}, 'A imagem do projeto deve ser informada'),
 	website: z.string().refine((value) => {
-		const allowedWebsiteHosts = [
-			/(?:www\.)?vercel\.app\/?$/,
-			/(?:www\.)?netlify\.app\/?$/,
-			/(?:www\.)?github\.io\/?$/,
-			/(?:www\.)?cloudflare\.pages\/?$/,
-			/(?:www\.)?gitlab\.io\/?$/,
-			/(?:www\.)?firebaseapp\.com\/?$/,
-			/(?:www\.)?herokuapp\.com\/?$/,
-			/(?:www\.)?surge\.sh\/?$/,
-			/(?:www\.)?repl\.it\/?$/,
-			/(?:www\.)?render\.com\/?$/,
-			/(?:www\.)?fly\.io\/?$/,
-			/(?:www\.)?deno\.dev\/?$/,
-			/(?:www\.)?editorx\.com\/?$/
-		]
-
-		return allowedWebsiteHosts.some((regex) => regex.test(value))
+		return ALLOWED_WEBSITE_HOSTS.some((regex) => regex.test(value))
 	}, 'O link do website deve pertencer a um dos hosts suportados'),
 	repository: z
 		.string()

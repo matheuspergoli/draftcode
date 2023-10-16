@@ -7,9 +7,9 @@ export const SolutionSchemaAPI = z.object({
 		const allowedWebsiteHosts = [
 			/(?:www\.)?vercel\.app\/?$/,
 			/(?:www\.)?netlify\.app\/?$/,
-			/(?:www\.)?github\.io\/?$/,
+			/(?:www\.)?github\.io\/[\w-]+\/?$/,
 			/(?:www\.)?cloudflare\.pages\/?$/,
-			/(?:www\.)?gitlab\.io\/?$/,
+			/(?:www\.)?gitlab\.io\/[\w-]+\/?$/,
 			/(?:www\.)?firebaseapp\.com\/?$/,
 			/(?:www\.)?herokuapp\.com\/?$/,
 			/(?:www\.)?surge\.sh\/?$/,

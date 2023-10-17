@@ -25,7 +25,7 @@ export default async function Solutions() {
 				Soluções Pendentes
 			</h1>
 
-			{solutions.length > 0 && (
+			{solutions.length > 0 ? (
 				<section className='grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:place-items-stretch'>
 					{solutions.map((solution) => (
 						<SolutionCard
@@ -47,6 +47,10 @@ export default async function Solutions() {
 						/>
 					))}
 				</section>
+			) : (
+				<h1 className='mb-5 text-center text-xl'>
+					Não há soluções pendentes no momento.
+				</h1>
 			)}
 		</main>
 	)

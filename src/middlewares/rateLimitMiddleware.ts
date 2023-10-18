@@ -12,17 +12,19 @@ export const RateLimitMiddleware: MiddlewareFactory = (next) => {
 		const pathname = request.nextUrl.pathname
 		const paths = ['/api/solutions']
 
-		if (paths.some((path) => pathname.startsWith(path))) {
-			const token = await getToken({
-				req: request,
-				secret: process.env.NEXTAUTH_SECRET
-			})
+		if (request.method === 'POST') {
+			if (paths.some((path) => pathname.startsWith(path))) {
+				const token = await getToken({
+					req: request,
+					secret: process.env.NEXTAUTH_SECRET
+				})
 
-			const { isRateLimited, limit, currentUsage } = limiter.check(token?.sub as string)
-			console.log(`[RATE USAGE] ${currentUsage}/${limit}`)
+				const { isRateLimited, limit, currentUsage } = limiter.check(token?.sub as string)
+				console.log(`[RATE USAGE] ${currentUsage}/${limit}`)
 
-			if (isRateLimited) {
-				return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+				if (isRateLimited) {
+					return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+				}
 			}
 		}
 

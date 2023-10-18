@@ -10,5 +10,9 @@ export default stackMiddleware([
 ])
 
 export const config = {
-	matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)', '/api/solutions/:id']
+	matcher: [
+		'/((?!api|_next/static|_next/image|favicon.ico).*)',
+		'/api/solutions/:path*',
+		'!/api/solutions/aprove/:path*'
+	]
 }

@@ -5,6 +5,7 @@ import { Header } from '@components/Header'
 import { Footer } from '@components/Footer'
 import { Provider } from '@provider/Provider'
 import { Toaster } from '@components/ui/toaster'
+import { HeaderSkeleton } from '@components/Skeleton'
 import { ScrollToTop } from '@components/ScrollToTop'
 
 import 'swiper/css'
@@ -69,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			</Script>
 			<body className='flex h-screen flex-col'>
 				<Provider>
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<HeaderSkeleton />}>
 						<Header />
 					</Suspense>
 					<div className='flex-1'>{children}</div>

@@ -1,16 +1,16 @@
-'use client'
-
 import Link from 'next/link'
 import { Slider } from './Slider'
 import { Button } from '@components/ui/button'
 import { ChallengesCard } from './ChallengeCard'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
+import { getChallenges } from '@actions/getChallenges'
 
-interface ChallengesProps {
-	challenges: Challenge[]
-}
+export const Challenges: React.FC = async () => {
+	const challenges = await getChallenges({
+		difficulty: 'include',
+		technologies: 'include'
+	})
 
-export const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {
 	return (
 		<section className='container'>
 			<div className='mb-10 flex items-center justify-between gap-1'>

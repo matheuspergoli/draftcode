@@ -1,16 +1,11 @@
+import { Suspense } from 'react'
 import { Hero } from '@components/Hero'
 import { About } from '@components/About'
 import { Discord } from '@components/Discord'
 import { HowItWorks } from '@components/HowItWorks'
 import { Challenges } from '@components/Challenges'
-import { getChallenges } from '@actions/getChallenges'
 
-export default async function Home() {
-	const challenges = await getChallenges({
-		difficulty: 'include',
-		technologies: 'include'
-	})
-
+export default function Home() {
 	return (
 		<main>
 			<div className='mt-20'>
@@ -26,7 +21,9 @@ export default async function Home() {
 				<HowItWorks />
 			</div>
 			<div className='mb-[170px]'>
-				<Challenges challenges={challenges} />
+				<Suspense fallback={<div>Loading...</div>}>
+					<Challenges />
+				</Suspense>
 			</div>
 		</main>
 	)

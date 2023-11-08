@@ -5,12 +5,11 @@ import { MenuMobile } from './MenuMobile'
 import { LoginButton } from './LoginButton'
 import { HeaderLinks } from './HeaderLinks'
 import { FavoritesButton } from './FavoritesButton'
+import { getUserSession } from '@actions/getUserSession'
 
-interface HeaderProps {
-	user?: User
-}
+export const Header = async () => {
+	const session = await getUserSession()
 
-export const Header: React.FC<HeaderProps> = ({ user }) => {
 	return (
 		<header className='border-b border-border bg-secondary py-4'>
 			<nav className='container flex items-center justify-between'>
@@ -31,16 +30,16 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
 					<HeaderLinks />
 				</section>
 
-				{user ? (
+				{session?.user ? (
 					<div className='flex items-center gap-5'>
-						<UserAvatar user={user} image={user?.image} />
+						<UserAvatar user={session?.user} image={session?.user?.image} />
 						<FavoritesButton />
 					</div>
 				) : (
 					<LoginButton className='hidden md:block' />
 				)}
 
-				<MenuMobile user={user} />
+				<MenuMobile user={session?.user} />
 			</nav>
 		</header>
 	)

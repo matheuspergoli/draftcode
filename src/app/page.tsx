@@ -4,6 +4,7 @@ import { About } from '@components/About'
 import { Discord } from '@components/Discord'
 import { HowItWorks } from '@components/HowItWorks'
 import { Challenges } from '@components/Challenges'
+import { ChallengeCardSkeleton } from '@components/Skeleton'
 
 export default function Home() {
 	return (
@@ -21,7 +22,7 @@ export default function Home() {
 				<HowItWorks />
 			</div>
 			<div className='mb-[170px]'>
-				<Suspense fallback={<div>Loading...</div>}>
+				<Suspense fallback={<ChallengeCardSkeleton />}>
 					<Challenges />
 				</Suspense>
 			</div>

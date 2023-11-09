@@ -1,11 +1,9 @@
 import { Metadata } from 'next'
-import { Suspense } from 'react'
 import Script from 'next/script'
 import { Header } from '@components/Header'
 import { Footer } from '@components/Footer'
 import { Provider } from '@provider/Provider'
 import { Toaster } from '@components/ui/toaster'
-import { HeaderSkeleton } from '@components/Skeleton'
 import { ScrollToTop } from '@components/ScrollToTop'
 
 import 'swiper/css'
@@ -43,7 +41,15 @@ export const metadata: Metadata = {
 		siteName: 'DraftCode',
 		url: 'https://draftcode.vercel.app',
 		description:
-			'DraftCode é uma plataforma de desafios de programação que te ajuda a se desenvolver como programador, com desafios de programação de todos os níveis. E o melhor, é de graça!'
+			'DraftCode é uma plataforma de desafios de programação que te ajuda a se desenvolver como programador, com desafios de programação de todos os níveis. E o melhor, é de graça!',
+		images: [
+			{
+				url: '/images/draftcode.png',
+				width: 1200,
+				height: 630,
+				alt: 'DraftCode'
+			}
+		]
 	},
 	themeColor: '#050505',
 	robots: {
@@ -70,9 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			</Script>
 			<body className='flex h-screen flex-col'>
 				<Provider>
-					<Suspense fallback={<HeaderSkeleton />}>
-						<Header />
-					</Suspense>
+					<Header />
 					<div className='flex-1'>{children}</div>
 					<Footer />
 					<ScrollToTop />

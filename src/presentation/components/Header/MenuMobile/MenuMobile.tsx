@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { HeaderLinks } from '../HeaderLinks'
 import { LoginButton } from '../LoginButton'
 import { Button } from '@components/ui/button'
+import { getUserSession } from '@actions/getUserSession'
 
 import {
 	Sheet,
@@ -11,11 +12,9 @@ import {
 	SheetTrigger
 } from '@components/ui/sheet'
 
-interface MenuMobileProps {
-	user?: User
-}
+export const MenuMobile = async () => {
+	const session = await getUserSession()
 
-export const MenuMobile: React.FC<MenuMobileProps> = ({ user }) => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild className='md:hidden'>
@@ -46,7 +45,7 @@ export const MenuMobile: React.FC<MenuMobileProps> = ({ user }) => {
 
 				<section className='flex flex-col'>
 					<HeaderLinks />
-					{!user && <LoginButton className='mt-10' />}
+					{!session?.user && <LoginButton className='mt-10' />}
 				</section>
 			</SheetContent>
 		</Sheet>

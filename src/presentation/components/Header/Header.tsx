@@ -1,15 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { UserAvatar } from './UserAvatar'
+import { Suspense } from 'react'
 import { MenuMobile } from './MenuMobile'
-import { LoginButton } from './LoginButton'
 import { HeaderLinks } from './HeaderLinks'
-import { FavoritesButton } from './FavoritesButton'
-import { getUserSession } from '@actions/getUserSession'
+import { ProfileCard } from './ProfileCard'
+import { ProfileCardSkeleton, MenuMobileSkeleton } from '@components/Skeleton'
 
-export const Header = async () => {
-	const session = await getUserSession()
-
+export const Header = () => {
 	return (
 		<header className='border-b border-border bg-secondary py-4'>
 			<nav className='container flex items-center justify-between'>
@@ -30,16 +27,13 @@ export const Header = async () => {
 					<HeaderLinks />
 				</section>
 
-				{session?.user ? (
-					<div className='flex items-center gap-5'>
-						<UserAvatar user={session?.user} image={session?.user?.image} />
-						<FavoritesButton />
-					</div>
-				) : (
-					<LoginButton className='hidden md:block' />
-				)}
+				<Suspense fallback={<ProfileCardSkeleton />}>
+					<ProfileCard />
+				</Suspense>
 
-				<MenuMobile user={session?.user} />
+				<Suspense fallback={<MenuMobileSkeleton />}>
+					<MenuMobile />
+				</Suspense>
 			</nav>
 		</header>
 	)

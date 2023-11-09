@@ -22,7 +22,8 @@ export const getResources = async () => {
 				}
 			}
 		`
-		})
+		}),
+		cache: 'no-cache'
 	})
 
 	const resources = (await response.json()) as { data: { allResources: Resource[] } }

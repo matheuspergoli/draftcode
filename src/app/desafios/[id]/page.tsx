@@ -61,6 +61,14 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 								<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-enviar:rotate-90' />
 							</Button>
 						</Link>
+						<Link
+							href={`/solutions/challenge/${challenge.id}`}
+							className='w-full sm:w-fit'>
+							<Button className='group/btn-enviar w-full justify-center gap-2 sm:w-fit sm:justify-start'>
+								Ver soluções
+								<ArrowRightIcon className='h-5 w-5 transition group-hover/btn-enviar:rotate-90' />
+							</Button>
+						</Link>
 						<a
 							href={challenge.figma_url}
 							rel='noreferrer'

@@ -11,7 +11,7 @@ import '../styles/globals.css'
 
 export const metadata: Metadata = {
 	title: 'DraftCode | Desafios de programação',
-	metadataBase: new URL('https://draftcode.vercel.app'),
+	metadataBase: new URL('https://www.draftcode.tech/'),
 	creator: 'Matheus Pergoli',
 	description:
 		'DraftCode é uma plataforma de desafios de programação que te ajuda a se desenvolver como programador, com desafios de programação de todos os níveis. E o melhor, é de graça!',
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
 		'Programação',
 		'Next.js',
 		'React',
+		'Frontend',
+		'Codelândia',
 		'Tailwind CSS',
 		'Server Components',
 		'Vercel'
@@ -31,25 +33,16 @@ export const metadata: Metadata = {
 			url: 'https://matheuspergoli-portfolio.vercel.app/'
 		}
 	],
-	icons: {
-		icon: '/images/icon.png'
-	},
+	icons: ['/images/icon.png'],
 	openGraph: {
 		type: 'website',
 		locale: 'pt_BR',
-		title: 'DraftCode',
-		siteName: 'DraftCode',
-		url: 'https://draftcode.vercel.app',
+		title: 'DraftCode | Desafios de programação',
+		siteName: 'DraftCode | Desafios de programação',
+		url: 'https://www.draftcode.tech/',
 		description:
 			'DraftCode é uma plataforma de desafios de programação que te ajuda a se desenvolver como programador, com desafios de programação de todos os níveis. E o melhor, é de graça!',
-		images: [
-			{
-				url: '/images/draftcode.png',
-				width: 1200,
-				height: 630,
-				alt: 'DraftCode'
-			}
-		]
+		images: ['/images/draftcode.png']
 	},
 	themeColor: '#050505',
 	robots: {

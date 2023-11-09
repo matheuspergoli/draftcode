@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import { MenuMobile } from './MenuMobile'
 import { HeaderLinks } from './HeaderLinks'
 import { ProfileCard } from './ProfileCard'
-import { ProfileCardSkeleton, MenuMobileSkeleton } from '@components/Skeleton'
+import { ProfileCardSkeleton } from '@components/Skeleton'
 
 export const Header = () => {
 	return (
@@ -31,9 +31,7 @@ export const Header = () => {
 					<ProfileCard />
 				</Suspense>
 
-				<Suspense fallback={<MenuMobileSkeleton />}>
-					<MenuMobile />
-				</Suspense>
+				<MenuMobile />
 			</nav>
 		</header>
 	)

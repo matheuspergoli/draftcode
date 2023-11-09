@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { HeaderLinks } from '../HeaderLinks'
-import { LoginButton } from '../LoginButton'
 import { Button } from '@components/ui/button'
-import { getUserSession } from '@actions/getUserSession'
 
 import {
 	Sheet,
@@ -12,9 +10,7 @@ import {
 	SheetTrigger
 } from '@components/ui/sheet'
 
-export const MenuMobile = async () => {
-	const session = await getUserSession()
-
+export const MenuMobile = () => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild className='md:hidden'>
@@ -45,7 +41,6 @@ export const MenuMobile = async () => {
 
 				<section className='flex flex-col'>
 					<HeaderLinks />
-					{!session?.user && <LoginButton className='mt-10' />}
 				</section>
 			</SheetContent>
 		</Sheet>

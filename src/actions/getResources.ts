@@ -22,10 +22,7 @@ export const getResources = async () => {
 				}
 			}
 		`
-		}),
-		next: {
-			revalidate: 3600 // 1 hour
-		}
+		})
 	})
 
 	const resources = (await response.json()) as { data: { allResources: Resource[] } }

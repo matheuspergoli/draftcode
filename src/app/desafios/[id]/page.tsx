@@ -100,7 +100,7 @@ export default async function Desafio({ params }: { params: { id: string } }) {
 				</article>
 
 				<CreatorCard
-					madeByText='Design feito por'
+					madeByText='Desafio adicionado por'
 					image={challenge.user.image}
 					name={challenge.user.name}
 					github={links.github?.url ?? undefined}

@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
+		"dev:docker": "npm run db:push && npm run dev",
 		"build": "prisma generate && prisma db push && next build",
 		"start": "next start",
 		"lint": "next lint",

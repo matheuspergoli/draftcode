@@ -28,20 +28,27 @@ Crie um oauth app no github seguindo [este tutorial](docs/oauth/OAUTH.MD), é ob
 
 Configure o cloudinary seguindo [esse passo a passo](https://github.com/matheuspergoli/draftcode-upload-image/blob/main/docs/cloudinary/CLOUDINARY.MD)
 
-## 🚀 Instalando o DraftCode
+## 🚀 Setup local do DraftCode
 
 Para instalar o DraftCode, siga estas etapas:
 
 Linux:
 
-```
-npm install && sudo docker-compose up -d && npx prisma db push && npm run dev
+```sh
+## use 'sudo' caso necessário.
+npm install && docker-compose up
 ```
 
 Windows:
 
+```sh
+npm install && docker-compose up
 ```
-npm install && docker-compose up -d && npx prisma db push && npm run dev
+
+##### Caso queria usar o `prisma studio`
+
+```sh
+docker-compose exec app sh -c "npm run db:studio"
 ```
 
 ## 📫 Contribuindo para o DraftCode

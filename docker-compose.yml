@@ -1,7 +1,7 @@
-version: '3.1'
+version: '3.4'
 
 services:
-  db:
+  database:
     image: mysql
     restart: always
     environment:
@@ -11,3 +11,26 @@ services:
       MYSQL_PASSWORD: password
     ports:
       - 3306:3306
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 30s
+      retries: 10
+  app:
+    command: npm run dev:docker
+    image: app
+    restart: always
+    build: .
+    env_file:
+      - docker.env
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - 5555:5555
+      - 3000:3000
+    volumes:
+      - .:/app
+      - ./node_modules:/app/node_modules
+      - ./prisma:/app/prisma
+volumes:
+  node_modules: {}

@@ -1,5 +1,5 @@
-import { Metadata } from 'next'
 import Script from 'next/script'
+import { Metadata, Viewport } from 'next'
 import { Header } from '@components/Header'
 import { Footer } from '@components/Footer'
 import { Provider } from '@provider/Provider'
@@ -44,15 +44,16 @@ export const metadata: Metadata = {
 			'DraftCode é uma plataforma de desafios de programação que te ajuda a se desenvolver como programador, com desafios de programação de todos os níveis. E o melhor, é de graça!',
 		images: ['/images/draftcode.png']
 	},
-	themeColor: '#050505',
 	robots: {
 		follow: true,
 		index: true
-	},
-	viewport: {
-		width: 'device-width',
-		initialScale: 1
 	}
+}
+
+export const viewport: Viewport = {
+	themeColor: '#050505',
+	width: 'device-width',
+	initialScale: 1
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

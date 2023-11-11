@@ -1,7 +1,5 @@
 import React from 'react'
 
-const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
-
 interface Props {
 	image: FileList
 }
@@ -16,7 +14,7 @@ export const useCreateChallenge = <T extends Props>() => {
 
 		try {
 			setLoading(true)
-			const responseImage = await fetch(`${BACKEND_UPLOAD_URL}/image-upload`, {
+			const responseImage = await fetch('/api/upload', {
 				method: 'POST',
 				body: formData
 			})

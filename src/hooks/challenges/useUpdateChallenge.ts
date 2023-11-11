@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 
-const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
-
 interface Props {
 	image?: any
 }
@@ -20,7 +18,7 @@ export const useUpdateChallenge = <T extends Props>(oldChallenge: Challenge) => 
 		try {
 			setLoading(true)
 			const responseImage = formData.get('image')
-				? await fetch(`${BACKEND_UPLOAD_URL}/image-upload`, {
+				? await fetch('/api/upload', {
 						method: 'POST',
 						body: formData
 				  })
@@ -38,7 +36,7 @@ export const useUpdateChallenge = <T extends Props>(oldChallenge: Challenge) => 
 			}
 
 			if (newChallenge.image_id !== oldChallenge.image_id) {
-				await fetch(`${BACKEND_UPLOAD_URL}/image-upload/delete`, {
+				await fetch('/api/upload', {
 					method: 'DELETE',
 					headers: {
 						Accept: 'application/json',

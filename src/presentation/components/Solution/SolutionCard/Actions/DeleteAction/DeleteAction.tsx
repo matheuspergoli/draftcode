@@ -13,8 +13,6 @@ interface DeleteActionProps {
 	className?: string
 }
 
-const BACKEND_UPLOAD_URL = process.env.NEXT_PUBLIC_BACKEND_UPLOAD_URL
-
 export const DeleteAction: React.FC<DeleteActionProps> = ({
 	id,
 	className,
@@ -32,7 +30,7 @@ export const DeleteAction: React.FC<DeleteActionProps> = ({
 				method: 'DELETE'
 			})
 
-			await fetch(`${BACKEND_UPLOAD_URL}/image-upload/delete`, {
+			await fetch('/api/upload', {
 				method: 'DELETE',
 				headers: {
 					Accept: 'application/json',

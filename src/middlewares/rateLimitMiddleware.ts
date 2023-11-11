@@ -10,7 +10,7 @@ const limiter = rateLimit({
 export const RateLimitMiddleware: MiddlewareFactory = (next) => {
 	return async (request: NextRequest, _next: NextFetchEvent) => {
 		const pathname = request.nextUrl.pathname
-		const paths = ['/api/solutions']
+		const paths = ['/api/solutions', '/api/upload']
 
 		if (request.method === 'POST') {
 			if (paths.some((path) => pathname.startsWith(path))) {

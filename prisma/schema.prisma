@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Account {
@@ -76,10 +75,10 @@ model User {
 
 model Project {
   id          String @id @default(uuid())
-  figma_url   String @db.TinyText
+  figma_url   String
   title       String @db.VarChar(40)
-  image       String @db.TinyText
-  image_id    String @db.TinyText
+  image       String
+  image_id    String
   brief       String @db.VarChar(255)
   description String @db.Text
 

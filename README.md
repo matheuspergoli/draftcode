@@ -2,15 +2,6 @@
 
 <img src="./public/images/draftcode.png" alt="Image do site DraftCode">
 
-### Ajustes e melhorias
-
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
-
-- [x] Área para administradores adicionarem suas redes sociais para ficar em evidência no site
-- [ ] Melhorar performance.
-- [ ] Melhorar responsividade.
-- [ ] Corrigir bugs existentes.
-
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
@@ -90,6 +81,14 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         <img src="https://avatars.githubusercontent.com/u/68834970?v=4" width="100px;" alt="Foto do VitorFRE no GitHub"/><br>
         <sub>
           <b>Vitor Santos</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/matheusgmc" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/73797734?v=4" width="100px;" alt="Foto do VitorFRE no GitHub"/><br>
+        <sub>
+          <b>Matheus Geraldo</b>
         </sub>
       </a>
     </td>

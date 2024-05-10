@@ -13,10 +13,17 @@
 		"db:studio": "prisma studio",
 		"postinstall": "prisma generate"
 	},
+	"pnpm": {
+		"updateConfig": {
+			"ignoreDependencies": [
+				"eslint"
+			]
+		}
+	},
 	"dependencies": {
-		"@auth/prisma-adapter": "^1.0.6",
-		"@hookform/resolvers": "^3.3.2",
-		"@prisma/client": "^5.5.2",
+		"@auth/prisma-adapter": "^2.0.0",
+		"@hookform/resolvers": "^3.3.4",
+		"@prisma/client": "^5.13.0",
 		"@radix-ui/react-accordion": "^1.1.2",
 		"@radix-ui/react-avatar": "^1.0.4",
 		"@radix-ui/react-dialog": "1.0.5",
@@ -29,38 +36,38 @@
 		"@radix-ui/react-slot": "^1.0.2",
 		"@radix-ui/react-toast": "^1.1.5",
 		"class-variance-authority": "^0.7.0",
-		"cloudinary": "^1.41.0",
-		"clsx": "^2.0.0",
-		"date-fns": "^2.30.0",
-		"lru-cache": "^10.0.2",
-		"next": "14.0.2",
-		"next-auth": "^4.24.5",
-		"react": "^18.2.0",
-		"react-datocms": "^4.1.3",
-		"react-dom": "^18.2.0",
-		"react-hook-form": "^7.48.2",
+		"cloudinary": "^2.2.0",
+		"clsx": "^2.1.1",
+		"date-fns": "^3.6.0",
+		"lru-cache": "^10.2.2",
+		"next": "14.2.3",
+		"next-auth": "^4.24.7",
+		"react": "^18.3.1",
+		"react-datocms": "^6.0.1",
+		"react-dom": "^18.3.1",
+		"react-hook-form": "^7.51.4",
 		"remove-accents": "^0.5.0",
-		"swiper": "^11.0.4",
-		"tailwind-merge": "^2.0.0",
+		"swiper": "^11.1.1",
+		"tailwind-merge": "^2.3.0",
 		"tailwindcss-animate": "^1.0.7",
-		"zod": "^3.22.4"
+		"zod": "^3.23.8"
 	},
 	"devDependencies": {
-		"@tailwindcss/typography": "^0.5.10",
-		"@types/node": "^20.9.0",
-		"@types/react": "^18.2.37",
-		"@types/react-dom": "^18.2.15",
-		"@typescript-eslint/eslint-plugin": "^6.10.0",
-		"autoprefixer": "^10.4.16",
-		"eslint": "^8.53.0",
-		"eslint-config-next": "14.0.2",
-		"eslint-plugin-react": "^7.33.2",
-		"eslint-plugin-react-hooks": "^4.6.0",
-		"postcss": "^8.4.31",
-		"prettier": "^3.0.3",
-		"prettier-plugin-tailwindcss": "^0.5.7",
-		"prisma": "^5.5.2",
-		"tailwindcss": "^3.3.5",
-		"typescript": "^5.2.2"
+		"@tailwindcss/typography": "^0.5.13",
+		"@types/node": "^20.12.11",
+		"@types/react": "^18.3.1",
+		"@types/react-dom": "^18.3.0",
+		"@typescript-eslint/eslint-plugin": "^7.8.0",
+		"autoprefixer": "^10.4.19",
+		"eslint": "8.57.0",
+		"eslint-config-next": "14.2.3",
+		"eslint-plugin-react": "^7.34.1",
+		"eslint-plugin-react-hooks": "^4.6.2",
+		"postcss": "^8.4.38",
+		"prettier": "^3.2.5",
+		"prettier-plugin-tailwindcss": "^0.5.14",
+		"prisma": "^5.13.0",
+		"tailwindcss": "^3.4.3",
+		"typescript": "^5.4.5"
 	}
 }

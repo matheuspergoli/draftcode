@@ -21,7 +21,7 @@ export const useUpdateSolution = <T extends Props>(oldSolution: Solution) => {
 				? await fetch('/api/upload', {
 						method: 'POST',
 						body: formData
-				  })
+					})
 				: null
 
 			const imageJson = (await responseImage?.json()) as {

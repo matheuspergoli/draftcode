@@ -21,7 +21,7 @@ export const useUpdateChallenge = <T extends Props>(oldChallenge: Challenge) => 
 				? await fetch('/api/upload', {
 						method: 'POST',
 						body: formData
-				  })
+					})
 				: null
 
 			const imageJson = (await responseImage?.json()) as {
